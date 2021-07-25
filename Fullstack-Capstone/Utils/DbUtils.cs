@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Data.SqlClient;
 
-namespace WisdomAndGrace.Utils
+namespace Fullstack_Capstone.Utils
 {
     /// <summary>
     ///  A set of useful function for interacting with ADO.NET

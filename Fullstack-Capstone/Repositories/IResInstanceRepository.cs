@@ -8,6 +8,6 @@ namespace Fullstack_Capstone.Repositories
 {
     public interface IResInstanceRepository
     {
-        public List<ResInstance> GetAllByUser(int userId);
+        List<ResInstance> GetAllByUser(int userId);
     }
 }
