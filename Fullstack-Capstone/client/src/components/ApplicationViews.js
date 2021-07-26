@@ -16,7 +16,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                     {isLoggedIn ? <QuoteAddForm /> : <Redirect to="/login" />}
                 </Route> */}
 
-                <Route path="/resinstances">
+                <Route path="/resinstances/:userId(\d+)">
                     <ResInstanceList />
                 </Route>
 

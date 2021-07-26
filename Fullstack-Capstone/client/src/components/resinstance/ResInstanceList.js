@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ResInstance from './ResInstance';
 import { getResInstancesByUser } from "../../modules/resinstanceManager";
+import { useParams } from "react-router-dom";
 
 const ResInstanceList = () => {
     const [resinstances, setResinstances] = useState([]);
+    const { userId } = useParams();
 
     const getResinstances = () => {
-        getResInstancesByUser(1).then(resinstances => setResinstances(resinstances));
+        getResInstancesByUser(userId).then(resinstances => setResinstances(resinstances));
     };
 
     useEffect(() => {
