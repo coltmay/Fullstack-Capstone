@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./auth/Login";
-import Register from "./Register";
+import Register from "./auth/Register";
 import ResInstanceList from "./resinstance/ResInstanceList"
 
 export default function ApplicationViews({ isLoggedIn }) {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ResInstance from './ResInstance';
-import { getResInstancesByUser } from "../modules/resinstanceManager";
+import { getResInstancesByUser } from "../../modules/resinstanceManager";
 
-export default ResInstanceList = () => {
+const ResInstanceList = () => {
     const [resinstances, setResinstances] = useState([]);
 
     const getResinstances = () => {
-        getResInstancesByUser().then(resinstances => setResinstances(resinstances));
+        getResInstancesByUser(1).then(resinstances => setResinstances(resinstances));
     };
 
     useEffect(() => {
@@ -25,3 +25,5 @@ export default ResInstanceList = () => {
         </>
     );
 };
+
+export default ResInstanceList;

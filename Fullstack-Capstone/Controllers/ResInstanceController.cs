@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Fullstack_Capstone.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,81 +9,22 @@ using System.Threading.Tasks;
 
 namespace Fullstack_Capstone.Controllers
 {
+    //[Authorize]
+    [Route("api/[controller]")]
+    [ApiController]
     public class ResInstanceController : Controller
     {
-        // GET: ResInstanceController
-        public ActionResult Index()
+        private readonly IResInstanceRepository _resinstanceRepository;
+
+        public ResInstanceController(IResInstanceRepository resinstanceRepository)
         {
-            return View();
+            _resinstanceRepository = resinstanceRepository;
         }
 
-        // GET: ResInstanceController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("{userId}")]
+        public IActionResult Get(int userId)
         {
-            return View();
-        }
-
-        // GET: ResInstanceController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ResInstanceController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ResInstanceController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ResInstanceController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ResInstanceController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ResInstanceController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Ok(_resinstanceRepository.GetAllByUser(userId));
         }
     }
 }
