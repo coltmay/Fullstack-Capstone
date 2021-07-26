@@ -11,7 +11,7 @@ namespace Fullstack_Capstone.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-        public UserController(IUserRepository userProfileRepository)
+        public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
