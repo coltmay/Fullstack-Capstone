@@ -74,7 +74,7 @@ namespace Fullstack_Capstone.Repositories
                     DbUtils.AddParameter(cmd, "@LastName", user.LastName);
                     DbUtils.AddParameter(cmd, "@RegisterDate", DateTime.Now);
                     DbUtils.AddParameter(cmd, "@AvatarId", user.AvatarId);
-                    DbUtils.AddParameter(cmd, "@UserTypeId", user.UserTypeId);
+                    DbUtils.AddParameter(cmd, "@UserTypeId", 2);
 
                     user.Id = (int)cmd.ExecuteScalar();
                 }
