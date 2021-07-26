@@ -134,6 +134,7 @@ namespace Fullstack_Capstone.Repositories
 
 
 
+
                     resInstance.Id = (int)cmd.ExecuteScalar();
                 }
             }
