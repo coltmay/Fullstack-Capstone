@@ -9,5 +9,7 @@ namespace Fullstack_Capstone.Repositories
     public interface IResInstanceRepository
     {
         List<ResInstance> GetAllByUser(int userId);
+
+        ResInstance GetById(int resId);
     }
 }

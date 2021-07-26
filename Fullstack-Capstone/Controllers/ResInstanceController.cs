@@ -1,4 +1,5 @@
-﻿using Fullstack_Capstone.Repositories;
+﻿using Fullstack_Capstone.Models;
+using Fullstack_Capstone.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,5 +27,35 @@ namespace Fullstack_Capstone.Controllers
         {
             return Ok(_resinstanceRepository.GetAllByUser(userId));
         }
+
+        [HttpGet("resinstance/{resId}")]
+        public IActionResult GetById(int resId)
+        {
+            var resInstance = _resinstanceRepository.GetById(resId);
+            if (resInstance == null)
+            {
+                return NotFound();
+            }
+            return Ok(resInstance);
+        }
+
+        //[HttpPost]
+        //public IActionResult Post(ResInstance resinstance)
+        //{
+        //    _resinstanceRepository.Add(resinstance);
+        //    return CreatedAtAction("Get", new { id = resinstance.Id }, resinstance);
+        //}
+
+        //[HttpPut("{id}")]
+        //public IActionResult Put(int id, ResInstance resinstance)
+        //{
+        //    if (id != resinstance.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    _resinstanceRepository.Update(resinstance);
+        //    return NoContent();
+        //}
     }
 }
