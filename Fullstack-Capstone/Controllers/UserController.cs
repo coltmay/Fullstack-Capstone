@@ -5,21 +5,21 @@ using Fullstack_Capstone.Repositories;
 
 namespace Fullstack_Capstone.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserProfileController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IUserProfileRepository _userProfileRepository;
-        public UserProfileController(IUserProfileRepository userProfileRepository)
+        private readonly IUserRepository _userRepository;
+        public UserController(IUserRepository userProfileRepository)
         {
-            _userProfileRepository = userProfileRepository;
+            _userRepository = userRepository;
         }
 
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
-            var user = _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+            var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
             if (user == null)
             {
                 return NotFound();
@@ -30,7 +30,7 @@ namespace Fullstack_Capstone.Controllers
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
         {
-            var user = _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+            var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
             if (user == null)
             {
                 return NotFound();
@@ -43,7 +43,7 @@ namespace Fullstack_Capstone.Controllers
         {
             // All newly registered users start out as a "user" user type (i.e. they are not admins)
             user.UserTypeId = UserType.USER_TYPE_ID;
-            _userProfileRepository.Add(user);
+            _userRepository.Add(user);
             return CreatedAtAction(
                 nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
         }
