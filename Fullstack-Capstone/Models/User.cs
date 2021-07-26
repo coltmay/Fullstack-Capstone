@@ -34,5 +34,7 @@ namespace Fullstack_Capstone.Models
 
         [Required]
         public int UserTypeId { get; set; }
+
+        public UserType UserType { get; set; }
     }
 }
