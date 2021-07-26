@@ -20,7 +20,7 @@ namespace Fullstack_Capstone.Repositories
                         SELECT  u.Id, u.FirebaseUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
                                 ut.Name AS UserTypeName
                         FROM Users u
-                        LEFT JOIN UserType ut ON u.UserTypeId = ut.Id
+                        LEFT JOIN UserTypes ut ON u.UserTypeId = ut.Id
                         WHERE FirebaseUserId = @FirebaseUSerId
                     ";
 
