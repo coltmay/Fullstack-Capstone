@@ -1,7 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Login from "./Login";
-import Register from "./Register";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import ResInstanceList from "./resinstance/ResInstanceList"
 
 export default function ApplicationViews({ isLoggedIn }) {
     return (
@@ -14,6 +15,10 @@ export default function ApplicationViews({ isLoggedIn }) {
                 <Route path="/add">
                     {isLoggedIn ? <QuoteAddForm /> : <Redirect to="/login" />}
                 </Route> */}
+
+                <Route path="/resinstances/:userId(\d+)">
+                    <ResInstanceList />
+                </Route>
 
                 <Route path="/login">
                     <Login />
