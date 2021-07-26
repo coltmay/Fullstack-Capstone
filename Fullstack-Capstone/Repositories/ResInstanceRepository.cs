@@ -116,6 +116,28 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
+        public void Add(ResInstance resInstance)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO ResInstances (Date, UserId, BeforeMood, AfterMood, UserWeight, Journal)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
+
+
+
+                    resInstance.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
 
     }
 }

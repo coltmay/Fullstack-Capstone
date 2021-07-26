@@ -39,12 +39,12 @@ namespace Fullstack_Capstone.Controllers
             return Ok(resInstance);
         }
 
-        //[HttpPost]
-        //public IActionResult Post(ResInstance resinstance)
-        //{
-        //    _resinstanceRepository.Add(resinstance);
-        //    return CreatedAtAction("Get", new { id = resinstance.Id }, resinstance);
-        //}
+        [HttpPost]
+        public IActionResult Post(ResInstance resinstance)
+        {
+            _resinstanceRepository.Add(resinstance);
+            return CreatedAtAction("Get", new { id = resinstance.Id }, resinstance);
+        }
 
         //[HttpPut("{id}")]
         //public IActionResult Put(int id, ResInstance resinstance)

@@ -11,5 +11,7 @@ namespace Fullstack_Capstone.Repositories
         List<ResInstance> GetAllByUser(int userId);
 
         ResInstance GetById(int resId);
+
+        void Add(ResInstance resInstance);
     }
 }
