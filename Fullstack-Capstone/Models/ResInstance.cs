@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Fullstack_Capstone.Models
@@ -27,5 +28,7 @@ namespace Fullstack_Capstone.Models
         public string Journal { get; set; }
 
         public User User { get; set; }
+
+        public List<Exercise> ExerciseList { get; set; }
     }
 }
