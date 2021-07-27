@@ -40,7 +40,6 @@ namespace Fullstack_Capstone.Repositories
                             Description = DbUtils.GetString(reader, "Description"),
                             Url = DbUtils.GetString(reader, "Url")
                         });
-
                     }
                     reader.Close();
 
@@ -122,9 +121,9 @@ namespace Fullstack_Capstone.Repositories
                     cmd.CommandText = @"
                         UPDATE Exercises
                         SET [Name] = @name,
-                            Sets = @sets
-                            Reps = @reps
-                            Description = @description
+                            Sets = @sets,
+                            Reps = @reps,
+                            Description = @description,
                             URL = @url
     
                         WHERE Id = @id";

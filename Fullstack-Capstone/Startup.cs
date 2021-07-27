@@ -23,6 +23,7 @@ namespace Fullstack_Capstone
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IExerciseRepository, ExerciseRepository>();
             services.AddTransient<IResInstanceRepository, ResInstanceRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
