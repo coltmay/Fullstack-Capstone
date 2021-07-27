@@ -124,16 +124,18 @@ namespace Fullstack_Capstone.Repositories
 
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"
-                        INSERT INTO ResInstances (Date, UserId, BeforeMood, AfterMood, UserWeight, Journal)
-                        OUTPUT INSERTED.ID
-                        VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
+                    cmd.CommandText = @"INSERT INTO ResInstances ([Date], UserId, BeforeMood, AfterMood, UserWeight, Journal)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
                     ";
 
                     DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
 
-
-
+                    DbUtils.AddParameter(cmd, "@UserId", 1);
+                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
 
                     resInstance.Id = (int)cmd.ExecuteScalar();
                 }
