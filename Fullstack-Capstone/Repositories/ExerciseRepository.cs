@@ -47,94 +47,79 @@ namespace Fullstack_Capstone.Repositories
                     return exercises;
                 }
             }
+        }
 
-            public Exercise GetById(int id)
+        public Exercise GetById(int id)
+        {
+            using (var conn = Connection)
             {
-                using (var conn = Connection)
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = @"
-                        SELECT  r.Id, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
-                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId
-                        FROM ResInstances r
-                        LEFT JOIN Users u ON r.UserId = u.Id
-                        WHERE r.Id = @resId
+                    cmd.CommandText = @"
+                        SELECT  e.Id, e.Name, e.Sets, e.Reps, e.Description, e.Url
+                        FROM Exercises e
+                        WHERE e.Id = @Id
                     ";
 
-                        DbUtils.AddParameter(cmd, "@resId", resId);
+                    DbUtils.AddParameter(cmd, "@Id", id);
 
-                        ResInstance resinstance = null;
+                    Exercise exercise = null;
 
-                        var reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();
 
-                        if (reader.Read())
+                    if (reader.Read())
+                    {
+                        exercise = new Exercise()
                         {
-                            resinstance = new ResInstance()
-                            {
-                                Id = DbUtils.GetInt(reader, "Id"),
-                                Date = DbUtils.GetDateTime(reader, "Date"),
-                                UserId = DbUtils.GetInt(reader, "UserId"),
-                                BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
-                                AfterMood = DbUtils.GetString(reader, "AfterMood"),
-                                UserWeight = DbUtils.GetInt(reader, "UserWeight"),
-                                Journal = DbUtils.GetString(reader, "Journal"),
-                                User = new User()
-                                {
-                                    Id = DbUtils.GetInt(reader, "UserTableUserId"),
-                                    Username = DbUtils.GetString(reader, "Username"),
-                                    Email = DbUtils.GetString(reader, "Email"),
-                                    FirstName = DbUtils.GetString(reader, "FirstName"),
-                                    LastName = DbUtils.GetString(reader, "LastName"),
-                                    RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                                    AvatarId = DbUtils.GetInt(reader, "AvatarId"),
-                                    UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
-                                }
-                            };
-                        }
-
-                        reader.Close();
-
-                        return resinstance;
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Name = DbUtils.GetString(reader, "Name"),
+                            Sets = DbUtils.GetInt(reader, "Sets"),
+                            Reps = DbUtils.GetInt(reader, "Reps"),
+                            Description = DbUtils.GetString(reader, "Description"),
+                            Url = DbUtils.GetString(reader, "Url")
+                        };
                     }
+
+                    reader.Close();
+
+                    return exercise;
                 }
             }
+        }
 
-            public void Add(Exercise exercise)
+        public void Add(Exercise exercise)
+        {
+            using (var conn = Connection)
             {
-                using (var conn = Connection)
-                {
-                    conn.Open();
+                conn.Open();
 
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = @"INSERT INTO ResInstances ([Date], UserId, BeforeMood, AfterMood, UserWeight, Journal)
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO Exercises ([Name], Sets, Reps, Description, URL)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
+                                        VALUES (@name, @sets, @reps, @description, @url)
                     ";
 
-                        DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
+                    DbUtils.AddParameter(cmd, "@name", exercise.Name);
+                    DbUtils.AddParameter(cmd, "@sets", exercise.Sets);
+                    DbUtils.AddParameter(cmd, "@reps", exercise.Reps);
+                    DbUtils.AddParameter(cmd, "@description", exercise.Description);
+                    DbUtils.AddParameter(cmd, "@url", exercise.Url);
 
-                        DbUtils.AddParameter(cmd, "@UserId", 1);
-                        DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-                        DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-                        DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-                        DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-
-                        resInstance.Id = (int)cmd.ExecuteScalar();
-                    }
+                    exercise.Id = (int)cmd.ExecuteScalar();
                 }
             }
+        }
 
-            public void Update(Exercise exercise)
+        public void Update(Exercise exercise)
+        {
+            using (var conn = Connection)
             {
-                using (var conn = Connection)
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
                 {
-                    conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = @"
+                    cmd.CommandText = @"
                         UPDATE ResInstances
                         SET BeforeMood = @BeforeMood,
                             AfterMood = @AfterMood,
@@ -143,31 +128,31 @@ namespace Fullstack_Capstone.Repositories
     
                         WHERE Id = @id";
 
-                        DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-                        DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-                        DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-                        DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-                        DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+                    DbUtils.AddParameter(cmd, "@id", resInstance.Id);
 
-                        cmd.ExecuteNonQuery();
-                    }
+                    cmd.ExecuteNonQuery();
                 }
             }
-
-            public void Delete(int id)
-            {
-                using (var conn = Connection)
-                {
-                    conn.Open();
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = "DELETE FROM Exercises WHERE Id = @id";
-                        DbUtils.AddParameter(cmd, "@id", id);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-            }
-
         }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Exercises WHERE Id = @id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
+}
 
