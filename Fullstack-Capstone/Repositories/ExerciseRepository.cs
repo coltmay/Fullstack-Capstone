@@ -20,57 +20,42 @@ namespace Fullstack_Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT  r.Id, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
-                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId
-                        FROM ResInstances r
-                        LEFT JOIN Users u ON r.UserId = u.Id
-                        WHERE u.Id = @userId
+                        SELECT  e.Id, e.Name, e.Sets, e.Reps, e.Description, e.Url
+                        FROM Exercises e
+                        ORDER BY e.Name
                     ";
-                    DbUtils.AddParameter(cmd, "@userId", userId);
 
                     var reader = cmd.ExecuteReader();
 
-                    var resinstances = new List<ResInstance>();
+                    var exercises = new List<Exercise>();
 
                     while (reader.Read())
                     {
-                        resinstances.Add(new ResInstance()
+                        exercises.Add(new Exercise()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            Date = DbUtils.GetDateTime(reader, "Date"),
-                            UserId = DbUtils.GetInt(reader, "UserId"),
-                            BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
-                            AfterMood = DbUtils.GetString(reader, "AfterMood"),
-                            UserWeight = DbUtils.GetInt(reader, "UserWeight"),
-                            Journal = DbUtils.GetString(reader, "Journal"),
-                            User = new User()
-                            {
-                                Id = DbUtils.GetInt(reader, "UserTableUserId"),
-                                Username = DbUtils.GetString(reader, "Username"),
-                                Email = DbUtils.GetString(reader, "Email"),
-                                FirstName = DbUtils.GetString(reader, "FirstName"),
-                                LastName = DbUtils.GetString(reader, "LastName"),
-                                RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                                AvatarId = DbUtils.GetInt(reader, "AvatarId"),
-                                UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
-                            }
+                            Name = DbUtils.GetString(reader, "Name"),
+                            Sets = DbUtils.GetInt(reader, "Sets"),
+                            Reps = DbUtils.GetInt(reader, "Reps"),
+                            Description = DbUtils.GetString(reader, "Description"),
+                            Url = DbUtils.GetString(reader, "Url")
                         });
+
                     }
                     reader.Close();
 
-                    return resinstances;
+                    return exercises;
                 }
             }
-        }
 
-        public Exercise GetById(int id)
-        {
-            using (var conn = Connection)
+            public Exercise GetById(int id)
             {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
+                using (var conn = Connection)
                 {
-                    cmd.CommandText = @"
+                    conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = @"
                         SELECT  r.Id, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
                                 u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId
                         FROM ResInstances r
@@ -78,78 +63,78 @@ namespace Fullstack_Capstone.Repositories
                         WHERE r.Id = @resId
                     ";
 
-                    DbUtils.AddParameter(cmd, "@resId", resId);
+                        DbUtils.AddParameter(cmd, "@resId", resId);
 
-                    ResInstance resinstance = null;
+                        ResInstance resinstance = null;
 
-                    var reader = cmd.ExecuteReader();
+                        var reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
-                    {
-                        resinstance = new ResInstance()
+                        if (reader.Read())
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
-                            Date = DbUtils.GetDateTime(reader, "Date"),
-                            UserId = DbUtils.GetInt(reader, "UserId"),
-                            BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
-                            AfterMood = DbUtils.GetString(reader, "AfterMood"),
-                            UserWeight = DbUtils.GetInt(reader, "UserWeight"),
-                            Journal = DbUtils.GetString(reader, "Journal"),
-                            User = new User()
+                            resinstance = new ResInstance()
                             {
-                                Id = DbUtils.GetInt(reader, "UserTableUserId"),
-                                Username = DbUtils.GetString(reader, "Username"),
-                                Email = DbUtils.GetString(reader, "Email"),
-                                FirstName = DbUtils.GetString(reader, "FirstName"),
-                                LastName = DbUtils.GetString(reader, "LastName"),
-                                RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                                AvatarId = DbUtils.GetInt(reader, "AvatarId"),
-                                UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
-                            }
-                        };
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Date = DbUtils.GetDateTime(reader, "Date"),
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
+                                AfterMood = DbUtils.GetString(reader, "AfterMood"),
+                                UserWeight = DbUtils.GetInt(reader, "UserWeight"),
+                                Journal = DbUtils.GetString(reader, "Journal"),
+                                User = new User()
+                                {
+                                    Id = DbUtils.GetInt(reader, "UserTableUserId"),
+                                    Username = DbUtils.GetString(reader, "Username"),
+                                    Email = DbUtils.GetString(reader, "Email"),
+                                    FirstName = DbUtils.GetString(reader, "FirstName"),
+                                    LastName = DbUtils.GetString(reader, "LastName"),
+                                    RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
+                                    AvatarId = DbUtils.GetInt(reader, "AvatarId"),
+                                    UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
+                                }
+                            };
+                        }
+
+                        reader.Close();
+
+                        return resinstance;
                     }
-
-                    reader.Close();
-
-                    return resinstance;
                 }
             }
-        }
 
-        public void Add(Exercise exercise)
-        {
-            using (var conn = Connection)
+            public void Add(Exercise exercise)
             {
-                conn.Open();
-
-                using (var cmd = conn.CreateCommand())
+                using (var conn = Connection)
                 {
-                    cmd.CommandText = @"INSERT INTO ResInstances ([Date], UserId, BeforeMood, AfterMood, UserWeight, Journal)
+                    conn.Open();
+
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = @"INSERT INTO ResInstances ([Date], UserId, BeforeMood, AfterMood, UserWeight, Journal)
                                         OUTPUT INSERTED.ID
                                         VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
                     ";
 
-                    DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
+                        DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
 
-                    DbUtils.AddParameter(cmd, "@UserId", 1);
-                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+                        DbUtils.AddParameter(cmd, "@UserId", 1);
+                        DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                        DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                        DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                        DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
 
-                    resInstance.Id = (int)cmd.ExecuteScalar();
+                        resInstance.Id = (int)cmd.ExecuteScalar();
+                    }
                 }
             }
-        }
 
-        public void Update(Exercise exercise)
-        {
-            using (var conn = Connection)
+            public void Update(Exercise exercise)
             {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
+                using (var conn = Connection)
                 {
-                    cmd.CommandText = @"
+                    conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = @"
                         UPDATE ResInstances
                         SET BeforeMood = @BeforeMood,
                             AfterMood = @AfterMood,
@@ -158,31 +143,31 @@ namespace Fullstack_Capstone.Repositories
     
                         WHERE Id = @id";
 
-                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-                    DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+                        DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                        DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                        DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                        DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+                        DbUtils.AddParameter(cmd, "@id", resInstance.Id);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
-        }
 
-        public void Delete(int id)
-        {
-            using (var conn = Connection)
+            public void Delete(int id)
             {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
+                using (var conn = Connection)
                 {
-                    cmd.CommandText = "DELETE FROM Exercises WHERE Id = @id";
-                    DbUtils.AddParameter(cmd, "@id", id);
-                    cmd.ExecuteNonQuery();
+                    conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "DELETE FROM Exercises WHERE Id = @id";
+                        DbUtils.AddParameter(cmd, "@id", id);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
-        }
 
+        }
     }
-}
 
