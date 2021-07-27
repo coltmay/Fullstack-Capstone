@@ -57,5 +57,12 @@ namespace Fullstack_Capstone.Controllers
             _resinstanceRepository.Update(resinstance);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _resinstanceRepository.Delete(id);
+            return NoContent();
+        }
     }
 }

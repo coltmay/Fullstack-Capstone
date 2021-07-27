@@ -15,5 +15,7 @@ namespace Fullstack_Capstone.Repositories
         void Add(ResInstance resInstance);
 
         void Update(ResInstance resInstance);
+
+        void Delete(int id);
     }
 }
