@@ -142,6 +142,32 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
+        public void Update(ResInstance resInstance)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE ResInstances
+                        SET BeforeMood = @BeforeMood,
+                            AfterMood = @AfterMood,
+                            Userweight = @UserWeight,
+                            Journal = @Journal
+    
+                        WHERE Id = @id";
+
+                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+                    DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
 

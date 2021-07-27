@@ -13,5 +13,7 @@ namespace Fullstack_Capstone.Repositories
         ResInstance GetById(int resId);
 
         void Add(ResInstance resInstance);
+
+        void Update(ResInstance resInstance);
     }
 }

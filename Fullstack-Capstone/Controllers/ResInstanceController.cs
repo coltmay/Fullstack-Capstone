@@ -45,5 +45,17 @@ namespace Fullstack_Capstone.Controllers
             _resinstanceRepository.Add(resinstance);
             return CreatedAtAction(nameof(Get), new { id = resinstance.Id }, resinstance);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, ResInstance resinstance)
+        {
+            if (id != resinstance.Id)
+            {
+                return BadRequest();
+            }
+
+            _resinstanceRepository.Update(resinstance);
+            return NoContent();
+        }
     }
 }
