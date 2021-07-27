@@ -22,10 +22,12 @@ namespace Fullstack_Capstone.Repositories
                     cmd.CommandText = @"
                         SELECT  r.Id, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
                                 u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
-                                re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty
+                                re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
+                                e.Id, e.Name, e.Sets, e.Reps, e.Description, e.URL
                         FROM ResInstances r
                         LEFT JOIN Users u ON r.UserId = u.Id
                         LEFT JOIN ResInstanceExercises re ON re.ResInstanceId = r.Id
+                        LEFT JOIN Exercises e ON re.ExerciseId = e.Id
                         WHERE u.Id = @userId
                     ";
                     DbUtils.AddParameter(cmd, "@userId", userId);
