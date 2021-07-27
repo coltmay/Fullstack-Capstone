@@ -120,19 +120,21 @@ namespace Fullstack_Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        UPDATE ResInstances
-                        SET BeforeMood = @BeforeMood,
-                            AfterMood = @AfterMood,
-                            Userweight = @UserWeight,
-                            Journal = @Journal
+                        UPDATE Exercises
+                        SET [Name] = @name,
+                            Sets = @sets
+                            Reps = @reps
+                            Description = @description
+                            URL = @url
     
                         WHERE Id = @id";
 
-                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-                    DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+                    DbUtils.AddParameter(cmd, "@name", exercise.Name);
+                    DbUtils.AddParameter(cmd, "@sets", exercise.Sets);
+                    DbUtils.AddParameter(cmd, "@reps", exercise.Reps);
+                    DbUtils.AddParameter(cmd, "@description", exercise.Description);
+                    DbUtils.AddParameter(cmd, "@url", exercise.Url);
+                    DbUtils.AddParameter(cmd, "@id", exercise.Id);
 
                     cmd.ExecuteNonQuery();
                 }
