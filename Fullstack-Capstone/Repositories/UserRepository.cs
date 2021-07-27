@@ -61,6 +61,7 @@ namespace Fullstack_Capstone.Repositories
             using (var conn = Connection)
             {
                 conn.Open();
+
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"INSERT INTO Users (FirebaseUserId, Username, Email, FirstName, LastName, RegisterDate, AvatarId, UserTypeId)

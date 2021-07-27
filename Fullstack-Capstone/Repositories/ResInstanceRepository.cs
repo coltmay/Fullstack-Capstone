@@ -116,6 +116,72 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
+        public void Add(ResInstance resInstance)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO ResInstances ([Date], UserId, BeforeMood, AfterMood, UserWeight, Journal)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
+
+                    DbUtils.AddParameter(cmd, "@UserId", 1);
+                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+
+                    resInstance.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public void Update(ResInstance resInstance)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE ResInstances
+                        SET BeforeMood = @BeforeMood,
+                            AfterMood = @AfterMood,
+                            Userweight = @UserWeight,
+                            Journal = @Journal
+    
+                        WHERE Id = @id";
+
+                    DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+                    DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+                    DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+                    DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+                    DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM ResInstances WHERE Id = @id";
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
     }
 }
