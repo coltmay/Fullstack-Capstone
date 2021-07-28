@@ -30,5 +30,7 @@ namespace Fullstack_Capstone.Models
         public User User { get; set; }
 
         public List<Exercise> ExerciseList { get; set; }
+
+        public List<Meal> MealList { get; set; }
     }
 }
