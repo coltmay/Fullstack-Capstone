@@ -7,7 +7,7 @@ namespace Fullstack_Capstone.Repositories
         ResInstanceExercise GetById(int resExId);
         void Add(ResInstanceExercise Rex);
         void Update(ResInstanceExercise Rex);
-
+        void Delete(int id);
 
     }
 }
