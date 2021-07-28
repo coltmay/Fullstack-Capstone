@@ -98,10 +98,14 @@ namespace Fullstack_Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT  r.Id, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
-                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId
+                        SELECT  r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
+                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
+                                re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
+                                e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL
                         FROM ResInstances r
                         LEFT JOIN Users u ON r.UserId = u.Id
+                        LEFT JOIN ResInstanceExercises re ON re.ResInstanceId = r.Id
+                        LEFT JOIN Exercises e ON re.ExerciseId = e.Id
                         WHERE r.Id = @resId
                     ";
 
@@ -111,29 +115,47 @@ namespace Fullstack_Capstone.Repositories
 
                     var reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        resinstance = new ResInstance()
+                        if (resinstance == null)
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
-                            Date = DbUtils.GetDateTime(reader, "Date"),
-                            UserId = DbUtils.GetInt(reader, "UserId"),
-                            BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
-                            AfterMood = DbUtils.GetString(reader, "AfterMood"),
-                            UserWeight = DbUtils.GetInt(reader, "UserWeight"),
-                            Journal = DbUtils.GetString(reader, "Journal"),
-                            User = new User()
+                            resinstance = new ResInstance()
                             {
-                                Id = DbUtils.GetInt(reader, "UserTableUserId"),
-                                Username = DbUtils.GetString(reader, "Username"),
-                                Email = DbUtils.GetString(reader, "Email"),
-                                FirstName = DbUtils.GetString(reader, "FirstName"),
-                                LastName = DbUtils.GetString(reader, "LastName"),
-                                RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                                AvatarId = DbUtils.GetInt(reader, "AvatarId"),
-                                UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
-                            }
-                        };
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Date = DbUtils.GetDateTime(reader, "Date"),
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
+                                AfterMood = DbUtils.GetString(reader, "AfterMood"),
+                                UserWeight = DbUtils.GetInt(reader, "UserWeight"),
+                                Journal = DbUtils.GetString(reader, "Journal"),
+                                User = new User()
+                                {
+                                    Id = DbUtils.GetInt(reader, "UserTableUserId"),
+                                    Username = DbUtils.GetString(reader, "Username"),
+                                    Email = DbUtils.GetString(reader, "Email"),
+                                    FirstName = DbUtils.GetString(reader, "FirstName"),
+                                    LastName = DbUtils.GetString(reader, "LastName"),
+                                    RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
+                                    AvatarId = DbUtils.GetInt(reader, "AvatarId"),
+                                    UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
+                                },
+                                ExerciseList = new List<Exercise>()
+                            };
+                        }
+
+                        if (DbUtils.IsNotDbNull(reader, "ExerciseId"))
+                        {
+                            resinstance.ExerciseList.Add(new Exercise()
+                            {
+                                Id = DbUtils.GetInt(reader, "ExerciseId"),
+                                Name = DbUtils.GetString(reader, "ExerciseName"),
+                                Sets = DbUtils.GetInt(reader, "Sets"),
+                                Reps = DbUtils.GetInt(reader, "Reps"),
+                                Description = DbUtils.GetString(reader, "Description"),
+                                Url = DbUtils.GetString(reader, "URL")
+                            });
+                        }
+
                     }
 
                     reader.Close();
