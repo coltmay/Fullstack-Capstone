@@ -12,7 +12,7 @@ namespace Fullstack_Capstone.Repositories
     {
         public ResExerciseRepository(IConfiguration configuration) : base(configuration) { }
 
-        public ResInstanceExercise GetById(int resExId)
+        public ResInstanceExercise GetById(int rexId)
         {
             using (var conn = Connection)
             {
@@ -28,18 +28,18 @@ namespace Fullstack_Capstone.Repositories
                         LEFT JOIN ResInstances r ON r.Id= re.ResInstanceId
                         LEFT JOIN Users u ON r.UserId = u.Id
                         LEFT JOIN Exercises e ON re.ExerciseId = e.Id
-                        WHERE re.Id = @resExId
+                        WHERE re.Id = @rexId
                     ";
 
-                    DbUtils.AddParameter(cmd, "@resExId", resExId);
+                    DbUtils.AddParameter(cmd, "@rexId", rexId);
 
-                    ResInstanceExercise resinstanceExercise = null;
+                    ResInstanceExercise Rex = null;
 
                     var reader = cmd.ExecuteReader();
 
                     if (reader.Read())
                     {
-                        resinstanceExercise = new ResInstanceExercise()
+                        Rex = new ResInstanceExercise()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             ResInstanceId = DbUtils.GetInt(reader, "ResInstanceId"),
@@ -66,82 +66,80 @@ namespace Fullstack_Capstone.Repositories
 
                     reader.Close();
 
-                    return resinstanceExercise;
+                    return Rex;
                 }
 
             }
         }
+
+        public void Add(ResInstanceExercise Rex)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO ResInstanceExercises (ResInstanceId, ExerciseId, Weight, Difficulty)
+                        OUTPUT INSERTED.ID
+                        VALUES (@ResInstanceId, @ExerciseId, @Weight, @Difficulty)
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@ResInstanceId", Rex.ResInstanceId);
+                    DbUtils.AddParameter(cmd, "@ExerciseId", Rex.ExerciseId);
+                    DbUtils.AddParameter(cmd, "@Weight", Rex.Weight);
+                    DbUtils.AddParameter(cmd, "@Difficulty", Rex.Difficulty);
+
+                    Rex.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        //public void Update(ResInstance resInstance)
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"
+        //                UPDATE ResInstances
+        //                SET BeforeMood = @BeforeMood,
+        //                    AfterMood = @AfterMood,
+        //                    Userweight = @UserWeight,
+        //                    Journal = @Journal
+
+        //                WHERE Id = @id";
+
+        //            DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
+        //            DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
+        //            DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
+        //            DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
+        //            DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
+
+        //public void Delete(int id)
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"
+        //                DELETE FROM ResInstanceExercises WHERE ResInstanceId = @id;
+        //                DELETE FROM ResInstances WHERE Id = @id;
+        //            ";
+
+        //            DbUtils.AddParameter(cmd, "@id", id);
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
+        //}
     }
-
-    //public void Add(ResInstance resInstance)
-    //{
-    //    using (var conn = Connection)
-    //    {
-    //        conn.Open();
-
-    //        using (var cmd = conn.CreateCommand())
-    //        {
-    //            cmd.CommandText = @"INSERT INTO ResInstances ([Date], UserId, BeforeMood, AfterMood, UserWeight, Journal)
-    //                                OUTPUT INSERTED.ID
-    //                                VALUES (@Date, @UserId, @BeforeMood, @AfterMood, @UserWeight, @Journal)
-    //            ";
-
-    //            DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
-
-    //            DbUtils.AddParameter(cmd, "@UserId", 1);
-    //            DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-    //            DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-    //            DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-    //            DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-
-    //            resInstance.Id = (int)cmd.ExecuteScalar();
-    //        }
-    //    }
-    //}
-
-    //public void Update(ResInstance resInstance)
-    //{
-    //    using (var conn = Connection)
-    //    {
-    //        conn.Open();
-    //        using (var cmd = conn.CreateCommand())
-    //        {
-    //            cmd.CommandText = @"
-    //                UPDATE ResInstances
-    //                SET BeforeMood = @BeforeMood,
-    //                    AfterMood = @AfterMood,
-    //                    Userweight = @UserWeight,
-    //                    Journal = @Journal
-
-    //                WHERE Id = @id";
-
-    //            DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-    //            DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-    //            DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-    //            DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-    //            DbUtils.AddParameter(cmd, "@id", resInstance.Id);
-
-    //            cmd.ExecuteNonQuery();
-    //        }
-    //    }
-    //}
-
-    //public void Delete(int id)
-    //{
-    //    using (var conn = Connection)
-    //    {
-    //        conn.Open();
-    //        using (var cmd = conn.CreateCommand())
-    //        {
-    //            cmd.CommandText = @"
-    //                DELETE FROM ResInstanceExercises WHERE ResInstanceId = @id;
-    //                DELETE FROM ResInstances WHERE Id = @id;
-    //            ";
-
-    //            DbUtils.AddParameter(cmd, "@id", id);
-    //            cmd.ExecuteNonQuery();
-    //        }
-    //    }
-    //}
-    //}
 }
