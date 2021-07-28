@@ -25,6 +25,7 @@ namespace Fullstack_Capstone
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IExerciseRepository, ExerciseRepository>();
             services.AddTransient<IResInstanceRepository, ResInstanceRepository>();
+            services.AddTransient<IResExerciseRepository, ResExerciseRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

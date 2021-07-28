@@ -164,6 +164,7 @@ namespace Fullstack_Capstone.Repositories
                 }
             }
         }
+
         public void Add(ResInstance resInstance)
         {
             using (var conn = Connection)
