@@ -119,23 +119,21 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
-        //public void Delete(int id)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"
-        //                DELETE FROM ResInstanceExercises WHERE ResInstanceId = @id;
-        //                DELETE FROM ResInstances WHERE Id = @id;
-        //            ";
+        public void Delete(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        DELETE FROM ResInstanceExercises WHERE Id = @id;
+                    ";
 
-        //            DbUtils.AddParameter(cmd, "@id", id);
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
-        //}
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

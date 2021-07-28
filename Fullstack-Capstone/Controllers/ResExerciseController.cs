@@ -52,5 +52,12 @@ namespace Fullstack_Capstone.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _resExerciseRepository.Delete(id);
+            return NoContent();
+        }
+
     }
 }
