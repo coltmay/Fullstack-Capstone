@@ -96,32 +96,28 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
-        //public void Update(ResInstance resInstance)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"
-        //                UPDATE ResInstances
-        //                SET BeforeMood = @BeforeMood,
-        //                    AfterMood = @AfterMood,
-        //                    Userweight = @UserWeight,
-        //                    Journal = @Journal
+        public void Update(ResInstanceExercise Rex)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE ResInstanceExercises
+                        SET Weight = @Weight,
+                            Difficulty = @Difficulty
 
-        //                WHERE Id = @id";
+                        WHERE Id = @id";
 
-        //            DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
-        //            DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
-        //            DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
-        //            DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
-        //            DbUtils.AddParameter(cmd, "@id", resInstance.Id);
+                    DbUtils.AddParameter(cmd, "@Weight", Rex.Weight);
+                    DbUtils.AddParameter(cmd, "@Difficulty", Rex.Difficulty);
+                    DbUtils.AddParameter(cmd, "@id", Rex.Id);
 
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
         //public void Delete(int id)
         //{

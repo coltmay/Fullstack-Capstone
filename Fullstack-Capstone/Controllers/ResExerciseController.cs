@@ -40,6 +40,17 @@ namespace Fullstack_Capstone.Controllers
             return Ok(rex);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, ResInstanceExercise rex)
+        {
+            if (id != rex.Id)
+            {
+                return BadRequest();
+            }
+
+            _resExerciseRepository.Update(rex);
+            return NoContent();
+        }
 
     }
 }
