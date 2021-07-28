@@ -21,5 +21,7 @@ namespace Fullstack_Capstone.Models
         public int Difficulty { get; set; }
 
         public Exercise Exercise { get; set; }
+
+        public User User { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace Fullstack_Capstone.Repositories
                         WHERE re.Id = @resExId
                     ";
 
-                    DbUtils.AddParameter(cmd, "@resId", resExId);
+                    DbUtils.AddParameter(cmd, "@resExId", resExId);
 
                     ResInstanceExercise resinstanceExercise = null;
 
@@ -49,11 +49,17 @@ namespace Fullstack_Capstone.Repositories
                             Exercise = new Exercise()
                             {
                                 Id = DbUtils.GetInt(reader, "Id"),
-                                Name = DbUtils.GetString(reader, "Name"),
+                                Name = DbUtils.GetString(reader, "ExerciseName"),
                                 Sets = DbUtils.GetInt(reader, "Sets"),
                                 Reps = DbUtils.GetInt(reader, "Reps"),
                                 Description = DbUtils.GetString(reader, "Description"),
                                 Url = DbUtils.GetString(reader, "Url")
+                            },
+                            User = new User()
+                            {
+                                Id = DbUtils.GetInt(reader, "UserTableUserId"),
+                                Username = DbUtils.GetString(reader, "Username"),
+                                AvatarId = DbUtils.GetInt(reader, "AvatarId")
                             }
                         };
                     }
@@ -137,5 +143,5 @@ namespace Fullstack_Capstone.Repositories
     //        }
     //    }
     //}
-}
+    //}
 }
