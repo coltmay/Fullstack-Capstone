@@ -224,7 +224,11 @@ namespace Fullstack_Capstone.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM ResInstances WHERE Id = @id";
+                    cmd.CommandText = @"
+                        DELETE FROM ResInstanceExercises WHERE ResInstanceId = @id;
+                        DELETE FROM ResInstances WHERE Id = @id;
+                    ";
+
                     DbUtils.AddParameter(cmd, "@id", id);
                     cmd.ExecuteNonQuery();
                 }
