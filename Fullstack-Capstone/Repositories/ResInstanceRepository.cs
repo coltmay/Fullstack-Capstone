@@ -23,13 +23,16 @@ namespace Fullstack_Capstone.Repositories
                         SELECT  r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
                                 u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
                                 re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
-                                e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL
+                                e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL,
+                                m.Id AS MealId, m.Name AS MealName, m.Calories
                         FROM ResInstances r
                         LEFT JOIN Users u ON r.UserId = u.Id
                         LEFT JOIN ResInstanceExercises re ON re.ResInstanceId = r.Id
+                        LEFT JOIN Meals m ON m.ResInstanceId = r.Id
                         LEFT JOIN Exercises e ON re.ExerciseId = e.Id
                         WHERE u.Id = @userId
                     ";
+
                     DbUtils.AddParameter(cmd, "@userId", userId);
 
                     var reader = cmd.ExecuteReader();
@@ -47,7 +50,7 @@ namespace Fullstack_Capstone.Repositories
                         {
                             existingResInstance = new ResInstance()
                             {
-                                Id = DbUtils.GetInt(reader, "Id"),
+                                Id = DbUtils.GetInt(reader, "ResDayId"),
                                 Date = DbUtils.GetDateTime(reader, "Date"),
                                 UserId = DbUtils.GetInt(reader, "UserId"),
                                 BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
@@ -65,22 +68,46 @@ namespace Fullstack_Capstone.Repositories
                                     AvatarId = DbUtils.GetInt(reader, "AvatarId"),
                                     UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
                                 },
-                                ExerciseList = new List<Exercise>()
+                                ExerciseList = new List<Exercise>(),
+                                MealList = new List<Meal>()
                             };
                             resinstances.Add(existingResInstance);
                         }
 
                         if (DbUtils.IsNotDbNull(reader, "ExerciseId"))
                         {
-                            existingResInstance.ExerciseList.Add(new Exercise()
+                            var ExerciseId = DbUtils.GetInt(reader, "ExerciseId");
+                            var existingExercise = existingResInstance.ExerciseList.FirstOrDefault(parameter => parameter.Id == ExerciseId);
+
+                            if (existingExercise == null)
                             {
-                                Id = DbUtils.GetInt(reader, "ExerciseId"),
-                                Name = DbUtils.GetString(reader, "ExerciseName"),
-                                Sets = DbUtils.GetInt(reader, "Sets"),
-                                Reps = DbUtils.GetInt(reader, "Reps"),
-                                Description = DbUtils.GetString(reader, "Description"),
-                                Url = DbUtils.GetString(reader, "URL")
-                            });
+                                existingResInstance.ExerciseList.Add(new Exercise()
+                                {
+                                    Id = DbUtils.GetInt(reader, "ExerciseId"),
+                                    Name = DbUtils.GetString(reader, "ExerciseName"),
+                                    Sets = DbUtils.GetInt(reader, "Sets"),
+                                    Reps = DbUtils.GetInt(reader, "Reps"),
+                                    Description = DbUtils.GetString(reader, "Description"),
+                                    Url = DbUtils.GetString(reader, "URL")
+                                });
+                            }
+                        }
+
+                        if (DbUtils.IsNotDbNull(reader, "MealId"))
+                        {
+                            var MealId = DbUtils.GetInt(reader, "MealId");
+                            var existingMeal = existingResInstance.MealList.FirstOrDefault(parameter => parameter.Id == MealId);
+
+                            if (existingMeal == null)
+                            {
+                                existingResInstance.MealList.Add(new Meal()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MealId"),
+                                    Name = DbUtils.GetString(reader, "MealName"),
+                                    ResInstanceId = DbUtils.GetInt(reader, "ResDayId"),
+                                    Calories = DbUtils.GetInt(reader, "Calories")
+                                });
+                            }
                         }
                     }
                     reader.Close();
@@ -101,10 +128,12 @@ namespace Fullstack_Capstone.Repositories
                         SELECT  r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
                                 u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
                                 re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
-                                e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL
+                                e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL,
+                                m.Id AS MealId, m.Name AS MealName, m.Calories
                         FROM ResInstances r
                         LEFT JOIN Users u ON r.UserId = u.Id
                         LEFT JOIN ResInstanceExercises re ON re.ResInstanceId = r.Id
+                        LEFT JOIN Meals m ON m.ResInstanceId = r.Id
                         LEFT JOIN Exercises e ON re.ExerciseId = e.Id
                         WHERE r.Id = @resId
                     ";
@@ -121,7 +150,7 @@ namespace Fullstack_Capstone.Repositories
                         {
                             resinstance = new ResInstance()
                             {
-                                Id = DbUtils.GetInt(reader, "Id"),
+                                Id = DbUtils.GetInt(reader, "ResDayId"),
                                 Date = DbUtils.GetDateTime(reader, "Date"),
                                 UserId = DbUtils.GetInt(reader, "UserId"),
                                 BeforeMood = DbUtils.GetString(reader, "BeforeMood"),
@@ -139,23 +168,46 @@ namespace Fullstack_Capstone.Repositories
                                     AvatarId = DbUtils.GetInt(reader, "AvatarId"),
                                     UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
                                 },
-                                ExerciseList = new List<Exercise>()
+                                ExerciseList = new List<Exercise>(),
+                                MealList = new List<Meal>()
                             };
                         }
 
                         if (DbUtils.IsNotDbNull(reader, "ExerciseId"))
                         {
-                            resinstance.ExerciseList.Add(new Exercise()
+                            var ExerciseId = DbUtils.GetInt(reader, "ExerciseId");
+                            var existingExercise = resinstance.ExerciseList.FirstOrDefault(parameter => parameter.Id == ExerciseId);
+
+                            if (existingExercise == null)
                             {
-                                Id = DbUtils.GetInt(reader, "ExerciseId"),
-                                Name = DbUtils.GetString(reader, "ExerciseName"),
-                                Sets = DbUtils.GetInt(reader, "Sets"),
-                                Reps = DbUtils.GetInt(reader, "Reps"),
-                                Description = DbUtils.GetString(reader, "Description"),
-                                Url = DbUtils.GetString(reader, "URL")
-                            });
+                                resinstance.ExerciseList.Add(new Exercise()
+                                {
+                                    Id = DbUtils.GetInt(reader, "ExerciseId"),
+                                    Name = DbUtils.GetString(reader, "ExerciseName"),
+                                    Sets = DbUtils.GetInt(reader, "Sets"),
+                                    Reps = DbUtils.GetInt(reader, "Reps"),
+                                    Description = DbUtils.GetString(reader, "Description"),
+                                    Url = DbUtils.GetString(reader, "URL")
+                                });
+                            }
                         }
 
+                        if (DbUtils.IsNotDbNull(reader, "MealId"))
+                        {
+                            var MealId = DbUtils.GetInt(reader, "MealId");
+                            var existingMeal = resinstance.MealList.FirstOrDefault(parameter => parameter.Id == MealId);
+
+                            if (existingMeal == null)
+                            {
+                                resinstance.MealList.Add(new Meal()
+                                {
+                                    Id = DbUtils.GetInt(reader, "MealId"),
+                                    Name = DbUtils.GetString(reader, "MealName"),
+                                    ResInstanceId = DbUtils.GetInt(reader, "ResDayId"),
+                                    Calories = DbUtils.GetInt(reader, "Calories")
+                                });
+                            }
+                        }
                     }
 
                     reader.Close();
@@ -227,6 +279,7 @@ namespace Fullstack_Capstone.Repositories
                 {
                     cmd.CommandText = @"
                         DELETE FROM ResInstanceExercises WHERE ResInstanceId = @id;
+                        DELETE FROM Meals WHERE ResInstanceId = @id;
                         DELETE FROM ResInstances WHERE Id = @id;
                     ";
 

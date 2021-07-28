@@ -24,6 +24,7 @@ namespace Fullstack_Capstone
         {
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IExerciseRepository, ExerciseRepository>();
+            services.AddTransient<IMealRepository, MealRepository>();
             services.AddTransient<IResInstanceRepository, ResInstanceRepository>();
             services.AddTransient<IResExerciseRepository, ResExerciseRepository>();
 
