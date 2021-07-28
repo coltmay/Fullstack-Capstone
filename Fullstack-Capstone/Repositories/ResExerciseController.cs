@@ -1,4 +1,5 @@
-﻿using Fullstack_Capstone.Repositories;
+﻿using Fullstack_Capstone.Models;
+using Fullstack_Capstone.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -21,15 +22,22 @@ namespace Fullstack_Capstone.Controllers
             _resExerciseRepository = resExerciseRepository;
         }
 
-        [HttpGet("resinstance/{resId}")]
-        public IActionResult GetById(int resId)
+        [HttpGet("{rexId}")]
+        public IActionResult GetById(int rexId)
         {
-            var resInstance = _resExerciseRepository.GetById(resId);
-            if (resInstance == null)
+            var rex = _resExerciseRepository.GetById(rexId);
+            if (rex == null)
             {
                 return NotFound();
             }
-            return Ok(resInstance);
+            return Ok(rex);
+        }
+
+        [HttpPost]
+        public IActionResult Post(ResInstanceExercise rex)
+        {
+            _resExerciseRepository.Add(rex);
+            return Ok(rex);
         }
     }
 }

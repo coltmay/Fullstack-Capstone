@@ -5,5 +5,6 @@ namespace Fullstack_Capstone.Repositories
     public interface IResExerciseRepository
     {
         ResInstanceExercise GetById(int resExId);
+        void Add(ResInstanceExercise Rex);
     }
 }
