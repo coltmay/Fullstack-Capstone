@@ -39,5 +39,7 @@ namespace Fullstack_Capstone.Controllers
             _resExerciseRepository.Add(rex);
             return Ok(rex);
         }
+
+
     }
 }
