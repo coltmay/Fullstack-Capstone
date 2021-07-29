@@ -1,9 +1,9 @@
 import { getToken } from "./authManager";
-const apiUrl = "/api/exercise";
+const apiUrl = "/api/meal";
 
-export const getAllExercises = () => {
+export const getMealById = (id) => {
     return getToken().then((token) => {
-        return fetch(`${apiUrl}`, {
+        return fetch(`${apiUrl}/${id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -18,24 +18,7 @@ export const getAllExercises = () => {
     });
 };
 
-export const getExerciseById = (id) => {
-    return getToken().then((token) => {
-        return fetch(`${apiUrl}/detail/${id}`, {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then(resp => {
-            if (resp.ok) {
-                return resp.json();
-            } else {
-                throw new Error("An unknown error occurred.");
-            }
-        });
-    });
-};
-
-export const addExercise = (exercise) => {
+export const addMeal = (meal) => {
     return getToken().then((token) =>
         fetch(apiUrl, {
             method: "POST",
@@ -43,23 +26,23 @@ export const addExercise = (exercise) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(exercise)
+            body: JSON.stringify(meal)
         }).then(resp => resp.json()));
 };
 
-export const updateExercise = (editedExercise) => {
+export const updateMeal = (editedMeal) => {
     return getToken().then((token) =>
-        fetch(`${apiUrl}/${editedExercise.id}`, {
+        fetch(`${apiUrl}/${editedMeal.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(editedExercise)
+            body: JSON.stringify(editedMeal)
         }));
 }
 
-export const deleteExercise = (id) => {
+export const deleteMeal = (id) => {
     return getToken().then((token) =>
         fetch(`${apiUrl}/${id}`, {
             method: "DELETE",
