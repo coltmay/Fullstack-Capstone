@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
 const ResInstance = ({ resinstance }) => {
@@ -10,6 +10,9 @@ const ResInstance = ({ resinstance }) => {
         <Card >
             <CardBody>
                 <p>{resinstance.date}</p>
+                <Link to={`/resinstances/detail/${resinstance.id}`} >Detail</Link>
+                <button>Edit</button>
+                <button>Delete</button>
             </CardBody>
         </Card>
     );
