@@ -7,7 +7,7 @@ const ResInstanceDetail = () => {
     const { resinstanceId } = useParams();
 
     const getResinstance = (id) => {
-        getResInstancesById(resinstanceId).then(resinstances => setResinstance(resinstance));
+        getResInstancesById(resinstanceId).then(resinstance => setResinstance(resinstance));
     };
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const ResInstanceDetail = () => {
 
     return (
         <>
-            Nothing here yet.
+
         </>
     );
 };

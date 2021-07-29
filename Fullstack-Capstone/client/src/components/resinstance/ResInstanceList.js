@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ResInstance from './ResInstance';
+import ResInstanceCard from './ResInstanceCard';
 import { getResInstancesByUser } from "../../modules/resinstanceManager";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const ResInstanceList = () => {
             <div className="container">
                 <div className="row justify-content-center">
                     {resinstances.map((resinstance) => (
-                        <ResInstance resinstance={resinstance} key={resinstance.id} />
+                        <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                     ))}
                 </div>
             </div>
