@@ -1,31 +1,44 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 // Resinstances
-import { getResInstancesById } from "../../modules/resinstanceManager";
+import { getResInstancesByUser } from "../../modules/resinstanceManager";
+import { getResInstanceById } from "../../modules/resinstanceManager";
 
-const test = () => {
+// Exercises
+
+
+const Test = () => {
     const [resinstances, setResinstances] = useState([]);
+    const [resinstance, setResinstance] = useState([]);
+
+    const [exercises, setExercises] = useState([]);
     const { userId } = useParams();
 
+    // GET ALL RESINSTANCES BY USER
     const getResinstances = () => {
         getResInstancesByUser(userId).then(resinstances => setResinstances(resinstances));
     };
 
-    const getExercises = () => {
-
+    // GET RESINSTANCE BY ID //! HARD CODED
+    const getResinstance = () => {
+        getResInstanceById(1).then(resinstance => setResinstance(resinstance));
     }
 
-    const getMeals = () => {
-
-    }
-
-    const getRex = () => {
-
-    }
+    //    GET ALL EXERCISES
+    //    const getExercises = () => {
+    //        getAllExercises().then(exercises => setExercises(exercises));
+    //    }
 
     useEffect(() => {
         getResinstances();
+        getResinstance();
+        //        getExercises();
     }, []);
+
+    console.log("resinstances", resinstances)
+    console.log("resinstance", resinstance)
+    //    console.log("exercises", exercises)
 
     return (
         <>
@@ -34,4 +47,4 @@ const test = () => {
     );
 };
 
-export default test;
+export default Test;

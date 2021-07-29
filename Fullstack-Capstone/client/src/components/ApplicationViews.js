@@ -4,7 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import ResInstanceList from "./resinstance/ResInstanceList"
 
-import test from "./temp/test"
+import Test from "./temp/Test"
 
 export default function ApplicationViews({ isLoggedIn }) {
     return (
@@ -21,12 +21,12 @@ export default function ApplicationViews({ isLoggedIn }) {
 
                 {/*//! DETAIL PAGE HERE */}
                 <Route path="/resinstances/detail/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! FORM PAGE HERE */}
                 <Route path="/resinstances/form/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//? ===========================================
@@ -35,17 +35,17 @@ export default function ApplicationViews({ isLoggedIn }) {
 
                 {/*//! LIST PAGE HERE */}
                 <Route path="/exercises/:userId(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! DETAIL PAGE HERE */}
                 <Route path="/exercises/detail/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! FORM PAGE HERE */}
                 <Route path="/exercises/form/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/* //? ===========================================
@@ -54,17 +54,17 @@ export default function ApplicationViews({ isLoggedIn }) {
 
                 {/*//! LIST PAGE HERE */}
                 <Route path="/rex/:userId(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! DETAIL PAGE HERE */}
                 <Route path="/rex/detail/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! FORM PAGE HERE */}
                 <Route path="/rex/form/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//? ===========================================
@@ -73,17 +73,17 @@ export default function ApplicationViews({ isLoggedIn }) {
 
                 {/*//! LIST PAGE HERE */}
                 <Route path="/meals/:userId(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! DETAIL PAGE HERE */}
                 <Route path="/meals/detail/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//! FORM PAGE HERE */}
                 <Route path="/meals/form/:id(\d+)">
-                    {isLoggedIn ? <test /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//? ===========================================

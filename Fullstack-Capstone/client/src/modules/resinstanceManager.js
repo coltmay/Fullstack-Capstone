@@ -1,8 +1,8 @@
 import { getToken } from "./authManager";
 const apiUrl = "/api/resinstance";
 
+
 export const getResInstancesByUser = (userId) => {
-    debugger
     return getToken().then((token) => {
         return fetch(`${apiUrl}/${userId}`, {
             method: "GET",
@@ -19,8 +19,7 @@ export const getResInstancesByUser = (userId) => {
     });
 };
 
-export const getResInstancesById = (Id) => {
-    debugger
+export const getResInstanceById = (Id) => {
     return getToken().then((token) => {
         return fetch(`${apiUrl}/detail/${Id}`, {
             method: "GET",
@@ -39,7 +38,7 @@ export const getResInstancesById = (Id) => {
 
 export const addResInstance = (resInstance) => {
     return getToken().then((token) =>
-        fetch(baseUrl, {
+        fetch(apiUrl, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -51,7 +50,7 @@ export const addResInstance = (resInstance) => {
 
 export const updateResInstance = (id) => {
     return getToken().then((token) =>
-        fetch(`${baseUrl}/${id}`, {
+        fetch(`${apiUrl}/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -63,7 +62,7 @@ export const updateResInstance = (id) => {
 
 export const deleteResInstance = (id) => {
     return getToken().then((token) =>
-        fetch(`${baseUrl}/${id}`, {
+        fetch(`${apiUrl}/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`
