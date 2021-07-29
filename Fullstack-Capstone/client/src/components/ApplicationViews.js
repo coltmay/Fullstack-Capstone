@@ -34,7 +34,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                    //? =========================================*/}
 
                 {/*//! LIST PAGE HERE */}
-                <Route path="/exercises/:userId(\d+)">
+                <Route path="/exercises">
                     {isLoggedIn ? <Test /> : <Redirect to="/login" />}
                 </Route>
 

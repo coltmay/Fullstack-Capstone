@@ -1,7 +1,6 @@
 import { getToken } from "./authManager";
 const apiUrl = "/api/resinstance";
 
-
 export const getResInstancesByUser = (userId) => {
     return getToken().then((token) => {
         return fetch(`${apiUrl}/${userId}`, {
@@ -19,9 +18,9 @@ export const getResInstancesByUser = (userId) => {
     });
 };
 
-export const getResInstanceById = (Id) => {
+export const getResInstanceById = (id) => {
     return getToken().then((token) => {
-        return fetch(`${apiUrl}/detail/${Id}`, {
+        return fetch(`${apiUrl}/detail/${id}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -48,15 +47,15 @@ export const addResInstance = (resInstance) => {
         }).then(resp => resp.json()));
 };
 
-export const updateResInstance = (id) => {
+export const updateResInstance = (editedResInstance) => {
     return getToken().then((token) =>
-        fetch(`${apiUrl}/${id}`, {
+        fetch(`${apiUrl}/${editedResInstance.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(id)
+            body: JSON.stringify(editedResInstance)
         }));
 }
 
