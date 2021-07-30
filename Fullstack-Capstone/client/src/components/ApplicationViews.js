@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 // ResInstance
 import ResInstanceList from "./resinstance/ResInstanceList"
 import ResInstanceDetail from "./resinstance/ResInstanceDetail";
+import ResInstanceEdit from "./resinstance/ResInstanceEdit";
 import ResInstanceForm from "./resinstance/ResInstanceForm";
 // Exercises
 import ExerciseList from "./exercise/ExerciseList";
@@ -33,6 +34,11 @@ export default function ApplicationViews({ isLoggedIn }) {
                 {/* //? DETAIL PAGE */}
                 <Route path="/resinstances/detail/:id(\d+)">
                     {isLoggedIn ? <ResInstanceDetail /> : <Redirect to="/login" />}
+                </Route>
+
+                {/* //? EDIT PAGE */}
+                <Route path="/resinstances/edit/:id(\d+)">
+                    {isLoggedIn ? <ResInstanceEdit /> : <Redirect to="/login" />}
                 </Route>
 
                 {/* //? FORM PAGE */}

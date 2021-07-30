@@ -21,7 +21,8 @@ const ResInstanceDetail = () => {
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
                     <h1>{resinstance.date}</h1>
-                    <Link to></Link>
+                    <h1>{resinstance.beforeMood}</h1>
+                    <Link to={`/resinstances/edit/${resinstance.id}`}>Edit</Link>
                     <div>
                         {resinstance.exerciseList?.map((rex) => (
                             <RexCard rex={rex} key={rex.id} />

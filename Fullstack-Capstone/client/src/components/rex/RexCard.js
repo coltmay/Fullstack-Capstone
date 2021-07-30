@@ -4,8 +4,6 @@ import { Card, CardBody } from "reactstrap";
 
 const RexCard = ({ rex }) => {
 
-    const history = useHistory();
-    console.log(rex)
     return (
         <Card >
             <CardBody>
