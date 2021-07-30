@@ -29,7 +29,7 @@ const ResInstanceDetail = () => {
                         {resinstance.exerciseList?.map((rex) => (
                             <RexCard rex={rex} key={rex.id} />
                         ))}
-                        <Link to={`/rex/form/${id}`}>Add Exercise</Link>
+                        <Link to={`/rexexercise/${id}`}>Add Exercise</Link>
                     </div>
                     <div>
                         <h3>Meals</h3>

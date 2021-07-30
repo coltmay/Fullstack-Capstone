@@ -22,7 +22,7 @@ const ExerciseList = () => {
                 <div className="row justify-content-center">
                     <Link to="exercise/form">Add</Link>
                     {exercises.map((exercise) => (
-                        <ExerciseCard exercise={exercise} key={exercise.id} />
+                        <ExerciseCard exercise={exercise} key={exercise.id} resinstanceid={resinstanceid} />
                     ))}
                 </div>
             </div>

@@ -85,9 +85,14 @@ export default function ApplicationViews({ isLoggedIn }) {
                     {isLoggedIn ? <RexDetail /> : <Redirect to="/login" />}
                 </Route>
 
-                {/* //? FORM PAGE */}
-                <Route path="/rex/form/:resinstanceid(\d+)">
+                {/* //? REX EXERCISE LIST */}
+                <Route path="/rexexercise/:resinstanceid(\d+)">
                     {isLoggedIn ? <ExerciseList /> : <Redirect to="/login" />}
+                </Route>
+
+                {/* //? FORM PAGE */}
+                <Route path="/rex/form/:resinstanceid(\d+)/:exerciseid(\d+)/">
+                    {isLoggedIn ? <RexForm /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//? ===========================================
