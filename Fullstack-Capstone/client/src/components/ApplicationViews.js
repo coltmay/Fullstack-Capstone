@@ -43,7 +43,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route>
 
                 {/* //? FORM PAGE */}
-                <Route path="/resinstances/form">
+                <Route path="/resinstances/form/:id(\d+)">
                     {isLoggedIn ? <ResInstanceForm /> : <Redirect to="/login" />}
                 </Route>
 
@@ -86,8 +86,8 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route>
 
                 {/* //? FORM PAGE */}
-                <Route path="/rex/form">
-                    {isLoggedIn ? <RexForm /> : <Redirect to="/login" />}
+                <Route path="/rex/form/:resinstanceid(\d+)">
+                    {isLoggedIn ? <ExerciseList /> : <Redirect to="/login" />}
                 </Route>
 
                 {/*//? ===========================================
@@ -95,7 +95,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                    //? =========================================*/}
 
                 {/* //? FORM PAGE */}
-                <Route path="/meals/form">
+                <Route path="/meals/form/:id(\d+)">
                     {isLoggedIn ? <MealForm /> : <Redirect to="/login" />}
                 </Route>
 

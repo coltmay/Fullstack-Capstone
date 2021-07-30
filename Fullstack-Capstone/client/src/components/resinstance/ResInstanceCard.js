@@ -4,8 +4,6 @@ import { Card, CardBody } from "reactstrap";
 
 const ResInstanceCard = ({ resinstance }) => {
 
-    const history = useHistory();
-
     return (
         <Card >
             <CardBody>

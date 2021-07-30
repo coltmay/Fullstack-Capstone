@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ExerciseCard from './ExerciseCard';
 import { getAllExercises } from "../../modules/exerciseManager";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const ExerciseList = () => {
     const [exercises, setExercises] = useState([]);
+    const { resinstanceid } = useParams();
 
     const getExercises = () => {
         getAllExercises().then(exercises => setExercises(exercises));
