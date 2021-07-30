@@ -15,7 +15,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                    //? =========================================*/}
 
                 {/*//! LIST PAGE HERE */}
-                <Route path="/resinstances/:userId(\d+)">
+                <Route path="/myresinstances">
                     {isLoggedIn ? <ResInstanceList /> : <Redirect to="/login" />}
                 </Route>
 

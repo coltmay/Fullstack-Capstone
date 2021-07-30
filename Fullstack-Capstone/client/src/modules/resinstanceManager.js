@@ -1,9 +1,9 @@
 import { getToken } from "./authManager";
 const apiUrl = "/api/resinstance";
 
-export const getResInstancesByUser = (userId) => {
+export const getResInstancesByUser = () => {
     return getToken().then((token) => {
-        return fetch(`${apiUrl}/${userId}`, {
+        return fetch(`${apiUrl}/myResinstances`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`

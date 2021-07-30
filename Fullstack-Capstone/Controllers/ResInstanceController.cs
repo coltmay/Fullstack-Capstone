@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Fullstack_Capstone.Controllers
@@ -16,16 +17,19 @@ namespace Fullstack_Capstone.Controllers
     public class ResInstanceController : Controller
     {
         private readonly IResInstanceRepository _resinstanceRepository;
+        private readonly IUserRepository _userRepository;
 
-        public ResInstanceController(IResInstanceRepository resinstanceRepository)
+        public ResInstanceController(IResInstanceRepository resinstanceRepository, IUserRepository userRepository)
         {
             _resinstanceRepository = resinstanceRepository;
+            _userRepository = userRepository;
         }
 
-        [HttpGet("{userId}")]
-        public IActionResult Get(int userId)
+        [HttpGet("myResinstances")]
+        public IActionResult Get()
         {
-            return Ok(_resinstanceRepository.GetAllByUser(userId));
+            User CurrentUser = GetCurrentUserProfile();
+            return Ok(_resinstanceRepository.GetAllByUser(CurrentUser.Id));
         }
 
         //? EDITED THIS
@@ -64,6 +68,18 @@ namespace Fullstack_Capstone.Controllers
         {
             _resinstanceRepository.Delete(id);
             return NoContent();
+        }
+
+        private string GetCurrentFirebaseUserProfileId()
+        {
+            string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return id;
+        }
+
+        private User GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }
