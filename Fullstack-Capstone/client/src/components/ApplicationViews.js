@@ -50,12 +50,12 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route>
 
                 {/* //? DETAIL PAGE */}
-                <Route path="/exercises/detail/:id(\d+)">
+                <Route path="/exercise/detail/:id(\d+)">
                     {isLoggedIn ? <ExerciseDetail /> : <Redirect to="/login" />}
                 </Route>
 
                 {/* //? FORM PAGE */}
-                <Route path="/exercises/form/:id(\d+)">
+                <Route path="/exercise/form/:id(\d+)">
                     {isLoggedIn ? <ExerciseForm /> : <Redirect to="/login" />}
                 </Route>
 

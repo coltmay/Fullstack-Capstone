@@ -2,18 +2,18 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
-const Rex = ({ rex }) => {
+const RexCard = ({ rex }) => {
 
     const history = useHistory();
-
+    console.log(rex)
     return (
         <Card >
             <CardBody>
-                <p>{rex.date}</p>
-                <Link to={`/Rex/detail/${Rex.id}`} >Detail</Link>
+                <p>{rex.name}</p>
+                <Link to={`/Rex/detail/${rex.id}`} >Detail</Link>
             </CardBody>
         </Card>
     );
 };
 
-export default Rex;
+export default RexCard;

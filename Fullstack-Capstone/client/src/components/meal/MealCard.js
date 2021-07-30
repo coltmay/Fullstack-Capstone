@@ -10,7 +10,7 @@ const MealCard = ({ meal }) => {
         <Card >
             <CardBody>
                 <p>{meal.name}</p>
-                <Link to={`/resinstances/detail/${meal.id}`} >Detail</Link>
+                <Link to={`/meals/form/${meal.id}`} >Edit</Link>
             </CardBody>
         </Card>
     );

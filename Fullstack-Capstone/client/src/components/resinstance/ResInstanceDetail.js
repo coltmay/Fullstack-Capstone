@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getResInstancesById } from "../../modules/resinstanceManager";
-import { RexCard } from "../rex/RexCard";
-import { MealCard } from "../meal/MealsCard";
+import { Link, useParams } from "react-router-dom";
+import { getResInstanceById } from "../../modules/resinstanceManager";
+import RexCard from "../rex/RexCard";
+import MealCard from "../meal/MealCard";
 
 const ResInstanceDetail = () => {
     const [resinstance, setResinstance] = useState([]);
     const { id } = useParams();
 
     const getResinstance = () => {
-        getResInstancesById(id).then(resinstance => setResinstance(resinstance));
+        getResInstanceById(id).then(resinstance => setResinstance(resinstance));
     };
 
     useEffect(() => {
@@ -21,6 +21,7 @@ const ResInstanceDetail = () => {
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
                     <h1>{resinstance.date}</h1>
+                    <Link to></Link>
                     <div>
                         {resinstance.exerciseList?.map((rex) => (
                             <RexCard rex={rex} key={rex.id} />
