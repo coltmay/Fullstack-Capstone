@@ -1,9 +1,9 @@
 import { getToken } from "./authManager";
-const apiUrl = "/api/resinstance";
+const apiUrl = "/api/exercise";
 
-export const getResInstancesByUser = (userId) => {
+export const getAllExercises = () => {
     return getToken().then((token) => {
-        return fetch(`${apiUrl}/${userId}`, {
+        return fetch(`${apiUrl}`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`
@@ -18,7 +18,7 @@ export const getResInstancesByUser = (userId) => {
     });
 };
 
-export const getResInstanceById = (id) => {
+export const getExerciseById = (id) => {
     return getToken().then((token) => {
         return fetch(`${apiUrl}/detail/${id}`, {
             method: "GET",
@@ -35,7 +35,7 @@ export const getResInstanceById = (id) => {
     });
 };
 
-export const addResInstance = (resInstance) => {
+export const addExercise = (exercise) => {
     return getToken().then((token) =>
         fetch(apiUrl, {
             method: "POST",
@@ -43,23 +43,23 @@ export const addResInstance = (resInstance) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(resInstance)
+            body: JSON.stringify(exercise)
         }).then(resp => resp.json()));
 };
 
-export const updateResInstance = (editedResInstance) => {
+export const updateExercise = (editedExercise) => {
     return getToken().then((token) =>
-        fetch(`${apiUrl}/${editedResInstance.id}`, {
+        fetch(`${apiUrl}/${editedExercise.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(editedResInstance)
+            body: JSON.stringify(editedExercise)
         }));
 }
 
-export const deleteResInstance = (id) => {
+export const deleteExercise = (id) => {
     return getToken().then((token) =>
         fetch(`${apiUrl}/${id}`, {
             method: "DELETE",

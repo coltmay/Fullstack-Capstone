@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Fullstack_Capstone.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ResInstanceController : Controller
@@ -28,7 +28,8 @@ namespace Fullstack_Capstone.Controllers
             return Ok(_resinstanceRepository.GetAllByUser(userId));
         }
 
-        [HttpGet("resinstance/{resId}")]
+        //? EDITED THIS
+        [HttpGet("detail/{resId}")]
         public IActionResult GetById(int resId)
         {
             var resInstance = _resinstanceRepository.GetById(resId);

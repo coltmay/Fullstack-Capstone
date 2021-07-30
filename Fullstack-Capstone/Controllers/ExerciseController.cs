@@ -28,7 +28,7 @@ namespace Fullstack_Capstone.Controllers
             return Ok(_exerciseRepository.GetAll());
         }
 
-        [HttpGet("Exercise/{id}")]
+        [HttpGet("detail/{id}")]
         public IActionResult GetById(int id)
         {
             var exercise = _exerciseRepository.GetById(id);
