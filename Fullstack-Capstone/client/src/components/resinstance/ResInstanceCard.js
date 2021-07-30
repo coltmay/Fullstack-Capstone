@@ -8,7 +8,7 @@ const ResInstanceCard = ({ resinstance }) => {
         <Card >
             <CardBody>
                 <p>{resinstance.date}</p>
-                <Link to={`/resinstances/detail/${resinstance.id}`} >Detail</Link>
+                <Link to={`/resinstances/detail/${resinstance.id}`} >Details</Link>
             </CardBody>
         </Card>
     );

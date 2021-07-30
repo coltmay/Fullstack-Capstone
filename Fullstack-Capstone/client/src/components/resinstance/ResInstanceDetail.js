@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getResInstanceById } from "../../modules/resinstanceManager";
+import { deleteRex } from "../../modules/rexManager";
 import RexCard from "../rex/RexCard";
 import MealCard from "../meal/MealCard";
 
@@ -11,6 +12,11 @@ const ResInstanceDetail = () => {
     const getResinstance = () => {
         getResInstanceById(id).then(resinstance => setResinstance(resinstance));
     };
+
+    const deleteRexAndSetResinstance = (rexId) => {
+        deleteRex(rexId)
+            .then(() => getResinstance())
+    }
 
     useEffect(() => {
         getResinstance();
@@ -27,7 +33,7 @@ const ResInstanceDetail = () => {
                     <div>
                         <h3>Exercises</h3>
                         {resinstance.exerciseList?.map((rex) => (
-                            <RexCard rex={rex} key={rex.id} />
+                            <RexCard rex={rex} key={rex.id} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
                         ))}
                         <Link to={`/rexexercise/${id}`}>Add Exercise</Link>
                     </div>

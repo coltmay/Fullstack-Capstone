@@ -19,7 +19,12 @@ const RexDetail = () => {
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
                     <h1>{rex.name}</h1>
-                    <h2>{rex.exercise.name}</h2>
+                    <h2>{rex.exercise?.name}</h2>
+                    <p>{rex.exercise?.description}</p>
+                    <p>Sets: {rex.exercise?.sets}</p>
+                    <p>Reps: {rex.exercise?.reps}</p>
+                    <p>Weight: {rex.weight}</p>
+                    <p>Difficulty: {rex.difficulty}</p>
                 </div>
             </div>
         </div>

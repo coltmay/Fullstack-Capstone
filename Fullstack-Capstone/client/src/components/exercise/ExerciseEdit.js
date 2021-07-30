@@ -35,7 +35,7 @@ const ExerciseForm = () => {
             description: exercise.description,
             url: exercise.url
         }
-        console.log(editedExercise)
+
         updateExercise(editedExercise).then((p) => {
             // Navigate the user back to the home route
             history.push('/exercises');

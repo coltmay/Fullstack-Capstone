@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
 const ExerciseCard = ({ exercise, resinstanceid }) => {
-    console.log("card", resinstanceid)
 
     return (
         <Card >

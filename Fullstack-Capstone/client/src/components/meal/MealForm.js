@@ -6,7 +6,7 @@ import { addMeal } from "../../modules/mealManager";
 const MealForm = () => {
 
     const { id } = useParams();
-    console.log(id);
+
     const emptyMeal = {
         resinstanceId: id,
         name: '',

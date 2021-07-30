@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
 import ResInstanceCard from './ResInstanceCard';
 import { getResInstancesByUser } from "../../modules/resinstanceManager";
-import { Link, useParams } from "react-router-dom";
+
 
 const ResInstanceList = () => {
     const [resinstances, setResinstances] = useState([]);
@@ -16,6 +18,7 @@ const ResInstanceList = () => {
 
     return (
         <>
+            <h1>ResInstance List</h1>
             <div className="container">
                 <div className="row justify-content-center">
                     <Link to="resinstances/form">Add</Link>

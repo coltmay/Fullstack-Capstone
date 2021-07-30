@@ -9,8 +9,6 @@ const RexForm = () => {
     const { resinstanceid, exerciseid } = useParams();
     const history = useHistory();
 
-    console.log(resinstanceid, exerciseid, exercise);
-
     const emptyRex = {
         resinstanceid: resinstanceid,
         exerciseid: exerciseid,
@@ -50,6 +48,9 @@ const RexForm = () => {
         <Form>
             <h1>Rex Form</h1>
             <h2>{exercise.name}</h2>
+            <p>{exercise.description}</p>
+            <p>Sets: {exercise.sets}</p>
+            <p>Reps: {exercise.reps}</p>
             <FormGroup>
                 <Label for="weight">Weight</Label>
                 <Input type="int" name="weight" id="weight"

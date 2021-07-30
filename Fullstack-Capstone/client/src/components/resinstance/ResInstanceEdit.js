@@ -35,7 +35,7 @@ const ResInstanceForm = () => {
             userWeight: resInstance.userWeight,
             journal: resInstance.journal
         }
-        console.log(editedResInstance)
+
         updateResInstance(editedResInstance).then((p) => {
             // Navigate the user back to the home route
             history.push(`/resinstances/detail/${resInstance?.id}`);

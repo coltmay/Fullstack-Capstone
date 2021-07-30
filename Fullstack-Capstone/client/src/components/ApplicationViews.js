@@ -43,7 +43,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route>
 
                 {/* //? FORM PAGE */}
-                <Route path="/resinstances/form/:id(\d+)">
+                <Route path="/resinstances/form/">
                     {isLoggedIn ? <ResInstanceForm /> : <Redirect to="/login" />}
                 </Route>
 
