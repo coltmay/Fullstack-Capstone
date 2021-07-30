@@ -5,10 +5,9 @@ import { useParams } from "react-router-dom";
 
 const ResInstanceList = () => {
     const [resinstances, setResinstances] = useState([]);
-    const { userId } = useParams();
 
     const getResinstances = () => {
-        getResInstancesByUser(userId).then(resinstances => setResinstances(resinstances));
+        getResInstancesByUser().then(resinstances => setResinstances(resinstances));
     };
 
     useEffect(() => {
