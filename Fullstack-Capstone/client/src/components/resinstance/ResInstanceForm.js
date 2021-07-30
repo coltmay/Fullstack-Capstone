@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { addResInstance, getResInstanceById } from "../../modules/resinstanceManager";
+import { addResInstance } from "../../modules/resinstanceManager";
 
 const ResInstanceForm = () => {
-
     const emptyResInstance = {
-        id: '',
-        date: Date.now(),
-        BeforeMood: '',
-        AfterMood: '',
-        UserWeight: '',
-        Journal: ''
+        date: '',
+        beforeMood: '',
+        afterMood: '',
+        userWeight: '',
+        journal: ''
     };
 
     const [resInstance, setResInstance] = useState(emptyResInstance);
     const history = useHistory();
-
 
     const handleInputChange = (evt) => {
         const value = evt.target.value;
@@ -32,7 +29,7 @@ const ResInstanceForm = () => {
         evt.preventDefault();
         addResInstance(resInstance).then((p) => {
             // Navigate the user back to the home route
-            history.push(`/resinstances/detail/${resInstance.Id}`);
+            history.push(`/myresinstances`);
         });
     };
 
@@ -58,7 +55,7 @@ const ResInstanceForm = () => {
                     onChange={handleInputChange} />
             </FormGroup>
             <FormGroup>
-                <Label for="userWeight">Mood After</Label>
+                <Label for="userWeight">Weight</Label>
                 <Input type="int" name="userWeight" id="userWeight"
                     value={resInstance.userWeight}
                     onChange={handleInputChange} />

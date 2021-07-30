@@ -8,6 +8,7 @@ import ResInstanceForm from "./resinstance/ResInstanceForm";
 // Exercises
 import ExerciseList from "./exercise/ExerciseList";
 import ExerciseDetail from "./exercise/ExerciseDetail";
+import ExerciseEdit from "./exercise/ExerciseEdit";
 import ExerciseForm from "./exercise/ExerciseForm";
 // ResInstance Exercises
 import RexDetail from "./rex/RexDetail";
@@ -42,7 +43,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route>
 
                 {/* //? FORM PAGE */}
-                <Route path="/resinstances/form/:id(\d+)">
+                <Route path="/resinstances/form">
                     {isLoggedIn ? <ResInstanceForm /> : <Redirect to="/login" />}
                 </Route>
 
@@ -60,8 +61,13 @@ export default function ApplicationViews({ isLoggedIn }) {
                     {isLoggedIn ? <ExerciseDetail /> : <Redirect to="/login" />}
                 </Route>
 
+                {/* //? Edit PAGE */}
+                <Route path="/exercise/edit">
+                    {isLoggedIn ? <ExerciseEdit /> : <Redirect to="/login" />}
+                </Route>
+
                 {/* //? FORM PAGE */}
-                <Route path="/exercise/form/:id(\d+)">
+                <Route path="/exercise/form">
                     {isLoggedIn ? <ExerciseForm /> : <Redirect to="/login" />}
                 </Route>
 
@@ -80,7 +86,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route>
 
                 {/* //? FORM PAGE */}
-                <Route path="/rex/form/:id(\d+)">
+                <Route path="/rex/form">
                     {isLoggedIn ? <RexForm /> : <Redirect to="/login" />}
                 </Route>
 
@@ -89,7 +95,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                    //? =========================================*/}
 
                 {/* //? FORM PAGE */}
-                <Route path="/meals/form/:id(\d+)">
+                <Route path="/meals/form">
                     {isLoggedIn ? <MealForm /> : <Redirect to="/login" />}
                 </Route>
 

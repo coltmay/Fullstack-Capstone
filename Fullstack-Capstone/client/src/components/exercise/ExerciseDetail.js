@@ -19,7 +19,7 @@ const ExerciseDetail = () => {
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
                     <h1>{exercise.name}</h1>
-                    <Link to={`/exercise/form/${exercise.id}`}>Edit</Link>
+                    <Link to={`/exercise/edit/${exercise.id}`}>Edit</Link>
                 </div>
             </div>
         </div>

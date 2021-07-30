@@ -20,16 +20,25 @@ const ResInstanceForm = () => {
         const value = evt.target.value;
         const key = evt.target.id;
         const resInstanceCopy = { ...resInstance };
-
         resInstanceCopy[key] = value;
         setResInstance(resInstanceCopy);
     };
 
     const handleSave = (evt) => {
         evt.preventDefault();
-        updateResInstance(resInstance).then((p) => {
+
+        const editedResInstance = {
+            id: resInstance.id,
+            date: resInstance.date,
+            beforeMood: resInstance.beforeMood,
+            afterMood: resInstance.afterMood,
+            userWeight: resInstance.userWeight,
+            journal: resInstance.journal
+        }
+        console.log(editedResInstance)
+        updateResInstance(editedResInstance).then((p) => {
             // Navigate the user back to the home route
-            history.push(`/resinstances/detail/${resInstance.id}`);
+            history.push(`/resinstances/detail/${resInstance?.id}`);
         });
     };
 

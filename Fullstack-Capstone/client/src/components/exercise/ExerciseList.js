@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ExerciseCard from './ExerciseCard';
 import { getAllExercises } from "../../modules/exerciseManager";
+import { Link } from "react-router-dom";
 
 
 const ExerciseList = () => {
@@ -18,6 +19,7 @@ const ExerciseList = () => {
         <>
             <div className="container">
                 <div className="row justify-content-center">
+                    <Link to="exercise/form">Add</Link>
                     {exercises.map((exercise) => (
                         <ExerciseCard exercise={exercise} key={exercise.id} />
                     ))}
