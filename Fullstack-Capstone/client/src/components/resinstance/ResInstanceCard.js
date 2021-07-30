@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
-const ResInstance = ({ resinstance }) => {
+const ResInstanceCard = ({ resinstance }) => {
 
     const history = useHistory();
 
@@ -18,4 +18,4 @@ const ResInstance = ({ resinstance }) => {
     );
 };
 
-export default ResInstance;
+export default ResInstanceCard;
