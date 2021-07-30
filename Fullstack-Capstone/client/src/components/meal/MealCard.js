@@ -2,18 +2,18 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
-const ResInstanceCard = ({ resinstance }) => {
+const MealCard = ({ meal }) => {
 
     const history = useHistory();
 
     return (
         <Card >
             <CardBody>
-                <p>{resinstance.date}</p>
-                <Link to={`/resinstances/detail/${resinstance.id}`} >Detail</Link>
+                <p>{meal.name}</p>
+                <Link to={`/resinstances/detail/${meal.id}`} >Detail</Link>
             </CardBody>
         </Card>
     );
 };
 
-export default ResInstanceCard;
+export default MealCard;
