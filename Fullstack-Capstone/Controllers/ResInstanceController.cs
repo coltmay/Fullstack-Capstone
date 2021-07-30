@@ -70,12 +70,6 @@ namespace Fullstack_Capstone.Controllers
             return NoContent();
         }
 
-        private string GetCurrentFirebaseUserProfileId()
-        {
-            string id = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return id;
-        }
-
         private User GetCurrentUserProfile()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
