@@ -38,13 +38,18 @@ const ExerciseForm = () => {
         console.log(editedExercise)
         updateExercise(editedExercise).then((p) => {
             // Navigate the user back to the home route
-            history.push('exercises/');
+            history.push('/exercises');
         });
     };
 
     return (
         <Form>
             <h1>Exercise Form</h1>
+            <FormGroup>
+                <Input hidden name="id" id="id"
+                    value={exercise?.id}
+                    onChange={handleInputChange} />
+            </FormGroup>
             <FormGroup>
                 <Label for="name">name</Label>
                 <Input type="text" name="name" id="name"
