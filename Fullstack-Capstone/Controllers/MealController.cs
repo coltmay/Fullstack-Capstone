@@ -23,11 +23,11 @@ namespace Fullstack_Capstone.Controllers
             _mealRepository = mealRepository;
         }
 
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    return Ok(_mealRepository.GetAll());
-        //}
+        [HttpGet("{resInstanceId}/mealList")]
+        public IActionResult Get(int resInstanceId)
+        {
+            return Ok(_mealRepository.GetByResInstanceId(resInstanceId));
+        }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
