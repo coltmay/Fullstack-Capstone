@@ -4,8 +4,6 @@ import { Card, CardBody } from "reactstrap";
 
 const ResInstanceCard = ({ resinstance }) => {
 
-    console.log(resinstance)
-
     var date = new Date(Date.parse(resinstance.date));
 
     let journalEntry = resinstance.journal;
