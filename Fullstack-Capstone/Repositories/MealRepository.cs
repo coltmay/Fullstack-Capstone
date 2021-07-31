@@ -49,6 +49,42 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
+        public List<Meal> GetByResInstanceId(int ResInstanceId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT  m.Id, m.Name, m.ResInstanceId, m.Calories
+                        FROM Meals m
+                        WHERE m.ResInstanceId = @ResInstanceId
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@ResInstanceId", ResInstanceId);
+
+                    var reader = cmd.ExecuteReader();
+
+                    var meals = new List<Meal>();
+
+                    while (reader.Read())
+                    {
+                        meals.Add(new Meal()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Name = DbUtils.GetString(reader, "Name"),
+                            ResInstanceId = DbUtils.GetInt(reader, "ResInstanceId"),
+                            Calories = DbUtils.GetInt(reader, "Calories")
+                        });
+                    }
+                    reader.Close();
+
+                    return meals;
+                }
+            }
+        }
+
         public void Add(Meal meal)
         {
             using (var conn = Connection)
