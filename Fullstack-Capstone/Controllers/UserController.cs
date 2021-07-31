@@ -5,7 +5,7 @@ using Fullstack_Capstone.Repositories;
 
 namespace Fullstack_Capstone.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

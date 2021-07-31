@@ -1,5 +1,6 @@
 ﻿using Fullstack_Capstone.Models;
 using Fullstack_Capstone.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Fullstack_Capstone.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ExerciseController : Controller
