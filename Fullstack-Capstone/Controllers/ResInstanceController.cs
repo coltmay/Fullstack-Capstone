@@ -32,7 +32,6 @@ namespace Fullstack_Capstone.Controllers
             return Ok(_resinstanceRepository.GetAllByUser(CurrentUser.Id));
         }
 
-        //? EDITED THIS
         [HttpGet("detail/{resId}")]
         public IActionResult GetById(int resId)
         {

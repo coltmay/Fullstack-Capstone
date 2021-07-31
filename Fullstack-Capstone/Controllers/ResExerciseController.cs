@@ -22,6 +22,12 @@ namespace Fullstack_Capstone.Controllers
             _resExerciseRepository = resExerciseRepository;
         }
 
+        [HttpGet]
+        public IActionResult Get(int resInstanceId)
+        {
+            return Ok(_resExerciseRepository.GetAllByResInstanceId(resInstanceId));
+        }
+
         [HttpGet("{rexId}")]
         public IActionResult GetById(int rexId)
         {

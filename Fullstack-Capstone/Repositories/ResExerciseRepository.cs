@@ -12,6 +12,64 @@ namespace Fullstack_Capstone.Repositories
     {
         public ResExerciseRepository(IConfiguration configuration) : base(configuration) { }
 
+        public List<ResInstanceExercise> GetAllByResInstanceId(int ResInstanceId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT  re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
+                                r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
+                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
+                                e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL
+                        FROM ResInstanceExercises re
+                        LEFT JOIN ResInstances r ON r.Id= re.ResInstanceId
+                        LEFT JOIN Users u ON r.UserId = u.Id
+                        LEFT JOIN Exercises e ON re.ExerciseId = e.Id
+                        WHERE re.ResInstanceId = @ResInstanceId
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@ResInstanceId", ResInstanceId);
+
+                    var reader = cmd.ExecuteReader();
+
+                    var rexes = new List<ResInstanceExercise>();
+
+                    while (reader.Read())
+                    {
+                        rexes.Add(new ResInstanceExercise()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            ResInstanceId = DbUtils.GetInt(reader, "ResInstanceId"),
+                            ExerciseId = DbUtils.GetInt(reader, "ExerciseId"),
+                            Weight = DbUtils.GetInt(reader, "Weight"),
+                            Difficulty = DbUtils.GetInt(reader, "Difficulty"),
+                            Exercise = new Exercise()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Name = DbUtils.GetString(reader, "ExerciseName"),
+                                Sets = DbUtils.GetInt(reader, "Sets"),
+                                Reps = DbUtils.GetInt(reader, "Reps"),
+                                Description = DbUtils.GetString(reader, "Description"),
+                                Url = DbUtils.GetString(reader, "Url")
+                            },
+                            User = new User()
+                            {
+                                Id = DbUtils.GetInt(reader, "UserTableUserId"),
+                                Username = DbUtils.GetString(reader, "Username"),
+                                AvatarId = DbUtils.GetInt(reader, "AvatarId")
+                            }
+                        });
+                    }
+                    reader.Close();
+
+                    return rexes;
+                }
+            }
+        }
+
         public ResInstanceExercise GetById(int rexId)
         {
             using (var conn = Connection)
