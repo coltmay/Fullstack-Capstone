@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
 import ResInstanceCard from './ResInstanceCard';
 import { getResInstancesByUser } from "../../modules/resinstanceManager";
-import { useParams } from "react-router-dom";
+
 
 const ResInstanceList = () => {
     const [resinstances, setResinstances] = useState([]);
-    const { userId } = useParams();
 
     const getResinstances = () => {
-        getResInstancesByUser(userId).then(resinstances => setResinstances(resinstances));
+        getResInstancesByUser().then(resinstances => setResinstances(resinstances));
     };
 
     useEffect(() => {
@@ -17,8 +18,10 @@ const ResInstanceList = () => {
 
     return (
         <>
+            <h1>ResInstance List</h1>
             <div className="container">
                 <div className="row justify-content-center">
+                    <Link to="resinstances/form">Add</Link>
                     {resinstances.map((resinstance) => (
                         <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                     ))}

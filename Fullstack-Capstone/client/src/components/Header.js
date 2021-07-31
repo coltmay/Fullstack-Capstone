@@ -25,7 +25,13 @@ export default function Header({ isLoggedIn }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/">Logged In!!</NavLink>
+                                    <NavLink tag={RRNavLink} to="/">Dashboard</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={RRNavLink} to="/myresinstances">My ResInstances</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={RRNavLink} to="/exercises">Exercises</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <a aria-current="page" className="nav-link"

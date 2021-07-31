@@ -1,19 +1,19 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
-const Rex = ({ rex }) => {
-
-    const history = useHistory();
+const RexCard = ({ rex, deleteRexAndSetResinstance }) => {
 
     return (
         <Card >
             <CardBody>
-                <p>{rex.date}</p>
-                <Link to={`/Rex/detail/${Rex.id}`} >Detail</Link>
+                <p>{rex.name}</p>
+                <Link to={`/Rex/detail/${rex.id}`} >Detail</Link>
+                <br></br>
+                <button onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</button>
             </CardBody>
-        </Card>
+        </Card >
     );
 };
 
-export default Rex;
+export default RexCard;
