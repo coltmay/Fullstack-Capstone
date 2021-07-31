@@ -18,6 +18,23 @@ export const getRexById = (id) => {
     });
 };
 
+export const getRexListByResInstanceId = (resInstanceId) => {
+    return getToken().then((token) => {
+        return fetch(`${apiUrl}/${resInstanceId}/rexList`, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(resp => {
+            if (resp.ok) {
+                return resp.json();
+            } else {
+                throw new Error("An unknown error occurred.");
+            }
+        });
+    });
+};
+
 export const addRex = (rex) => {
     return getToken().then((token) =>
         fetch(apiUrl, {
