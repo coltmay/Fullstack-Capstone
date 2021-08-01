@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+
 
 const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
 
@@ -10,12 +11,12 @@ const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
                 <h4>{rex.exercise.name}</h4>
                 <p>Weight: {rex.weight}</p>
                 <p>Difficulty: {rex.difficulty}</p>
-                <Link to={`/Rex/detail/${rex.id}`} ><button class="btn btn-primary btn btn-secondary">Detail</button>
+                <Link to={`/Rex/detail/${resinstance.id}/${rex.id}`} ><Button color="secondary">Details</Button>
                 </Link>
                 <br></br>
-                <Link to={`/rex/edit/${resinstance.id}/${rex.id}`}><button class="btn btn-primary btn btn-secondary">Edit</button>
+                <Link to={`/rex/edit/${resinstance.id}/${rex.id}`}><Button color="primary">Edit</Button>
                 </Link>
-                <button class="btn btn-primary btn btn-secondary" onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</button>
+                <Button color="danger" onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</Button>
             </CardBody>
         </Card >
     );

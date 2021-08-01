@@ -25,7 +25,7 @@ export default function Header({ isLoggedIn }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem>
-                                    <NavLink tag={RRNavLink} to="/">Dashboard</NavLink>
+                                    <NavLink tag={RRNavLink} to="/dashboard">Dashboard</NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink tag={RRNavLink} to="/myresinstances">My ResInstances</NavLink>

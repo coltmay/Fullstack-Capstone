@@ -80,7 +80,8 @@ const ResInstanceForm = () => {
                     value={resInstance?.journal}
                     onChange={handleInputChange} />
             </FormGroup>
-            <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
+            <Button color="primary" onClick={handleSave}>Save</Button>
+            <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
         </Form>
     );
 };

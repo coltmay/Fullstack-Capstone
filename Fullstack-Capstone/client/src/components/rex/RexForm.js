@@ -63,7 +63,8 @@ const RexForm = () => {
                     value={rex.difficulty}
                     onChange={handleInputChange} />
             </FormGroup>
-            <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
+            <Button color="primary" onClick={handleSave}>Save</Button>
+            <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Cancel</Button>
         </Form>
     );
 };

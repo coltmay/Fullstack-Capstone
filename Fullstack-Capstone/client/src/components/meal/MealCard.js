@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+
 
 const MealCard = ({ meal, deleteMealAndSetResinstance }) => {
 
@@ -9,8 +10,8 @@ const MealCard = ({ meal, deleteMealAndSetResinstance }) => {
             <CardBody>
                 <p>{meal.name}</p>
                 <p>{meal.calories}</p>
-                <Link to={`/meals/form/${meal.id}`} ><button class="btn btn-primary btn btn-secondary">Edit</button></Link>
-                <button onClick={() => deleteMealAndSetResinstance(meal.id)} class="btn btn-primary btn btn-secondary">Delete</button>
+                <Link to={`/meals/form/${meal.id}`} ><Button color="primary">Edit</Button></Link>
+                <Button onClick={() => deleteMealAndSetResinstance(meal.id)} color="danger">Delete</Button>
             </CardBody>
         </Card>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+
 
 const ResInstanceCard = ({ resinstance }) => {
 
@@ -22,7 +23,7 @@ const ResInstanceCard = ({ resinstance }) => {
                 <h5>Mood After: {resinstance.afterMood}</h5>
                 <h5>Weight: {resinstance.userWeight}</h5>
                 <h5>Journal Entry: {journalEntry}</h5>
-                <Link to={`/resinstances/detail/${resinstance.id}`}><button class="btn btn-primary btn btn-secondary">Details</button>
+                <Link to={`/resinstances/detail/${resinstance.id}`}><Button color="secondary">Details</Button>
                 </Link>
             </CardBody>
         </Card >

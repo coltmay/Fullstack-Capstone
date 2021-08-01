@@ -80,7 +80,8 @@ const ExerciseForm = () => {
                     value={exercise?.url}
                     onChange={handleInputChange} />
             </FormGroup>
-            <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
+            <Button color="primary" onClick={handleSave}>Save</Button>
+            <Button color="secondary" onClick={() => history.push(`/exercise/detail/${id}`)}>Cancel</Button>
         </Form>
     );
 };

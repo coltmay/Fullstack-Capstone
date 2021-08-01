@@ -82,7 +82,7 @@ export default function ApplicationViews({ isLoggedIn }) {
                 </Route> */}
 
                 {/*// DETAIL PAGE */}
-                <Route path="/rex/detail/:id(\d+)">
+                <Route path="/rex/detail/:resinstanceid(\d+)/:rexid(\d+)">
                     {isLoggedIn ? <RexDetail /> : <Redirect to="/login" />}
                 </Route>
 

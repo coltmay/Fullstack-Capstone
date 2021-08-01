@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { getRexById } from "../../modules/rexManager";
 
 const RexDetail = () => {
     const [rex, setRex] = useState([]);
-    const { id } = useParams();
+    const history = useHistory();
+    const { resinstanceid, rexid } = useParams();
 
     const getRex = () => {
-        getRexById(id).then(rex => setRex(rex));
+        getRexById(rexid).then(rex => setRex(rex));
     };
 
     useEffect(() => {
@@ -25,6 +27,7 @@ const RexDetail = () => {
                     <p>Reps: {rex.exercise?.reps}</p>
                     <p>Weight: {rex.weight}</p>
                     <p>Difficulty: {rex.difficulty}</p>
+                    <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</Button>
                 </div>
             </div>
         </div>
