@@ -31,6 +31,7 @@ namespace Fullstack_Capstone.Repositories
                         LEFT JOIN Meals m ON m.ResInstanceId = r.Id
                         LEFT JOIN Exercises e ON re.ExerciseId = e.Id
                         WHERE u.Id = @userId
+                        ORDER BY Date DESC
                     ";
 
                     DbUtils.AddParameter(cmd, "@userId", userId);
