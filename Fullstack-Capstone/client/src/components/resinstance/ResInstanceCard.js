@@ -22,8 +22,8 @@ const ResInstanceCard = ({ resinstance }) => {
                 <h5>Mood After: {resinstance.afterMood}</h5>
                 <h5>Weight: {resinstance.userWeight}</h5>
                 <h5>Journal Entry: {journalEntry}</h5>
-
-                <Link to={`/resinstances/detail/${resinstance.id}`} >Details</Link>
+                <Link to={`/resinstances/detail/${resinstance.id}`}><button class="btn btn-primary btn btn-secondary">Details</button>
+                </Link>
             </CardBody>
         </Card >
     );

@@ -61,21 +61,24 @@ const ResInstanceDetail = () => {
                     <h1>{date.getMonth()}/{date.getDay()}/{date.getFullYear()}</h1>
                     <h4>Mood Before: {resinstance.beforeMood}</h4>
                     <h4>Mood After: {resinstance.afterMood}</h4>
-                    <Link to={`/resinstances/edit/${resinstance.id}`}>Edit</Link>
-                    <button onClick={() => deleteCurrentResInstance(id)}>Delete</button>
+                    <Link to={`/resinstances/edit/${resinstance.id}`}><button class="btn btn-primary btn btn-secondary">Edit</button>
+                    </Link>
+                    <button class="btn btn-primary btn btn-secondary" onClick={() => deleteCurrentResInstance(id)}>Delete</button>
                     <div>
                         <h3>Exercises</h3>
                         {rexes.map((rex) => (
                             <RexCard rex={rex} key={rex.id} resinstance={resinstance} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
                         ))}
-                        <Link to={`/rexexercise/${id}`}>Add Exercise</Link>
+                        <Link to={`/rexexercise/${id}`}><button class="btn btn-primary btn btn-secondary">Add Exercise</button>
+                        </Link>
                     </div>
                     <div>
                         <h3>Meals</h3>
                         {meals.map((meal) => (
                             <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
                         ))}
-                        <Link to={`/meals/form/${id}`}>Add Meal</Link>
+                        <Link to={`/meals/form/${id}`}><button class="btn btn-primary btn btn-secondary">Add Meal</button>
+                        </Link>
                     </div>
                     <h2>Journal</h2>
                     <p>{resinstance.journal}</p>

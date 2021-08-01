@@ -18,9 +18,9 @@ const ExerciseCard = ({ exercise, resinstanceid }) => {
             <CardBody>
                 <p>{exercise.name}</p>
                 <p>{description}</p>
-                <Link to={`/exercise/detail/${exercise.id}`} >Detail</Link>
+                <Link to={`/exercise/detail/${exercise.id}`}><button class="btn btn-primary btn btn-secondary">Detail</button></Link>
                 <br></br>
-                <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} >Add To ResInstance</Link>
+                <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} ><button class="btn btn-primary btn btn-secondary">Add To ResInstance</button></Link>
             </CardBody>
         </Card>
     );

@@ -9,8 +9,8 @@ const MealCard = ({ meal, deleteMealAndSetResinstance }) => {
             <CardBody>
                 <p>{meal.name}</p>
                 <p>{meal.calories}</p>
-                <Link to={`/meals/form/${meal.id}`} >Edit</Link>
-                <button onClick={() => deleteMealAndSetResinstance(meal.id)}>Delete</button>
+                <Link to={`/meals/form/${meal.id}`} ><button class="btn btn-primary btn btn-secondary">Edit</button></Link>
+                <button onClick={() => deleteMealAndSetResinstance(meal.id)} class="btn btn-primary btn btn-secondary">Delete</button>
             </CardBody>
         </Card>
     );

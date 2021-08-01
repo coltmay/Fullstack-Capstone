@@ -10,10 +10,12 @@ const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
                 <h4>{rex.exercise.name}</h4>
                 <p>Weight: {rex.weight}</p>
                 <p>Difficulty: {rex.difficulty}</p>
-                <Link to={`/Rex/detail/${rex.id}`} >Detail</Link>
+                <Link to={`/Rex/detail/${rex.id}`} ><button class="btn btn-primary btn btn-secondary">Detail</button>
+                </Link>
                 <br></br>
-                <Link to={`/rex/edit/${resinstance.id}/${rex.id}`}>Edit</Link>
-                <button onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</button>
+                <Link to={`/rex/edit/${resinstance.id}/${rex.id}`}><button class="btn btn-primary btn btn-secondary">Edit</button>
+                </Link>
+                <button class="btn btn-primary btn btn-secondary" onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</button>
             </CardBody>
         </Card >
     );

@@ -18,10 +18,9 @@ const ResInstanceList = () => {
 
     return (
         <>
-            <h1>ResInstance List</h1>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link to="resinstances/form">Add</Link>
+                    <Link to="resinstances/form"><button class="btn btn-primary btn btn-secondary">Add</button></Link>
                     {resinstances.map((resinstance) => (
                         <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                     ))}
