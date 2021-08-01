@@ -9,7 +9,7 @@ const RexEdit = () => {
 
     // FEED ANOTHER PARAM INTO THIS
     const { resinstanceid, rexid } = useParams();
-    console.log(resinstanceid, rexid)
+
     const getRexToEdit = () => {
         getRexById(rexid).then(rex => setRex(rex))
     }
@@ -62,7 +62,8 @@ const RexEdit = () => {
                     value={rex?.difficulty}
                     onChange={handleInputChange} />
             </FormGroup>
-            <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
+            <Button color="primary" onClick={handleSave}>Save</Button>
+            <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Cancel</Button>
         </Form>
     );
 };

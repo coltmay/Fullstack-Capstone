@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Link, useHistory, useParams } from "react-router-dom"
 import ExerciseCard from './ExerciseCard';
 import { getAllExercises } from "../../modules/exerciseManager";
-import { Link, useHistory, useParams } from "react-router-dom"
 
 
 const ExerciseList = () => {
@@ -21,12 +22,12 @@ const ExerciseList = () => {
         <>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link to="exercise/form">Add</Link>
+                    <Link to="exercise/form"><Button color="primary">Add</Button></Link>
                     {exercises.map((exercise) => (
                         <ExerciseCard exercise={exercise} key={exercise.id} resinstanceid={resinstanceid} />
                     ))}
                 </div>
-                {resinstanceid ? <button onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</button> : null}
+                {resinstanceid ? <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</Button> : null}
             </div>
         </>
     );

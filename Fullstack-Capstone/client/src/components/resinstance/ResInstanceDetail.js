@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { getResInstanceById, deleteResInstance } from "../../modules/resinstanceManager";
 import { getRexListByResInstanceId, deleteRex } from "../../modules/rexManager";
 import { getMealListByResInstanceId, deleteMeal } from "../../modules/mealManager";
@@ -61,24 +62,28 @@ const ResInstanceDetail = () => {
                     <h1>{date.getMonth()}/{date.getDay()}/{date.getFullYear()}</h1>
                     <h4>Mood Before: {resinstance.beforeMood}</h4>
                     <h4>Mood After: {resinstance.afterMood}</h4>
-                    <Link to={`/resinstances/edit/${resinstance.id}`}>Edit</Link>
-                    <button onClick={() => deleteCurrentResInstance(id)}>Delete</button>
+                    <Link to={`/resinstances/edit/${resinstance.id}`}><Button color="primary">Edit</Button>
+                    </Link>
+                    <Button color="danger" onClick={() => deleteCurrentResInstance(id)}>Delete</Button>
                     <div>
                         <h3>Exercises</h3>
                         {rexes.map((rex) => (
                             <RexCard rex={rex} key={rex.id} resinstance={resinstance} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
                         ))}
-                        <Link to={`/rexexercise/${id}`}>Add Exercise</Link>
+                        <Link to={`/rexexercise/${id}`}><Button color="primary">Add Exercise</Button>
+                        </Link>
                     </div>
                     <div>
                         <h3>Meals</h3>
                         {meals.map((meal) => (
                             <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
                         ))}
-                        <Link to={`/meals/form/${id}`}>Add Meal</Link>
+                        <Link to={`/meals/form/${id}`}><Button color="primary">Add Meal</Button>
+                        </Link>
                     </div>
                     <h2>Journal</h2>
                     <p>{resinstance.journal}</p>
+                    <Button color="secondary" onClick={() => history.push(`/myresinstances`)}>Back</Button>
                 </div>
             </div>
         </div>

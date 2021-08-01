@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 const ExerciseCard = ({ exercise, resinstanceid }) => {
-
-    console.log(exercise)
 
     let description = exercise.description;
 
@@ -18,9 +16,8 @@ const ExerciseCard = ({ exercise, resinstanceid }) => {
             <CardBody>
                 <p>{exercise.name}</p>
                 <p>{description}</p>
-                <Link to={`/exercise/detail/${exercise.id}`} >Detail</Link>
-                <br></br>
-                <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} >Add To ResInstance</Link>
+                {resinstanceid ? <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} ><Button color="primary">Add To ResInstance</Button></Link> : null}
+                <Link to={`/exercise/detail/${exercise.id}`}><Button color="secondary">Details</Button></Link>
             </CardBody>
         </Card>
     );
