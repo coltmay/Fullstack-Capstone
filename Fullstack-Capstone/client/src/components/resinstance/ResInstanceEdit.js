@@ -51,12 +51,6 @@ const ResInstanceForm = () => {
                     onChange={handleInputChange} />
             </FormGroup>
             <FormGroup>
-                <Label for="date">Date</Label>
-                <Input type="date" name="date" id="date"
-                    value={resInstance?.date}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup>
                 <Label for="beforeMood">Mood Before</Label>
                 <Input type="text" name="beforeMood" id="beforeMood"
                     value={resInstance?.beforeMood}

@@ -18,7 +18,7 @@ const ResInstanceCard = ({ resinstance }) => {
     return (
         <Card >
             <CardBody>
-                <CardTitle>{date.getMonth()}/{date.getDay()}/{date.getFullYear()}</CardTitle>
+                <CardTitle>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}</CardTitle>
                 <CardText>Mood Before: {resinstance.beforeMood}</CardText>
                 <CardText>Mood After: {resinstance.afterMood}</CardText>
                 <CardText>Weight: {resinstance.userWeight}</CardText>

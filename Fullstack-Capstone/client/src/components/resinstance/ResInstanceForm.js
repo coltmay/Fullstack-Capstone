@@ -35,13 +35,6 @@ const ResInstanceForm = () => {
 
     return (
         <Form>
-            <h1>ResInstance Form</h1>
-            <FormGroup>
-                <Label for="date">Date</Label>
-                <Input type="date" name="date" id="date"
-                    value={resInstance.date}
-                    onChange={handleInputChange} />
-            </FormGroup>
             <FormGroup>
                 <Label for="beforeMood">Mood Before</Label>
                 <Input type="text" name="beforeMood" id="beforeMood"

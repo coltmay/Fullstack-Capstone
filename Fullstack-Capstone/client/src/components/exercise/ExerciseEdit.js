@@ -44,7 +44,6 @@ const ExerciseForm = () => {
 
     return (
         <Form>
-            <h1>Exercise Form</h1>
             <FormGroup>
                 <Input hidden name="id" id="id"
                     value={exercise?.id}
