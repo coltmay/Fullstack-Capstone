@@ -47,6 +47,11 @@ namespace Fullstack_Capstone.Repositories
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             }
+                            //Avatar = new Avatar()
+                            //{
+                            //    Id = DbUtils.GetInt(reader, "AvatarId"),
+                            //    ImageURL = DbUtils.GetString(reader, "ImageUrl")
+                            //}
                         };
                     }
                     reader.Close();

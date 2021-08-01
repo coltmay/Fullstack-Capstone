@@ -36,5 +36,7 @@ namespace Fullstack_Capstone.Models
         public int UserTypeId { get; set; }
 
         public UserType UserType { get; set; }
+
+        public Avatar Avatar { get; set; }
     }
 }
