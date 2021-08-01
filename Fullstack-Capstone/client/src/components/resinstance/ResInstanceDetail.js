@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getResInstanceById } from "../../modules/resinstanceManager";
-import { deleteRex, getRexListByResInstanceId } from "../../modules/rexManager";
+import { Link, useParams, useHistory } from "react-router-dom";
+import { getResInstanceById, deleteResInstance } from "../../modules/resinstanceManager";
+import { getRexListByResInstanceId, deleteRex } from "../../modules/rexManager";
+import { getMealListByResInstanceId, deleteMeal } from "../../modules/mealManager";
 import RexCard from "../rex/RexCard";
 import MealCard from "../meal/MealCard";
 
 const ResInstanceDetail = () => {
     const [resinstance, setResinstance] = useState([]);
+    const [meals, setMeals] = useState([]);
     const [rexes, setRexes] = useState([]);
     const { id } = useParams();
+    const history = useHistory();
+
+    console.log(rexes)
 
     var date = new Date(Date.parse(resinstance.date));
 
@@ -20,8 +25,23 @@ const ResInstanceDetail = () => {
         getRexListByResInstanceId(id).then(rexes => setRexes(rexes))
     }
 
+    const getMeals = () => {
+        getMealListByResInstanceId(id).then(meals => setMeals(meals))
+    }
+
+    const deleteResInstance = () => {
+        deleteResInstance(id).then((p) => {
+            history.push(`/myresinstances`)
+        });
+    }
+
     const deleteRexAndSetResinstance = (rexId) => {
         deleteRex(rexId)
+            .then(() => getResinstance())
+    }
+
+    const deleteMealAndSetResinstance = (mealId) => {
+        deleteMeal(mealId)
             .then(() => getResinstance())
     }
 
@@ -31,6 +51,7 @@ const ResInstanceDetail = () => {
 
     useEffect(() => {
         getRexes();
+        getMeals();
     }, [resinstance])
 
     return (
@@ -41,17 +62,18 @@ const ResInstanceDetail = () => {
                     <h4>Mood Before: {resinstance.beforeMood}</h4>
                     <h4>Mood After: {resinstance.afterMood}</h4>
                     <Link to={`/resinstances/edit/${resinstance.id}`}>Edit</Link>
+                    <button onClick={() => deleteResInstance(id)}>Delete</button>
                     <div>
                         <h3>Exercises</h3>
                         {rexes.map((rex) => (
-                            <RexCard rex={rex} key={rex.id} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
+                            <RexCard rex={rex} key={rex.id} resinstance={resinstance} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
                         ))}
                         <Link to={`/rexexercise/${id}`}>Add Exercise</Link>
                     </div>
                     <div>
                         <h3>Meals</h3>
-                        {resinstance.mealList?.map((meal) => (
-                            <MealCard meal={meal} key={meal.id} />
+                        {meals.map((meal) => (
+                            <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
                         ))}
                         <Link to={`/meals/form/${id}`}>Add Meal</Link>
                     </div>

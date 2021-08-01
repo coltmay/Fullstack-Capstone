@@ -12,6 +12,7 @@ import ExerciseEdit from "./exercise/ExerciseEdit";
 import ExerciseForm from "./exercise/ExerciseForm";
 // ResInstance Exercises
 import RexDetail from "./rex/RexDetail";
+import RexEdit from "./rex/RexEdit";
 import RexForm from "./rex/RexForm";
 // Meals
 import MealForm from "./meal/MealForm";
@@ -88,6 +89,11 @@ export default function ApplicationViews({ isLoggedIn }) {
                 {/* //? REX EXERCISE LIST */}
                 <Route path="/rexexercise/:resinstanceid(\d+)">
                     {isLoggedIn ? <ExerciseList /> : <Redirect to="/login" />}
+                </Route>
+
+                {/* //? Edit PAGE */}
+                <Route path="/rex/edit/:resinstanceid(\d+)/:rexid(\d+)/">
+                    {isLoggedIn ? <RexEdit /> : <Redirect to="/login" />}
                 </Route>
 
                 {/* //? FORM PAGE */}
