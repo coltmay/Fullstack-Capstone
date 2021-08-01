@@ -29,7 +29,7 @@ const ResInstanceDetail = () => {
         getMealListByResInstanceId(id).then(meals => setMeals(meals))
     }
 
-    const deleteResInstance = () => {
+    const deleteCurrentResInstance = () => {
         deleteResInstance(id).then((p) => {
             history.push(`/myresinstances`)
         });
@@ -62,7 +62,7 @@ const ResInstanceDetail = () => {
                     <h4>Mood Before: {resinstance.beforeMood}</h4>
                     <h4>Mood After: {resinstance.afterMood}</h4>
                     <Link to={`/resinstances/edit/${resinstance.id}`}>Edit</Link>
-                    <button onClick={() => deleteResInstance(id)}>Delete</button>
+                    <button onClick={() => deleteCurrentResInstance(id)}>Delete</button>
                     <div>
                         <h3>Exercises</h3>
                         {rexes.map((rex) => (
