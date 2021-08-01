@@ -16,7 +16,7 @@ const ResInstanceCard = ({ resinstance }) => {
 
 
     return (
-        <Card >
+        <Card classNam="CardMain" >
             <CardBody>
                 <CardTitle>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}</CardTitle>
                 <CardText>Mood Before: {resinstance.beforeMood}</CardText>
