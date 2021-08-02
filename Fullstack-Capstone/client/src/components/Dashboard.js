@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import ResInstanceCard from '../components/resinstance/ResInstanceCard';
 import { getResInstancesByUser } from "../modules/resinstanceManager";
-import "./Dashboard.css"
+
+import WeightChart from "./charts/WeightChart";
 import profileImage from "../img/charles_mingus.png"
+
+import "./Dashboard.css"
+
 const Dashboard = () => {
     const [resinstances, setResinstances] = useState([]);
 
@@ -12,9 +16,9 @@ const Dashboard = () => {
         getResInstancesByUser().then(resinstances => setResinstances(resinstances));
     };
 
-    const user = resinstances[0]?.user;
+    const lastThree = resinstances.slice(0, 3)
 
-    console.log(resinstances)
+    const user = resinstances[0]?.user;
 
     useEffect(() => {
         getResinstances();
@@ -28,16 +32,21 @@ const Dashboard = () => {
                         <img className="profilePicture" src={profileImage} alt="profile pic"></img>
                     </div>
                     <h2 className="userName">{user?.firstName} {user?.lastName}</h2>
-                    <h6>Total ResInstances: {resinstances.length}</h6>
-                    <h6>Weight: {resinstances[0]?.userWeight}</h6>
+                    <div className="detailContainer">
+                        <h6><b>Last ResInstances •</b> {`${resinstances[0]?.date.slice(5, 7)}/${resinstances[0]?.date.slice(8, 10)}/${resinstances[0]?.date.slice(0, 4)}`}</h6>
+                        <h6><b>Total ResInstances •</b> {resinstances.length}</h6>
+                        <h6><b>Current Weight •</b> {resinstances[0]?.userWeight} lbs</h6>
+                    </div>
+                    <WeightChart />
                 </div>
                 <div className="resinstanceList container">
                     <div className="row justify-content-center">
                         <Link className="add-button" to="resinstances/form" ><Button color="primary">Add</Button></Link>
-                        {resinstances.map((resinstance) => (
+                        {lastThree.map((resinstance) => (
                             <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                         ))}
                     </div>
+                    View More
                 </div>
             </div>
         </>

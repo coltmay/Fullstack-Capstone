@@ -59,7 +59,7 @@ const ResInstanceDetail = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
-                    <h1>{date.getMonth()}/{date.getDate()}/{date.getFullYear()}</h1>
+                    <h1>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
                     <h4>Mood Before: {resinstance.beforeMood}</h4>
                     <h4>Mood After: {resinstance.afterMood}</h4>
                     <Link to={`/resinstances/edit/${resinstance.id}`}><Button color="primary">Edit</Button>

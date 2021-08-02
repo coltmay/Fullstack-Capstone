@@ -1,0 +1,23 @@
+.CardMain {
+    margin: 1.5em;
+    border: none;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px #00000050;
+    display: flex;
+}
+
+.card-body {
+    width: 100%
+}
+
+.title {
+    color: #fd5401;
+    font-size: larger;
+    font-weight: bolder;
+    border-bottom: solid 2px;
+}
+
+.emojiField {
+    /* font-size: 1.75em; */
+}
