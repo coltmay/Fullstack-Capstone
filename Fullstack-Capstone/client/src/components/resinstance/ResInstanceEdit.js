@@ -27,6 +27,7 @@ const ResInstanceForm = () => {
     const handleSave = (evt) => {
         evt.preventDefault();
 
+        // Unneeded
         const editedResInstance = {
             id: resInstance.id,
             date: resInstance.date,

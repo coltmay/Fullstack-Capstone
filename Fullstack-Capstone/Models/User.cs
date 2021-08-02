@@ -30,7 +30,7 @@ namespace Fullstack_Capstone.Models
         public DateTime RegisterDate { get; set; }
 
         [Required]
-        public int AvatarId { get; set; }
+        public string AvatarUrl { get; set; }
 
         [Required]
         public int UserTypeId { get; set; }

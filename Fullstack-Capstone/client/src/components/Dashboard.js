@@ -19,6 +19,8 @@ const Dashboard = () => {
     const lastThree = resinstances.slice(0, 3)
 
     const user = resinstances[0]?.user;
+    console.log(user)
+    console.log(user?.AvatarUrl)
 
     useEffect(() => {
         getResinstances();
@@ -29,7 +31,7 @@ const Dashboard = () => {
             <div className="dashContainer">
                 <div className="userPanel">
                     <div className="imageContainer">
-                        <img className="profilePicture" src={profileImage} alt="profile pic"></img>
+                        <img className="profilePicture" src={user?.avatarUrl} alt="profile pic"></img>
                     </div>
                     <h2 className="userName">{user?.firstName} {user?.lastName}</h2>
                     <div className="detailContainer">

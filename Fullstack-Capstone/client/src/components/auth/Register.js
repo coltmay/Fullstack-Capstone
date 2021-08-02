@@ -12,7 +12,7 @@ export default function Register() {
     const [image, setImage] = useState("")
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
-    const [ProfileUrl, setProfileUrl] = useState(1);
+    const [AvatarUrl, setAvatarUrl] = useState();
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
@@ -21,7 +21,7 @@ export default function Register() {
         if (password && password !== confirmPassword) {
             alert("Passwords don't match. Do better.");
         } else {
-            const userProfile = { userName, email, firstName, lastName, ProfileUrl };
+            const userProfile = { userName, email, firstName, lastName, AvatarUrl };
             register(userProfile, password)
                 .then(() => history.push("/"));
         }
@@ -45,7 +45,7 @@ export default function Register() {
         console.log(file);
 
         setImage(file.secure_url);
-        setProfileUrl(file.secure_url);
+        setAvatarUrl(file.secure_url);
         setIsLoading(false);
     }
 
