@@ -8,9 +8,11 @@ export default function Register() {
 
     const [userName, setUserName] = useState();
     const [email, setEmail] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+    const [image, setImage] = useState("")
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
-    const [AvatarId, setAvatarId] = useState(1);
+    const [ProfileUrl, setProfileUrl] = useState(1);
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
@@ -19,11 +21,35 @@ export default function Register() {
         if (password && password !== confirmPassword) {
             alert("Passwords don't match. Do better.");
         } else {
-            const userProfile = { userName, email, firstName, lastName, AvatarId };
+            const userProfile = { userName, email, firstName, lastName, ProfileUrl };
             register(userProfile, password)
                 .then(() => history.push("/"));
         }
     };
+
+    const uploadImage = async e => {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append('file', files[0]);
+        data.append('upload_preset', 'resinstance');
+        setIsLoading(true);
+
+        const res = await fetch("https://api.cloudinary.com/v1_1/dezokheym/image/upload",
+            {
+                method: 'POST',
+                body: data
+            })
+
+        const file = await res.json()
+
+        console.log(file);
+
+        setImage(file.secure_url);
+        setProfileUrl(file.secure_url);
+        setIsLoading(false);
+    }
+
+
 
     return (
         <Form onSubmit={registerClick}>
@@ -41,9 +67,14 @@ export default function Register() {
                     <Input id="name" type="text" autoFocus onChange={e => setUserName(e.target.value)} />
                 </FormGroup>
                 {/* Temporary Avatar Code */}
-                <FormGroup>
+                {/* <FormGroup>
                     <Label htmlFor="avatarId">Avatar</Label>
                     <Input id="name" type="int" autoFocus onChange={e => setAvatarId(e.target.value)} />
+                </FormGroup> */}
+                <FormGroup>
+                    <Label for="avatarURL">Profile Picture</Label>
+                    <br></br>
+                    <Input id="file" type="file" onChange={uploadImage} />
                 </FormGroup>
                 <FormGroup>
                     <Label for="email">Email</Label>
