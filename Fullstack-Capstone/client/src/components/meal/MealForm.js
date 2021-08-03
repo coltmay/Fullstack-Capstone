@@ -35,7 +35,6 @@ const MealForm = () => {
 
     return (
         <Form>
-            <h1>Meal Form</h1>
             <FormGroup>
                 <Label for="name">Meal</Label>
                 <Input type="text" name="name" id="name"

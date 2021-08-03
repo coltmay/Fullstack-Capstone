@@ -17,7 +17,7 @@ namespace Fullstack_Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT  u.Id, u.FirebaseUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
+                        SELECT  u.Id, u.FirebaseUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarUrl, u.UserTypeId,
                                 ut.Name AS UserTypeName
                         FROM Users u
                         LEFT JOIN UserTypes ut ON u.UserTypeId = ut.Id
@@ -40,13 +40,18 @@ namespace Fullstack_Capstone.Repositories
                             FirstName = DbUtils.GetString(reader, "FirstName"),
                             LastName = DbUtils.GetString(reader, "LastName"),
                             RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                            AvatarId = DbUtils.GetInt(reader, "AvatarId"),
+                            AvatarUrl = DbUtils.GetString(reader, "AvatarUrl"),
                             UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                             UserType = new UserType()
                             {
                                 Id = DbUtils.GetInt(reader, "UserTypeId"),
                                 Name = DbUtils.GetString(reader, "UserTypeName"),
                             }
+                            //Avatar = new Avatar()
+                            //{
+                            //    Id = DbUtils.GetInt(reader, "AvatarId"),
+                            //    ImageURL = DbUtils.GetString(reader, "ImageUrl")
+                            //}
                         };
                     }
                     reader.Close();
@@ -64,9 +69,9 @@ namespace Fullstack_Capstone.Repositories
 
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Users (FirebaseUserId, Username, Email, FirstName, LastName, RegisterDate, AvatarId, UserTypeId)
+                    cmd.CommandText = @"INSERT INTO Users (FirebaseUserId, Username, Email, FirstName, LastName, RegisterDate, AvatarUrl, UserTypeId)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @Username, @Email, @FirstName, @LastName, @RegisterDate, @AvatarId, @UserTypeId)";
+                                        VALUES (@FirebaseUserId, @Username, @Email, @FirstName, @LastName, @RegisterDate, @AvatarUrl, @UserTypeId)";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@Username", user.Username);
@@ -74,7 +79,7 @@ namespace Fullstack_Capstone.Repositories
                     DbUtils.AddParameter(cmd, "@FirstName", user.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", user.LastName);
                     DbUtils.AddParameter(cmd, "@RegisterDate", DateTime.Now);
-                    DbUtils.AddParameter(cmd, "@AvatarId", user.AvatarId);
+                    DbUtils.AddParameter(cmd, "@AvatarUrl", user.AvatarUrl);
                     DbUtils.AddParameter(cmd, "@UserTypeId", 2);
 
                     user.Id = (int)cmd.ExecuteScalar();

@@ -27,6 +27,7 @@ const ResInstanceForm = () => {
     const handleSave = (evt) => {
         evt.preventDefault();
 
+        // Unneeded
         const editedResInstance = {
             id: resInstance.id,
             date: resInstance.date,
@@ -48,12 +49,6 @@ const ResInstanceForm = () => {
             <FormGroup>
                 <Input hidden name="id" id="id"
                     value={resInstance?.id}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="date">Date</Label>
-                <Input type="date" name="date" id="date"
-                    value={resInstance?.date}
                     onChange={handleInputChange} />
             </FormGroup>
             <FormGroup>

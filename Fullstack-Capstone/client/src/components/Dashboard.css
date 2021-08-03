@@ -1,0 +1,51 @@
+.dashContainer {
+    display: flex;
+}
+
+.userPanel {
+    width: 30%;
+    height: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 5em;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    margin-right: 5em;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 3px 3px 5px #00000050;
+}
+
+.resinstanceList {
+    width: 70%;
+    height: auto;
+    margin-right: 5em;
+}
+
+.userName {
+    color: #fd5401;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.imageContainer {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.profilePicture {
+    width: 25%;
+}
+
+.detailContainer {
+    margin-top: 1.75em;
+    margin-left: 5.5em;
+    margin-bottom: 5em;
+}
+
+h6 {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    color: rgb(34, 34, 34);
+    text-align: start;
+}

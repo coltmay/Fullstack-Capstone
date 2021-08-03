@@ -1,5 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+// Dashboard
+import Dashboard from "../components/Dashboard";
 // ResInstance
 import ResInstanceList from "./resinstance/ResInstanceList"
 import ResInstanceDetail from "./resinstance/ResInstanceDetail";
@@ -24,6 +26,14 @@ export default function ApplicationViews({ isLoggedIn }) {
     return (
         <main>
             <Switch>
+                {/*//? ===========================================
+                   //? ============ D A S H B O A R D ============
+                   //? =========================================*/}
+                <Route path="/dashboard">
+                    {isLoggedIn ? <Dashboard /> : <Redirect to="/login" />}
+                </Route>
+
+
                 {/*//? ===========================================
                    //? ========= R E S I N S T A N C E S =========
                    //? =========================================*/}

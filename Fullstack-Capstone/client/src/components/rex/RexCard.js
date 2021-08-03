@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
 

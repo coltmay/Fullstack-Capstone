@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText, CardTitle, CardText, CardSubtitle } from "reactstrap";
+import "./ResInstanceCard.css";
 
 const ResInstanceCard = ({ resinstance }) => {
 
@@ -16,14 +16,16 @@ const ResInstanceCard = ({ resinstance }) => {
 
 
     return (
-        <Card >
+        <Card className="CardMain" >
             <CardBody>
-                <h3>{date.getMonth()}/{date.getDay()}/{date.getFullYear()}</h3>
-                <h5>Mood Before: {resinstance.beforeMood}</h5>
-                <h5>Mood After: {resinstance.afterMood}</h5>
-                <h5>Weight: {resinstance.userWeight}</h5>
-                <h5>Journal Entry: {journalEntry}</h5>
-                <Link to={`/resinstances/detail/${resinstance.id}`}><Button color="secondary">Details</Button>
+                <CardTitle className="title">{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</CardTitle>
+                <div className="cardDetails">
+                    <CardText className="emojiField">Mood Before: {resinstance.beforeMood}</CardText>
+                    <CardText className="emojiField">Mood After: {resinstance.afterMood}</CardText>
+                    <CardText>Weight: {resinstance.userWeight}</CardText>
+                    <CardText>Journal Entry: {journalEntry}</CardText>
+                </div>
+                <Link to={`/resinstances/detail/${resinstance.id}`}><Button color="secondary">View</Button>
                 </Link>
             </CardBody>
         </Card >

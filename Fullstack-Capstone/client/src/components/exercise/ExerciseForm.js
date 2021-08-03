@@ -35,7 +35,6 @@ const ExerciseForm = () => {
 
     return (
         <Form>
-            <h1>Exercise Form</h1>
             <FormGroup>
                 <Label for="name">name</Label>
                 <Input type="text" name="name" id="name"

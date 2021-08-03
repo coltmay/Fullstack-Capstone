@@ -21,7 +21,7 @@ namespace Fullstack_Capstone.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT  r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
-                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
+                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarUrl, u.UserTypeId,
                                 re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
                                 e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL,
                                 m.Id AS MealId, m.Name AS MealName, m.Calories
@@ -31,6 +31,7 @@ namespace Fullstack_Capstone.Repositories
                         LEFT JOIN Meals m ON m.ResInstanceId = r.Id
                         LEFT JOIN Exercises e ON re.ExerciseId = e.Id
                         WHERE u.Id = @userId
+                        ORDER BY Date DESC
                     ";
 
                     DbUtils.AddParameter(cmd, "@userId", userId);
@@ -65,7 +66,7 @@ namespace Fullstack_Capstone.Repositories
                                     FirstName = DbUtils.GetString(reader, "FirstName"),
                                     LastName = DbUtils.GetString(reader, "LastName"),
                                     RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                                    AvatarId = DbUtils.GetInt(reader, "AvatarId"),
+                                    AvatarUrl = DbUtils.GetString(reader, "AvatarUrl"),
                                     UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
                                 },
                                 ExerciseList = new List<Exercise>(),
@@ -126,7 +127,7 @@ namespace Fullstack_Capstone.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT  r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
-                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
+                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarUrl, u.UserTypeId,
                                 re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
                                 e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL,
                                 m.Id AS MealId, m.Name AS MealName, m.Calories
@@ -165,7 +166,7 @@ namespace Fullstack_Capstone.Repositories
                                     FirstName = DbUtils.GetString(reader, "FirstName"),
                                     LastName = DbUtils.GetString(reader, "LastName"),
                                     RegisterDate = DbUtils.GetDateTime(reader, "RegisterDate"),
-                                    AvatarId = DbUtils.GetInt(reader, "AvatarId"),
+                                    AvatarUrl = DbUtils.GetString(reader, "AvatarUrl"),
                                     UserTypeId = DbUtils.GetInt(reader, "UserTypeId")
                                 },
                                 ExerciseList = new List<Exercise>(),
@@ -217,7 +218,7 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
-        public void Add(ResInstance resInstance)
+        public void Add(ResInstance resInstance, int userId)
         {
             using (var conn = Connection)
             {
@@ -232,7 +233,7 @@ namespace Fullstack_Capstone.Repositories
 
                     DbUtils.AddParameter(cmd, "@Date", DateTime.Now);
 
-                    DbUtils.AddParameter(cmd, "@UserId", 1);
+                    DbUtils.AddParameter(cmd, "@UserId", userId);
                     DbUtils.AddParameter(cmd, "@BeforeMood", resInstance.BeforeMood);
                     DbUtils.AddParameter(cmd, "@AfterMood", resInstance.AfterMood);
                     DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);

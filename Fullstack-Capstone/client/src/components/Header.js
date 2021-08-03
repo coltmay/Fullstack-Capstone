@@ -10,6 +10,7 @@ import {
     NavLink
 } from 'reactstrap';
 import { logout } from "../modules/authManager";
+import './Header.css'
 
 export default function Header({ isLoggedIn }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,16 +25,16 @@ export default function Header({ isLoggedIn }) {
                     <Nav className="mr-auto" navbar>
                         {isLoggedIn &&
                             <>
-                                <NavItem>
+                                <NavItem >
                                     <NavLink tag={RRNavLink} to="/dashboard">Dashboard</NavLink>
                                 </NavItem>
-                                <NavItem>
+                                <NavItem class="navItem">
                                     <NavLink tag={RRNavLink} to="/myresinstances">My ResInstances</NavLink>
-                                </NavItem>
-                                <NavItem>
+                                </NavItem >
+                                <NavItem class="navItem">
                                     <NavLink tag={RRNavLink} to="/exercises">Exercises</NavLink>
                                 </NavItem>
-                                <NavItem>
+                                <NavItem class="navItem">
                                     <a aria-current="page" className="nav-link"
                                         style={{ cursor: "pointer" }} onClick={logout}>Logout</a>
                                 </NavItem>
@@ -41,10 +42,10 @@ export default function Header({ isLoggedIn }) {
                         }
                         {!isLoggedIn &&
                             <>
-                                <NavItem>
+                                <NavItem class="navItem">
                                     <NavLink tag={RRNavLink} to="/login">Login</NavLink>
                                 </NavItem>
-                                <NavItem>
+                                <NavItem class="navItem">
                                     <NavLink tag={RRNavLink} to="/register">Register</NavLink>
                                 </NavItem>
                             </>
