@@ -49,3 +49,9 @@ h6 {
     color: rgb(34, 34, 34);
     text-align: start;
 }
+
+.viewButtonHolder {
+    text-align: center;
+    margin-top: 3em;
+    margin-bottom: 5em;
+}

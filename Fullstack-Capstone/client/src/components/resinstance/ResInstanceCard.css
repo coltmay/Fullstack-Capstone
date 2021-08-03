@@ -13,11 +13,78 @@
 
 .title {
     color: #fd5401;
-    font-size: larger;
+    font-size: xx-large;
     font-weight: bolder;
-    border-bottom: solid 2px;
+    border-bottom: solid 5px;
+}
+
+.cardDetails {
+    display: flex;
+}
+
+.detailHolder {
+    display: flex;
+}
+
+.emojiHeader {
+    border-bottom: #fd5401 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.weightHeader {
+    border-bottom: #fd5401 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 .emojiField {
-    /* font-size: 1.75em; */
+    margin-top: -20px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.weightField {
+    margin-top: -15px;
+    text-align: center;
+    font-size: x-large;
+}
+
+.afterHolder {
+    margin-left: 2em;
+}
+
+.weightHolder {
+    margin-left: 2em;
+}
+
+.calorieHolder {
+    margin-left: 2em;
+}
+
+.calorieHeader {
+    border-bottom: #fd5401 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.calorieField {
+    margin-top: -15px;
+    text-align: center;
+    font-size: x-large;
+}
+
+.journalHeader {
+    margin-top: 2em;
+    border-bottom: #fd5401 2px solid;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.journalField {
+    margin-top: -15px;
+}
+
+.linkHolder {
+    text-align: center;
 }

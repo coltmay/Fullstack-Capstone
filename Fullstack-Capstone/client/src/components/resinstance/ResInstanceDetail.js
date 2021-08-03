@@ -6,6 +6,7 @@ import { getRexListByResInstanceId, deleteRex } from "../../modules/rexManager";
 import { getMealListByResInstanceId, deleteMeal } from "../../modules/mealManager";
 import RexCard from "../rex/RexCard";
 import MealCard from "../meal/MealCard";
+import "../resinstance/ResInstanceDetail.css"
 
 const ResInstanceDetail = () => {
     const [resinstance, setResinstance] = useState([]);
@@ -59,7 +60,7 @@ const ResInstanceDetail = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
-                    <h1>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
+                    <h1 className="detailTitle">{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
                     <h4>Mood Before: {resinstance.beforeMood}</h4>
                     <h4>Mood After: {resinstance.afterMood}</h4>
                     <Link to={`/resinstances/edit/${resinstance.id}`}><Button color="primary">Edit</Button>
