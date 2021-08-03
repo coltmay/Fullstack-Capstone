@@ -8,6 +8,7 @@ import WeightChart from "./charts/WeightChart";
 import profileImage from "../img/charles_mingus.png"
 
 import "./Dashboard.css"
+import CaloriesChart from "./charts/CalorieChart";
 
 const Dashboard = () => {
     const [resinstances, setResinstances] = useState([]);
@@ -48,6 +49,7 @@ const Dashboard = () => {
 
                     </div>
                     <WeightChart />
+                    <CaloriesChart className="calorieChart" />
                 </div>
                 <div className="resinstanceList container">
                     <div className="row justify-content-center">

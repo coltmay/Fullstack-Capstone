@@ -18,14 +18,14 @@ export default function Header({ isLoggedIn }) {
 
     return (
         <div>
-            <Navbar color="dark" dark expand="md">
+            <Navbar style={{ backgroundColor: 'white', boxShadow: '5px .25px 5px #3F3F3F' }} dark expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">ResInstance</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {isLoggedIn &&
                             <>
-                                <NavItem >
+                                <NavItem style={{}}>
                                     <NavLink tag={RRNavLink} to="/dashboard">Dashboard</NavLink>
                                 </NavItem>
                                 <NavItem class="navItem">
@@ -53,6 +53,6 @@ export default function Header({ isLoggedIn }) {
                     </Nav>
                 </Collapse>
             </Navbar>
-        </div>
+        </div >
     );
 }
