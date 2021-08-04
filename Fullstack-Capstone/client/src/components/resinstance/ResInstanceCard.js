@@ -46,7 +46,7 @@ const ResInstanceCard = ({ resinstance }) => {
                 <CardText className="journalHeader">Journal Entry</CardText>
                 <CardText className="journalField">{journalEntry}</CardText>
                 <div className="linkHolder">
-                    <Link className="viewButton" to={`/resinstances/detail/${resinstance.id}`}><Button color="secondary">View Details</Button></Link>
+                    <Link className="viewButton" to={`/resinstances/detail/${resinstance.id}`}><Button className="detail-button">View Details</Button></Link>
                 </div>
             </CardBody>
         </Card >

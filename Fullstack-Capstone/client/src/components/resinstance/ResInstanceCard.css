@@ -88,3 +88,14 @@
 .linkHolder {
     text-align: center;
 }
+
+.detail-button {
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.detail-button:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}

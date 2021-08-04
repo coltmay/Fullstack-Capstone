@@ -14,25 +14,32 @@ const CaloriesChart = () => {
         getResinstances();
     }, []);
 
-    const lastTenRes = resinstances.slice(0, 20);
+    const last20Res = resinstances.slice(0, 20);
 
     let dateLabels = [];
-    let weightData = [];
+    let calorieData = [];
 
-    lastTenRes.forEach(res => {
+
+    last20Res.forEach(res => {
         dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}/${new Date(res.date).getFullYear()}`);
     })
 
-    lastTenRes.forEach(res => {
-        weightData.push(res.userWeight);
+
+
+    last20Res.forEach(res => {
+        let dayCalorie = 0;
+        res.mealList.forEach(meal => {
+            dayCalorie += meal.calories;
+        })
+        calorieData.push(dayCalorie);
     })
 
     const data = {
         labels: dateLabels.reverse(),
         datasets: [
             {
-                label: 'Weight Over Time',
-                data: weightData.reverse(),
+                label: 'Calories Over Time',
+                data: calorieData.reverse(),
                 fill: false,
                 backgroundColor: '#fd5401',
                 borderColor: '#fd5401',

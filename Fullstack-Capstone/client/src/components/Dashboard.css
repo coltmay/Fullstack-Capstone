@@ -34,7 +34,8 @@
 }
 
 .profilePicture {
-    width: 25%;
+    width: 120px;
+    border-radius: 50%;
 }
 
 .detailContainer {
@@ -54,4 +55,17 @@ h6 {
     text-align: center;
     margin-top: 3em;
     margin-bottom: 5em;
+}
+
+.calorieChartHolder {
+    margin-top: 5em;
+}
+
+.primary {
+    background-color: #fd5401;
+    border: none
+}
+
+.primary:hover {
+    background-color: #da4900;
 }

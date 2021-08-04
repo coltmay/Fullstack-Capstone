@@ -14,16 +14,16 @@ const WeightChart = () => {
         getResinstances();
     }, []);
 
-    const lastTenRes = resinstances.slice(0, 20);
+    const last20Res = resinstances.slice(0, 20);
 
     let dateLabels = [];
     let weightData = [];
 
-    lastTenRes.forEach(res => {
+    last20Res.forEach(res => {
         dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}/${new Date(res.date).getFullYear()}`);
     })
 
-    lastTenRes.forEach(res => {
+    last20Res.forEach(res => {
         weightData.push(res.userWeight);
     })
 

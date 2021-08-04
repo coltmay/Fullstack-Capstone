@@ -48,18 +48,22 @@ const Dashboard = () => {
                         <h6><b>Last Calorie Count •</b> {calorieCount} calories</h6>
 
                     </div>
-                    <WeightChart />
-                    <CaloriesChart className="calorieChart" />
+                    <div className="weightChartHolder">
+                        <WeightChart />
+                    </div>
+                    <div className="calorieChartHolder">
+                        <CaloriesChart className="calorieChart" />
+                    </div>
                 </div>
                 <div className="resinstanceList container">
                     <div className="row justify-content-center">
-                        <Link className="add-button" to="resinstances/form" ><Button color="primary">Add</Button></Link>
+                        <Link className="add-button" to="resinstances/form" ><Button className="primary">Add</Button></Link>
                         {lastThree.map((resinstance) => (
                             <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                         ))}
                     </div>
                     <div className="viewButtonHolder">
-                        <Link to="myresinstances/" ><Button color="primary">View All</Button></Link>
+                        <Link to="myresinstances/" ><Button className="primary">View All</Button></Link>
                     </div>
                 </div>
             </div>
