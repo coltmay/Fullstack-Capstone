@@ -3,26 +3,26 @@ import { Link, Redirect, useParams } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import ResInstanceCard from '../components/resinstance/ResInstanceCard';
 import { getResInstancesByUser } from "../modules/resinstanceManager";
-
+import { getCurrentUser } from "../modules/authManager";
 import WeightChart from "./charts/WeightChart";
-import profileImage from "../img/charles_mingus.png"
-
-import "./Dashboard.css"
 import CaloriesChart from "./charts/CalorieChart";
+import "./Dashboard.css"
 
 const Dashboard = () => {
     const [resinstances, setResinstances] = useState([]);
+    const [user, setUser] = useState();
 
     const getResinstances = () => {
         getResInstancesByUser().then(resinstances => setResinstances(resinstances));
     };
 
+    const getUser = () => {
+        getCurrentUser().then(user => setUser(user))
+    }
+
     const lastThree = resinstances.slice(0, 3)
 
-    const user = resinstances[0]?.user;
     console.log(user)
-    console.log(user?.AvatarUrl)
-
 
     let calorieCount = 0;
     resinstances[0]?.mealList.forEach(meal => {
@@ -31,6 +31,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         getResinstances();
+        getUser();
     }, []);
 
     return (
