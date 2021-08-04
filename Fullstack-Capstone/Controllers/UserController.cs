@@ -16,6 +16,11 @@ namespace Fullstack_Capstone.Controllers
             _userRepository = userRepository;
         }
 
+        //[HttpGet("GetCurrentUser")]
+        //public IActionResult GetCurrentUser()
+        //{
+        //}
+
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {

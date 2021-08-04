@@ -41,8 +41,8 @@ const CaloriesChart = () => {
                 label: 'Calories Over Time',
                 data: calorieData.reverse(),
                 fill: false,
-                backgroundColor: '#fd5401',
-                borderColor: '#fd5401',
+                backgroundColor: '#FD874D',
+                borderColor: '#FD874D',
             },
         ],
     };

@@ -1,7 +1,55 @@
-.detailTitle {
+.DdetailTitle {
     margin-top: 20px;
     color: #fd5401;
     font-size: 4em;
     font-weight: bolder;
     border-bottom: solid 2px;
+}
+
+.DdetailHolder {
+    border: solid;
+}
+
+.DbeforeHolder {
+    border: solid;
+}
+
+.DemojiHeader {
+    border: solid;
+}
+
+.DemojiField {
+    border: solid;
+}
+
+.DweightHolder {
+    border: solid;
+}
+
+.DweightHeader {
+    border: solid;
+}
+
+.DweightField {
+    border: solid;
+}
+
+.dEditButton {
+    border: solid black;
+}
+
+.dDeleteButton {
+    border: solid black;
+}
+
+.dExerciseHeader {
+    border: solid black;
+}
+
+.dAddExerciseButton {
+    border: solid black;
+}
+
+.dMealHeader {
+    border: solid black;
 }

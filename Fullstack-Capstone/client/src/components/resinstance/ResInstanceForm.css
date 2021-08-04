@@ -1,7 +1,67 @@
-.fieldform {
+.raddFormA {
+    border: solid black;
+}
+
+.raddFormB {
+    border: solid black;
+}
+
+.raddFormC {
+    border: solid black;
+}
+
+.raddFormD {
+    border: solid black;
+}
+
+.raddfieldform {
     text-align: center;
     margin-top: 5em;
     margin-left: 35em;
     margin-right: 35em;
+    border: black solid;
+}
+
+.raddBeforeLabel {
+    border: black solid;
+}
+
+.raddBeforeMood {
+    border: black solid;
+}
+
+.raddAfterLabel {
+    border: black solid;
+}
+
+.raddAfterMood {
+    border: black solid;
+}
+
+.raddWeightLabel {
+    border: black solid;
+}
+
+.raddWeight {
+    border: black solid;
+}
+
+.raddJournalLabel {
+    border: black solid;
+}
+
+.raddJournal {
+    border: black solid;
+}
+
+.raddButtonBox {
+    border: black solid;
+}
+
+.raddCancelButton {
+    border: black solid;
+}
+
+.raddSaveButton {
     border: black solid;
 }

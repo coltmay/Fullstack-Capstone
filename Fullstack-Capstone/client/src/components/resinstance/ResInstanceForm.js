@@ -37,11 +37,11 @@ const ResInstanceForm = () => {
     console.log(resInstance)
 
     return (
-        <div className="fieldform">
+        <div className="raddfieldform">
             <Form>
-                <FormGroup>
-                    <Label for="beforeMood">Mood Before</Label>
-                    <Input type="select" name="beforeMood" id="beforeMood"
+                <FormGroup className="raddFormA">
+                    <Label className="raddBeforeLabel" for="beforeMood">Mood Before</Label>
+                    <Input type="select" name="raddBeforeMood" id="beforeMood"
                         value={resInstance.beforeMood}
                         onChange={handleInputChange}>
                         <option>&#128512;</option> {/* Normal Smile */}
@@ -74,9 +74,9 @@ const ResInstanceForm = () => {
                         <option>&#128175;</option> {/* 100 */}
                     </Input>
                 </FormGroup>
-                <FormGroup>
-                    <Label for="afterMood">Mood After</Label>
-                    <Input type="select" name="afterMood" id="afterMood"
+                <FormGroup className="raddFormB">
+                    <Label className="raddAfterLabel" for="afterMood">Mood After</Label>
+                    <Input className="raddAfterMood" type="select" name="afterMood" id="afterMood"
                         value={resInstance.afterMood}
                         onChange={handleInputChange}>
                         <option>&#128512;</option> {/* Normal Smile */}
@@ -109,20 +109,22 @@ const ResInstanceForm = () => {
                         <option>&#128175;</option> {/* 100 */}
                     </Input>
                 </FormGroup>
-                <FormGroup>
-                    <Label for="userWeight">Weight</Label>
-                    <Input type="int" name="userWeight" id="userWeight"
+                <FormGroup className="raddFormC">
+                    <Label className="raddWeightLabel" for="userWeight">Weight</Label>
+                    <Input className="raddWeight" type="int" name="userWeight" id="userWeight"
                         value={resInstance.userWeight}
                         onChange={handleInputChange} />
                 </FormGroup>
-                <FormGroup>
-                    <Label for="journal">Journal</Label>
-                    <Input type="textarea" name="journal" id="journal"
+                <FormGroup className="raddFormD">
+                    <Label className="raddJournalLabel" for="journal">Journal</Label>
+                    <Input className="raddJournal" type="textarea" name="journal" id="journal"
                         value={resInstance.journal}
                         onChange={handleInputChange} />
                 </FormGroup>
-                <Button color="secondary" onClick={() => history.push(`/myresinstances`)}>Cancel</Button>
-                <Button color="primary" onClick={handleSave}>Save</Button>
+                <div className="raddButtonBox">
+                    <Button className="raddCancelButton" onClick={() => history.push(`/myresinstances`)}>Cancel</Button>
+                    <Button className="raddSaveButton" onClick={handleSave}>Save</Button>
+                </div>
             </Form>
         </div>
     );
