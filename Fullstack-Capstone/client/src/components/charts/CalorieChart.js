@@ -14,19 +14,19 @@ const CaloriesChart = () => {
         getResinstances();
     }, []);
 
-    const last20Res = resinstances.slice(0, 20);
+    const last7Res = resinstances.slice(0, 20);
 
     let dateLabels = [];
     let calorieData = [];
 
 
-    last20Res.forEach(res => {
+    last7Res.forEach(res => {
         dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}`);
     })
 
 
 
-    last20Res.forEach(res => {
+    last7Res.forEach(res => {
         let dayCalorie = 0;
         res.mealList.forEach(meal => {
             dayCalorie += meal.calories;

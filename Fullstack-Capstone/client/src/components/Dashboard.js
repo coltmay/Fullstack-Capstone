@@ -43,7 +43,7 @@ const Dashboard = () => {
                     <div className="detailContainer">
                         <h6><b>Last ResInstances •</b> {`${resinstances[0]?.date.slice(5, 7)}/${resinstances[0]?.date.slice(8, 10)}/${resinstances[0]?.date.slice(0, 4)}`}</h6>
                         <h6><b>Total ResInstances •</b> {resinstances.length}</h6>
-                        <h6><b>Current Weight •</b> {resinstances[0]?.userWeight} lbs</h6>
+                        <h6><b>Last Weigh-In •</b> {resinstances[0]?.userWeight} lbs</h6>
                         <h6><b>Last Calorie Count •</b> {calorieCount} calories</h6>
 
                     </div>
