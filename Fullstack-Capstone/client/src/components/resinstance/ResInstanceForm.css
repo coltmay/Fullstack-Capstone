@@ -91,7 +91,7 @@
 
 .raddSaveButton {
     background-color: #fd5401;
-    border: none
+    border: solid #fd5401;
 }
 
 .raddCancelButton:hover {

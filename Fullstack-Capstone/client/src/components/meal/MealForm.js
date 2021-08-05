@@ -36,20 +36,24 @@ const MealForm = () => {
 
     return (
         <Form className="mealFormBin">
-            <FormGroup className="mealFormNameBin">
-                <Label className="mealFormNameLabel" for="name">Meal</Label>
-                <Input className="mealFormNameInput" type="text" name="name" id="name"
-                    value={meal.name}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup className="mealFormCalorieBin">
-                <Label className="mealFormCalorieLabel" for="calories">Calories</Label>
-                <Input className="mealFormCalorieInput" type="text" name="calories" id="calories"
-                    value={meal.calories}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <Button className="mealFormSave" onClick={handleSave}>Save</Button>
-            <Button className="mealFormCancel" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
+            <div className="mealFormMain">
+                <FormGroup className="mealFormNameBin">
+                    <Label className="mealFormNameLabel" for="name">Meal</Label>
+                    <Input className="mealFormNameInput" type="text" name="name" id="name"
+                        value={meal.name}
+                        onChange={handleInputChange} />
+                </FormGroup>
+                <FormGroup className="mealFormCalorieBin">
+                    <Label className="mealFormCalorieLabel" for="calories">Calories</Label>
+                    <Input className="mealFormCalorieInput" type="text" name="calories" id="calories"
+                        value={meal.calories}
+                        onChange={handleInputChange} />
+                </FormGroup>
+            </div>
+            <div className="mealFormButtonBin">
+                <Button className="mealFormCancel" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
+                <Button className="mealFormSave" onClick={handleSave}>Save</Button>
+            </div>
         </Form>
     );
 };

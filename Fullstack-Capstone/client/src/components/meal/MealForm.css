@@ -1,35 +1,57 @@
 .mealFormBin {
-    border: solid;
+    margin-top: 15em;
+    margin-left: 35em;
+    margin-right: 35em;
+}
+
+.mealFormMain {
+    display: flex;
+    width: 100%;
 }
 
 .mealFormNameBin {
-    border: solid;
+    width: 47%;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
 }
 
-.mealFormNameLabel {
-    border: solid;
-}
+.mealFormNameLabel {}
 
-.mealFormNameInput {
-    border: solid
-}
+.mealFormNameInput {}
 
 .mealFormCalorieBin {
-    border: solid;
+    width: 47%;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+    margin-left: auto;
 }
 
-.mealFormCalorieLabel {
-    border: solid;
-}
+.mealFormCalorieLabel {}
 
-.mealFormCalorieInput {
-    border: solid;
+.mealFormCalorieInput {}
+
+.mealFormButtonBin {
+    margin-top: 3em;
+    text-align: end;
 }
 
 .mealFormSave {
-    border: solid black;
+    margin-left: 3em;
+    background-color: #fd5401;
+    border: solid #fd5401;
 }
 
 .mealFormCancel {
-    border: solid black;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.mealFormSave:hover {
+    background-color: #da4900;
+}
+
+.mealFormCancel:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
 }
