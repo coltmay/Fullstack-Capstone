@@ -1,45 +1,119 @@
+.DheaderBin {
+    margin-top: 1em;
+    border-top: #fd5401 2px solid;
+    border-bottom: #fd5401 2px solid;
+    display: flex;
+    align-items: center;
+}
+
+.DprofPic {
+    width: 70px;
+    height: 100%;
+    border-radius: 50%;
+    margin-left: 2em;
+}
+
 .DdetailTitle {
-    margin-top: 20px;
     color: #fd5401;
     font-size: 4em;
+    font-style: italic;
     font-weight: bolder;
-    border-bottom: solid 2px;
+    margin-left: auto;
+    margin-right: .25em;
 }
 
-.DdetailHolder {
-    border: solid;
-}
-
-.DbeforeHolder {
-    border: solid;
-}
-
-.DemojiHeader {
-    border: solid;
-}
-
-.DemojiField {
-    border: solid;
-}
-
-.DweightHolder {
-    border: solid;
-}
-
-.DweightHeader {
-    border: solid;
-}
-
-.DweightField {
-    border: solid;
+.dButtonHolder {
+    margin-top: 1em;
+    display: flex;
 }
 
 .dEditButton {
-    border: solid black;
+    margin-left: 1em;
+    background-color: #fd5401;
+    border: none
 }
 
 .dDeleteButton {
-    border: solid black;
+    margin-right: 1em;
+    margin-left: auto;
+    background-color: #fd0901;
+    border: none
+}
+
+.dEditButton:hover {
+    margin-left: 1em;
+    background-color: #da4900;
+    border: none
+}
+
+.dDeleteButton:hover {
+    margin-right: 1em;
+    margin-left: auto;
+    background-color: #b80600;
+    border: none
+}
+
+.DemojiHeader {
+    font-weight: bold;
+}
+
+.DemojiHolder {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: space-evenly;
+}
+
+.DweightcalHolder {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: space-evenly;
+}
+
+.DbeforeHolder {
+    text-align: center;
+    width: 45%;
+}
+
+.DweightBin {
+    text-align: center;
+    width: 45%;
+}
+
+.DcalorieBin {
+    text-align: center;
+    width: 45%;
+}
+
+.DafterHolder {
+    text-align: center;
+    width: 45%;
+}
+
+.DemojiField {
+    margin-top: -15px;
+    font-size: xx-large;
+}
+
+.DweightHeader {
+    font-weight: bold;
+}
+
+.DweightField {
+    margin-top: -15px;
+    font-size: xx-large;
+}
+
+.DcalorieHeader {
+    font-weight: bold;
+}
+
+.DcalorieField {
+    margin-top: -15px;
+    font-size: xx-large;
 }
 
 .dExerciseHeader {

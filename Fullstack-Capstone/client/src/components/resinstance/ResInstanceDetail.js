@@ -59,36 +59,46 @@ const ResInstanceDetail = () => {
         getMeals();
     }, [resinstance])
 
+    console.log(resinstance)
+
     return (
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
-                    <h1 className="DdetailTitle">{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
+                    <div className="DheaderBin">
+                        <img className="DprofPic" src={resinstance.user?.avatarUrl} alt="profile picture"></img>
+                        <h1 className="DdetailTitle">{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
+                    </div>
+                    <div className="dButtonHolder">
+                        <Link to={`/resinstances/edit/${resinstance.id}`}><Button className="dEditButton">Edit</Button></Link>
+                        <Button className="dDeleteButton" onClick={() => deleteCurrentResInstance(id)}>Delete</Button>
+                    </div>
                     <div>
                         <div className="DdetailHolder">
-                            <div className="DbeforeHolder">
-                                <h3 className="DemojiHeader">Mood Before</h3>
-                                <h3 className="DemojiField">{resinstance.beforeMood}</h3>
+                            <div className="DemojiHolder">
+                                <div className="DbeforeHolder">
+                                    <p className="DemojiHeader">Mood Before</p>
+                                    <p className="DemojiField">{resinstance.beforeMood}</p>
+                                </div>
+                                <div className="DafterHolder">
+                                    <p className="DemojiHeader">Mood After</p>
+                                    <p className="DemojiField">{resinstance.afterMood}</p>
+                                </div>
                             </div>
-                            <div className="DafterHolder">
-                                <h3 className="DemojiHeader">Mood After</h3>
-                                <h3 className="DemojiField">{resinstance.afterMood}</h3>
-                            </div>
-                            <div className="DemojiHeader">
-                                <h3 className="DweightHeader">My Weight</h3>
-                                <h3 className="DweightField">{resinstance.userWeight} lbs</h3>
-                            </div>
-                            <div className="DcalorieHolder">
-                                <h3 className="DcalorieHeader">Calories</h3>
-                                <h3 className="DcalorieField">{totalCalories}</h3>
+                            <div className="DweightcalHolder">
+                                <div className="DweightBin">
+                                    <p className="DweightHeader">My Weight</p>
+                                    <p className="DweightField">{resinstance.userWeight} lbs</p>
+                                </div>
+                                <div className="DcalorieBin">
+                                    <p className="DcalorieHeader">Calories</p>
+                                    <p className="DcalorieField">{totalCalories}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <Link to={`/resinstances/edit/${resinstance.id}`}><Button className="dEditButton">Edit</Button>
-                    </Link>
-                    <Button className="dDeleteButton" onClick={() => deleteCurrentResInstance(id)}>Delete</Button>
                     <div>
-                        <h3 className="dExerciseHeader">Exercises</h3>
+                        <p className="dExerciseHeader">Exercises</p>
                         {rexes.map((rex) => (
                             <RexCard rex={rex} key={rex.id} resinstance={resinstance} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
                         ))}
@@ -96,14 +106,14 @@ const ResInstanceDetail = () => {
                         </Link>
                     </div>
                     <div>
-                        <h3 className="dMealHeader">Meals</h3>
+                        <p className="dMealHeader">Meals</p>
                         {meals.map((meal) => (
                             <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
                         ))}
                         <Link to={`/meals/form/${id}`}><Button className="dMealButton">Add Meal</Button>
                         </Link>
                     </div>
-                    <h2 className="dJournalHeader">Journal</h2>
+                    <p className="dJournalHeader">Journal</p>
                     <p className="dJournalEntry">{resinstance.journal}</p>
                     <Button className="dBackButton" onClick={() => history.push(`/myresinstances`)}>Back</Button>
                 </div>

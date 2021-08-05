@@ -18,7 +18,7 @@ export default function Login() {
     };
 
     return (
-        <Form onSubmit={loginSubmit}>
+        <Form className="logForm" onSubmit={loginSubmit}>
             <fieldset>
                 <FormGroup>
                     <Label className="logEmailLabel" for="email">Email</Label>
@@ -28,12 +28,12 @@ export default function Login() {
                     <Label className="logPasswordLabel" for="password">Password</Label>
                     <Input className="logPasswordInput" id="password" type="password" onChange={e => setPassword(e.target.value)} />
                 </FormGroup>
-                <FormGroup>
+                <FormGroup className="logButtonBin">
                     <Button className="logButton">Login</Button>
                 </FormGroup>
-                <em className="logRegisterString">
+                <div className="logRegisterString">
                     Not registered? <Link to="register">Register</Link>
-                </em>
+                </div>
             </fieldset>
         </Form>
     );

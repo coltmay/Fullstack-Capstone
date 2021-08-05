@@ -1,23 +1,54 @@
+.logForm {
+    margin-top: 7em;
+    margin-left: 25em;
+    margin-right: 25em;
+    height: 81.80vh;
+}
+
 .logEmailLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .logEmailInput {
-    border: black solid;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
 .logPasswordLabel {
-    border: black solid;
+    margin-top: 5em;
+    font-weight: bold;
+    color: #999;
 }
 
 .logPasswordInput {
-    border: black solid;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.logButtonBin {
+    text-align: center;
 }
 
 .logButton {
-    border: black solid;
+    margin-top: 10em;
+    margin-bottom: 17em;
 }
 
 .logRegisterString {
-    border: black solid;
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    margin-top: 1em;
 }
