@@ -15,7 +15,7 @@ const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
                         <Button className="rexDelete" onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</Button>
                     </div>
                 </div>
-                <p className="rexWeight">Weight Lifted • {rex.weight}</p>
+                <p className="rexWeight">Weight Lifted • {rex.weight} lbs</p>
                 <p className="rexDifficulty">Difficulty • {rex.difficulty}</p>
                 <div className="rexDetailsBin">
                     <Link to={`/Rex/detail/${resinstance.id}/${rex.id}`} ><Button className="rexDetails">Details</Button></Link>

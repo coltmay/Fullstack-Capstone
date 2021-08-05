@@ -23,12 +23,14 @@ const ExerciseList = () => {
         <>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link to="exercise/form"><Button className="elAddButton">Add</Button></Link>
+                    <div className="elButtonHolder">
+                        <Link to="exercise/form"><Button className="elAddButton">Add</Button></Link>
+                    </div>
                     {exercises.map((exercise) => (
                         <ExerciseCard exercise={exercise} key={exercise.id} resinstanceid={resinstanceid} />
                     ))}
                 </div>
-                {resinstanceid ? <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</Button> : null}
+                {resinstanceid ? <div className="elButtonHolder"><Button className="elBackButton" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</Button></div> : null}
             </div>
         </>
     );

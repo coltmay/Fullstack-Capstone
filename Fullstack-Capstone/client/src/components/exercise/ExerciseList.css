@@ -2,26 +2,29 @@
     height: 100vh;
 }
 
+.elButtonHolder {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 .elAddButton {
-    border: solid black;
+    background-color: #fd5401;
+    border: none
 }
 
-.exCardBody {
-    border: solid black;
+.elAddButton:hover {
+    background-color: #da4900;
 }
 
-.exName {
-    border: solid black;
+.elBackButton {
+    margin-top: 3em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
 }
 
-.exDescription {
-    border: solid black;
-}
-
-.exAddButton {
-    border: solid black;
-}
-
-.exDetailButton {
-    border: solid black;
+.elBackButton:hover {
+    background-color: #da4900;
+    border: solid#da4900;
 }

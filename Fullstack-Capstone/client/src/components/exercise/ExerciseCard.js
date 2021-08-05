@@ -7,8 +7,8 @@ const ExerciseCard = ({ exercise, resinstanceid }) => {
 
     let description = exercise.description;
 
-    if (description.length > 250) {
-        description = description.substring(0, 250) + "...";
+    if (description.length > 575) {
+        description = description.substring(0, 575) + "...";
     }
 
 
@@ -17,8 +17,9 @@ const ExerciseCard = ({ exercise, resinstanceid }) => {
             <CardBody className="exCardBody">
                 <p className="exName">{exercise.name}</p>
                 <p className="exDescription">{description}</p>
-                {resinstanceid ? <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} ><Button className="exAddButton">Add To ResInstance</Button></Link> : null}
-                <Link to={`/exercise/detail/${exercise.id}`}><Button className="exDetailButton">Details</Button></Link>
+                <div className="exButtonHolder">
+                    {resinstanceid ? <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} ><Button className="exAddButton">Add To ResInstance</Button></Link> : null}
+                    <br></br><Link to={`/exercise/detail/${exercise.id}`}><Button className="exDetailButton">Details</Button></Link></div>
             </CardBody>
         </Card>
     );

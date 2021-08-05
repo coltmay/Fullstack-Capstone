@@ -1,67 +1,105 @@
+.raddSuperForm {
+    display: flex;
+    width: 100%;
+}
+
+.raddMegaForm {}
+
 .raddFormA {
-    border: solid black;
+    text-align: center;
+    width: 47%;
 }
 
 .raddFormB {
-    border: solid black;
+    width: 47%;
+    margin-left: auto;
 }
 
 .raddFormC {
-    border: solid black;
+    width: 47%;
 }
 
-.raddFormD {
-    border: solid black;
-}
+.raddFormD {}
 
 .raddfieldform {
     text-align: center;
     margin-top: 5em;
     margin-left: 35em;
     margin-right: 35em;
-    border: black solid;
 }
 
 .raddBeforeLabel {
-    border: black solid;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
 }
 
 .raddBeforeMood {
-    border: black solid;
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
+    background-color: #f7f7fa;
+    border: none;
 }
 
 .raddAfterLabel {
-    border: black solid;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
 }
 
 .raddAfterMood {
-    border: black solid;
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
+    background-color: #f7f7fa;
+    border: none;
 }
 
 .raddWeightLabel {
-    border: black solid;
+    margin-top: 4em;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
 }
 
-.raddWeight {
-    border: black solid;
-}
+.raddWeight {}
 
 .raddJournalLabel {
-    border: black solid;
+    margin-top: 4em;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
 }
 
 .raddJournal {
-    border: black solid;
+    height: 17em;
 }
 
 .raddButtonBox {
-    border: black solid;
+    margin-top: 4em;
+    margin-bottom: 3em;
+    text-align: end;
 }
 
 .raddCancelButton {
-    border: black solid;
+    margin-right: 3em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
 }
 
 .raddSaveButton {
-    border: black solid;
+    background-color: #fd5401;
+    border: none
+}
+
+.raddCancelButton:hover {
+    margin-right: 3em;
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.raddSaveButton:hover {
+    background-color: #da4900;
 }
