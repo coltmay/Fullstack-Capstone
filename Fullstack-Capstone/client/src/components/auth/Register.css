@@ -1,63 +1,145 @@
+.regForm {
+    margin-top: 7em;
+    margin-left: 25em;
+    margin-right: 25em;
+    height: 81.80vh;
+}
+
+.regNameBin {
+    display: flex;
+}
+
+.regFirstNameBin {
+    width: 47%;
+}
+
+.regLastNameBin {
+    width: 47%;
+    margin-left: auto;
+}
+
 .regFirstLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regFirstInput {
-    border: black solid;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
 .regLastLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regLastInput {
-    border: black solid;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
 .regUserLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regUserInput {
-    border: black solid;
+    width: 47%;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
 .regProPicLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regProPicInput {
-    border: black solid;
+    margin-top: 0.75em;
+    outline: none;
 }
 
 .regEmailLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regEmailInput {
-    border: black solid;
+    width: 47%;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
 .regPasswordLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regPasswordInput {
-    border: black solid;
+    width: 47%;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
 .regPasswordLabel {
-    border: black solid;
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regConfirmPasswordLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
 }
 
 .regConfirmPasswordInput {
-    border: black solid;
+    width: 47%;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
 }
 
-.regConfirmPasswordInput {
-    border: black solid;
+.regButtonBin {
+    margin-top: 4em;
+    text-align: center;
 }
 
 .regButton {
-    border: black solid;
+    text-align: center;
 }

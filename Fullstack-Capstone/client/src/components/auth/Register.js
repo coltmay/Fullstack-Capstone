@@ -53,22 +53,25 @@ export default function Register() {
 
 
     return (
-        <Form onSubmit={registerClick}>
+        <Form className="regForm" onSubmit={registerClick}>
             <fieldset>
-                <FormGroup>
-                    <Label className="regFirstLabel" htmlFor="firstName">First Name</Label>
-                    <Input className="regFirstInput" id="name" type="text" autoFocus onChange={e => setFirstName(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label className="regLastLabel" htmlFor="lastName">Last Name</Label>
-                    <Input className="regLastInput" id="name" type="text" autoFocus onChange={e => setLastName(e.target.value)} />
-                </FormGroup>
+                <div className="regNameBin">
+                    <FormGroup className="regFirstNameBin">
+                        <Label className="regFirstLabel" htmlFor="firstName">First Name</Label>
+                        <Input className="regFirstInput" id="name" type="text" autoFocus onChange={e => setFirstName(e.target.value)} />
+                    </FormGroup>
+                    <FormGroup className="regLastNameBin">
+                        <Label className="regLastLabel" htmlFor="lastName">Last Name</Label>
+                        <Input className="regLastInput" id="name" type="text" autoFocus onChange={e => setLastName(e.target.value)} />
+                    </FormGroup>
+                </div>
                 <FormGroup>
                     <Label className="regUserLabel" htmlFor="userName">Username</Label>
                     <Input className="regUserInput" id="name" type="text" autoFocus onChange={e => setUserName(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label className="regProPicLabel" for="avatarURL">Profile Picture</Label>
+                    <br></br>
                     <Input className="regProPicInput" id="file" type="file" onChange={uploadImage} />
                 </FormGroup>
                 <FormGroup>
@@ -80,10 +83,10 @@ export default function Register() {
                     <Input className="regPasswordInput" id="password" type="password" onChange={e => setPassword(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
-                    <Label className="regConfirmPasswordInput" for="confirmPassword">Confirm Password</Label>
+                    <Label className="regConfirmPasswordLabel" for="confirmPassword">Confirm Password</Label>
                     <Input className="regConfirmPasswordInput" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
                 </FormGroup>
-                <FormGroup>
+                <FormGroup className="regButtonBin">
                     <Button className="regButton">Register</Button>
                 </FormGroup>
             </fieldset>
