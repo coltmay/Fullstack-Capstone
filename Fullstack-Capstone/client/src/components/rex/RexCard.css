@@ -1,31 +1,43 @@
 .rexMainCard {
-    border: solid black;
+    margin-bottom: 2em;
 }
 
-.rexCardBody {
-    border: solid black;
+.rexHeader {
+    display: flex;
 }
 
 .rexName {
-    border: solid black;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
+    border-bottom: #fd5401 solid 2px;
+    align-self: end;
+    flex-grow: 1;
+    margin-right: 1em;
 }
 
-.rexWeight {
-    border: solid black;
-}
-
-.rexDifficulty {
-    border: solid black;
-}
-
-.rexDetails {
-    border: solid black;
+.rexHeaderButtons {
+    margin-left: auto;
 }
 
 .rexEdit {
     border: solid black;
+    margin-right: 2em;
 }
 
 .rexDelete {
+    border: solid black;
+}
+
+.rexWeight {
+    color: rgb(153, 153, 153);
+}
+
+.rexDifficulty {
+    color: rgb(153, 153, 153);
+    margin-top: -.5em;
+}
+
+.rexDetails {
     border: solid black;
 }

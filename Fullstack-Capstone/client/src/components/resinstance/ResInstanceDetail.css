@@ -1,3 +1,7 @@
+.dresizer {
+    width: 95%;
+}
+
 .DheaderBin {
     margin-top: 1em;
     border-top: #fd5401 2px solid;
@@ -54,6 +58,8 @@
 }
 
 .DemojiHeader {
+    color: #fd5401;
+    font-size: x-large;
     font-weight: bold;
 }
 
@@ -99,6 +105,8 @@
 }
 
 .DweightHeader {
+    font-size: x-large;
+    color: #fd5401;
     font-weight: bold;
 }
 
@@ -108,6 +116,8 @@
 }
 
 .DcalorieHeader {
+    font-size: x-large;
+    color: #fd5401;
     font-weight: bold;
 }
 
@@ -117,29 +127,97 @@
 }
 
 .dExerciseHeader {
-    border: solid black;
+    margin-top: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #fd5401;
 }
 
-.dAddExerciseButton {
-    border: solid black;
+.resdetailAddExerciseButton {
+    margin-top: 2em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.resdetailAddExerciseButton:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
 }
 
 .dMealHeader {
-    border: solid black;
+    margin-top: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #fd5401;
 }
 
 .dMealButton {
-    border: solid black;
+    margin-top: 2em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.dButtonBox {
+    text-align: center;
+}
+
+.dMealButton:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.secondaryDetails {
+    border-top: #fd5401 2px solid;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dExerciseBin {
+    width: 45%;
+}
+
+.dMealBin {
+    width: 45%;
 }
 
 .dJournalHeader {
-    border: solid black;
+    margin-top: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #fd5401;
+}
+
+.journalBin {
+    border-top: #fd5401 2px solid;
 }
 
 .dJournalEntry {
-    border: solid black;
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-bottom: 5em;
+}
+
+.dBackButtonHolder {
+    text-align: center;
+    border-top: #fd5401 2px solid;
 }
 
 .dBackButton {
-    border: solid black;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+    margin-top: 5em;
+    margin-bottom: 8em;
+}
+
+.dBackButton:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
 }
