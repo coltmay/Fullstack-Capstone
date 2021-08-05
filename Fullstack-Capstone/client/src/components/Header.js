@@ -19,7 +19,7 @@ export default function Header({ isLoggedIn }) {
     return (
         <div>
             <Navbar className="navbarMain" style={{ backgroundColor: 'white', boxShadow: '5px .25px 5px #3F3F3F' }} dark expand="md">
-                <NavbarBrand className="navItem" style={{ color: 'black', fontWeight: 'bold' }} tag={RRNavLink} to="/">ResInstance</NavbarBrand>
+                <NavbarBrand className="navItem" style={{ color: 'black', fontWeight: 'bold' }} tag={RRNavLink} to="/dashboard">ResInstance</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

@@ -1,0 +1,35 @@
+.mealFormBin {
+    border: solid;
+}
+
+.mealFormNameBin {
+    border: solid;
+}
+
+.mealFormNameLabel {
+    border: solid;
+}
+
+.mealFormNameInput {
+    border: solid
+}
+
+.mealFormCalorieBin {
+    border: solid;
+}
+
+.mealFormCalorieLabel {
+    border: solid;
+}
+
+.mealFormCalorieInput {
+    border: solid;
+}
+
+.mealFormSave {
+    border: solid black;
+}
+
+.mealFormCancel {
+    border: solid black;
+}

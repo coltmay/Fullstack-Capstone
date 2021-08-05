@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import "./ExerciseCard.css"
 
 const ExerciseCard = ({ exercise, resinstanceid }) => {
 
@@ -12,12 +13,12 @@ const ExerciseCard = ({ exercise, resinstanceid }) => {
 
 
     return (
-        <Card >
-            <CardBody>
-                <p>{exercise.name}</p>
-                <p>{description}</p>
-                {resinstanceid ? <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} ><Button color="primary">Add To ResInstance</Button></Link> : null}
-                <Link to={`/exercise/detail/${exercise.id}`}><Button color="secondary">Details</Button></Link>
+        <Card className="exMainCard">
+            <CardBody className="exCardBody">
+                <p className="exName">{exercise.name}</p>
+                <p className="exDescription">{description}</p>
+                {resinstanceid ? <Link to={`/rex/form/${resinstanceid}/${exercise.id}`} ><Button className="exAddButton">Add To ResInstance</Button></Link> : null}
+                <Link to={`/exercise/detail/${exercise.id}`}><Button className="exDetailButton">Details</Button></Link>
             </CardBody>
         </Card>
     );

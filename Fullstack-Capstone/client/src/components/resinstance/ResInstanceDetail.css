@@ -53,3 +53,19 @@
 .dMealHeader {
     border: solid black;
 }
+
+.dMealButton {
+    border: solid black;
+}
+
+.dJournalHeader {
+    border: solid black;
+}
+
+.dJournalEntry {
+    border: solid black;
+}
+
+.dBackButton {
+    border: solid black;
+}

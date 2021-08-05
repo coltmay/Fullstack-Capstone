@@ -22,8 +22,6 @@ const Dashboard = () => {
 
     const lastThree = resinstances.slice(0, 3)
 
-    console.log(user)
-
     let calorieCount = 0;
     resinstances[0]?.mealList.forEach(meal => {
         calorieCount += meal.calories;

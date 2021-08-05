@@ -20,7 +20,7 @@ const ResInstanceList = () => {
         <>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link className="add-button" to="resinstances/form" ><Button color="primary">Add</Button></Link>
+                    <Link className="add-button" to="resinstances/form" ><Button className="primary">Add</Button></Link>
                     {resinstances.map((resinstance) => (
                         <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                     ))}

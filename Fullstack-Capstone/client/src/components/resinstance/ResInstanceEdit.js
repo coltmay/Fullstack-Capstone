@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { getResInstanceById, updateResInstance } from "../../modules/resinstanceManager";
+import "./ResInstanceEdit.css"
 
 const ResInstanceForm = () => {
     const [resInstance, setResInstance] = useState();
@@ -45,39 +46,38 @@ const ResInstanceForm = () => {
 
     return (
         <Form>
-            <h1>ResInstance Form</h1>
             <FormGroup>
                 <Input hidden name="id" id="id"
                     value={resInstance?.id}
                     onChange={handleInputChange} />
             </FormGroup>
-            <FormGroup>
-                <Label for="beforeMood">Mood Before</Label>
-                <Input type="text" name="beforeMood" id="beforeMood"
+            <FormGroup className="resEditMoodBeforeBin">
+                <Label className="resEditMoodBeforeLabel" for="beforeMood">Mood Before</Label>
+                <Input className="resEditMoodBeforeInput" type="text" name="beforeMood" id="beforeMood"
                     value={resInstance?.beforeMood}
                     onChange={handleInputChange} />
             </FormGroup>
-            <FormGroup>
-                <Label for="afterMood">Mood After</Label>
-                <Input type="text" name="afterMood" id="afterMood"
+            <FormGroup className="resEditMoodAfterBin">
+                <Label className="resEditMoodAfterLabel" for="afterMood">Mood After</Label>
+                <Input className="resEditMoodAfterInput" type="text" name="afterMood" id="afterMood"
                     value={resInstance?.afterMood}
                     onChange={handleInputChange} />
             </FormGroup>
-            <FormGroup>
-                <Label for="userWeight">Weight</Label>
-                <Input type="int" name="userWeight" id="userWeight"
+            <FormGroup className="resEditWeightBin">
+                <Label className="resEditWeightLabel" for="userWeight">Weight</Label>
+                <Input className="resEditWeightInput" type="int" name="userWeight" id="userWeight"
                     value={resInstance?.userWeight}
                     onChange={handleInputChange} />
             </FormGroup>
-            <FormGroup>
-                <Label for="journal">Journal</Label>
-                <Input type="textarea" name="journal" id="journal"
+            <FormGroup className="resEditJournalBin">
+                <Label className="resEditJournalLabel" for="journal">Journal</Label>
+                <Input className="resEditJournalInput" type="textarea" name="journal" id="journal"
                     value={resInstance?.journal}
                     onChange={handleInputChange} />
             </FormGroup>
-            <Button color="primary" onClick={handleSave}>Save</Button>
-            <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
-        </Form>
+            <Button className="resEditSave" onClick={handleSave}>Save</Button>
+            <Button className="resEditCancel" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
+        </Form >
     );
 };
 

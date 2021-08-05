@@ -18,9 +18,9 @@ const ResInstanceDetail = () => {
     var date = new Date(Date.parse(resinstance.date));
     var totalCalories = 0;
 
-    // resinstance.mealList.forEach(meal => {
-    //     totalCalories += meal.calories;
-    // });
+    resinstance.mealList?.forEach(meal => {
+        totalCalories += meal.calories;
+    });
 
     const getResinstance = () => {
         getResInstanceById(id).then(resinstance => setResinstance(resinstance));
@@ -100,12 +100,12 @@ const ResInstanceDetail = () => {
                         {meals.map((meal) => (
                             <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
                         ))}
-                        <Link to={`/meals/form/${id}`}><Button color="primary">Add Meal</Button>
+                        <Link to={`/meals/form/${id}`}><Button className="dMealButton">Add Meal</Button>
                         </Link>
                     </div>
-                    <h2>Journal</h2>
-                    <p>{resinstance.journal}</p>
-                    <Button color="secondary" onClick={() => history.push(`/myresinstances`)}>Back</Button>
+                    <h2 className="dJournalHeader">Journal</h2>
+                    <p className="dJournalEntry">{resinstance.journal}</p>
+                    <Button className="dBackButton" onClick={() => history.push(`/myresinstances`)}>Back</Button>
                 </div>
             </div>
         </div >

@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Link, useHistory, useParams } from "react-router-dom"
 import ExerciseCard from './ExerciseCard';
 import { getAllExercises } from "../../modules/exerciseManager";
+import "./ExerciseList.css";
 
 
 const ExerciseList = () => {
@@ -22,7 +23,7 @@ const ExerciseList = () => {
         <>
             <div className="container">
                 <div className="row justify-content-center">
-                    <Link to="exercise/form"><Button color="primary">Add</Button></Link>
+                    <Link to="exercise/form"><Button className="elAddButton">Add</Button></Link>
                     {exercises.map((exercise) => (
                         <ExerciseCard exercise={exercise} key={exercise.id} resinstanceid={resinstanceid} />
                     ))}

@@ -20,7 +20,7 @@ const WeightChart = () => {
     let weightData = [];
 
     last20Res.forEach(res => {
-        dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}/${new Date(res.date).getFullYear()}`);
+        dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}`);
     })
 
     last20Res.forEach(res => {
