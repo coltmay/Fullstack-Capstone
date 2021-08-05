@@ -26,17 +26,17 @@ export default function Header({ isLoggedIn }) {
                         {isLoggedIn &&
                             <>
                                 <NavItem className="navItem">
-                                    <NavLink style={{ color: '#999', fontWeight: 'bold' }} tag={RRNavLink} to="/dashboard">Dashboard</NavLink>
+                                    <NavLink className="navigationLink" activeStyle={{ color: '#fd5401', border: 'solid #fd5401' }} style={{ color: '#999', fontWeight: 'bold', border: 'solid white' }} tag={RRNavLink} to="/dashboard">Dashboard</NavLink>
                                 </NavItem>
                                 <NavItem className="navItem" >
-                                    <NavLink style={{ color: '#999', fontWeight: 'bold' }} tag={RRNavLink} to="/myresinstances">My ResInstances</NavLink>
+                                    <NavLink className="navigationLink" activeStyle={{ color: '#fd5401', border: 'solid #fd5401' }} style={{ color: '#999', fontWeight: 'bold', border: 'solid white' }} tag={RRNavLink} to="/myresinstances">My ResInstances</NavLink>
                                 </NavItem >
                                 <NavItem className="navItem">
-                                    <NavLink tag={RRNavLink} style={{ color: '#999', fontWeight: 'bold' }} to="/exercises">Exercises</NavLink>
+                                    <NavLink className="navigationLink" tag={RRNavLink} activeStyle={{ color: '#fd5401', border: 'solid #fd5401' }} style={{ color: '#999', fontWeight: 'bold', border: 'solid white' }} to="/exercises">Exercises</NavLink>
                                 </NavItem>
                                 <NavItem className="navItem logoutNav">
                                     <a aria-current="page" className="nav-link"
-                                        style={{ cursor: "pointer", color: '#999', fontWeight: 'bold' }} onClick={logout}>Logout</a>
+                                        activeStyle={{ color: '#fd5401' }} style={{ cursor: "pointer", color: '#999', fontWeight: 'bold' }} onClick={logout}>Logout</a>
                                 </NavItem>
                             </>
                         }

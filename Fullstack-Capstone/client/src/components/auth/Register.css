@@ -9,6 +9,19 @@
     display: flex;
 }
 
+.regPasswordGroup {
+    display: flex;
+}
+
+.regPassBin {
+    width: 47%;
+}
+
+.regConfirmBin {
+    width: 47%;
+    margin-left: auto;
+}
+
 .regFirstNameBin {
     width: 47%;
 }
@@ -102,7 +115,6 @@
 }
 
 .regPasswordInput {
-    width: 47%;
     outline: none;
     background-color: #f7f7fa;
     border-radius: 0;
@@ -125,7 +137,6 @@
 }
 
 .regConfirmPasswordInput {
-    width: 47%;
     outline: none;
     background-color: #f7f7fa;
     border-radius: 0;

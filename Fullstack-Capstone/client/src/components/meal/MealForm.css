@@ -1,7 +1,12 @@
+.raddfieldform {
+    padding-bottom: 4em;
+}
+
 .mealFormBin {
     margin-top: 15em;
     margin-left: 35em;
     margin-right: 35em;
+    padding-bottom: 30em;
 }
 
 .mealFormMain {

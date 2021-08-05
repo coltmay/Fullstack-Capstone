@@ -30,7 +30,7 @@ const ResInstanceForm = () => {
         evt.preventDefault();
         addResInstance(resInstance).then((p) => {
             // Navigate the user back to the home route
-            history.push(`/myresinstances`);
+            history.push(`/resinstances/detail/${p}`);
         });
     };
 
@@ -115,7 +115,7 @@ const ResInstanceForm = () => {
                 </div>
                 <div className="raddMegaForm">
                     <FormGroup className="raddFormC">
-                        <Label className="raddWeightLabel" for="userWeight">Weight</Label>
+                        <Label className="raddWeightLabel" for="userWeight">My Weight</Label>
                         <Input className="raddWeight" type="int" name="userWeight" id="userWeight"
                             value={resInstance.userWeight}
                             onChange={handleInputChange} />

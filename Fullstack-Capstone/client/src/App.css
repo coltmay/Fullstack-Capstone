@@ -37,7 +37,11 @@
   }
 } */
 
+html {
+  background-color: #f7f7fa !important;
+}
+
 main {
   padding-top: 4em;
-  background-color: #f7f7fa;
+  background-color: #f7f7fa !important;
 }

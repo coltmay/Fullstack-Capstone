@@ -60,9 +60,9 @@ const Dashboard = () => {
                         {lastThree.map((resinstance) => (
                             <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                         ))}
-                    </div>
-                    <div className="viewButtonHolder">
-                        <Link to="myresinstances/" ><Button className="primary">View All</Button></Link>
+                        <div className="viewButtonHolder">
+                            <Link to="myresinstances" ><Button className="primary">View All</Button></Link>
+                        </div>
                     </div>
                 </div>
             </div>

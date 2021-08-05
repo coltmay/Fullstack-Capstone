@@ -5,6 +5,7 @@ import { Spinner } from "reactstrap";
 import Header from "./components/Header";
 import { onLoginStatusChange } from "./modules/authManager";
 import ApplicationViews from './components/ApplicationViews';
+import Footer from './components/Footer';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -24,6 +25,7 @@ function App() {
     <Router>
       <Header isLoggedIn={isLoggedIn} />
       <ApplicationViews isLoggedIn={isLoggedIn} />
+      <Footer />
     </Router>
   );
 }

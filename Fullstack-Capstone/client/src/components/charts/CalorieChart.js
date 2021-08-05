@@ -14,7 +14,7 @@ const CaloriesChart = () => {
         getResinstances();
     }, []);
 
-    const last7Res = resinstances.slice(0, 20);
+    const last7Res = resinstances.slice(0, 7);
 
     let dateLabels = [];
     let calorieData = [];
@@ -23,7 +23,6 @@ const CaloriesChart = () => {
     last7Res.forEach(res => {
         dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}`);
     })
-
 
 
     last7Res.forEach(res => {

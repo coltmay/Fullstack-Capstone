@@ -214,7 +214,7 @@ const ResInstanceForm = () => {
                 </div>
                 <div className="raddMegaForm">
                     <FormGroup className="raddFormC">
-                        <Label className="raddWeightLabel" for="userWeight">Weight</Label>
+                        <Label className="raddWeightLabel" for="userWeight">My Weight</Label>
                         <Input className="raddWeight" type="int" name="userWeight" id="userWeight"
                             value={resInstance?.userWeight}
                             onChange={handleInputChange} />

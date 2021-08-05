@@ -78,14 +78,16 @@ export default function Register() {
                     <Label className="regEmailLabel" for="email">Email</Label>
                     <Input className="regEmailInput" id="email" type="text" onChange={e => setEmail(e.target.value)} />
                 </FormGroup>
-                <FormGroup>
-                    <Label className="regPasswordLabel" for="password">Password</Label>
-                    <Input className="regPasswordInput" id="password" type="password" onChange={e => setPassword(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label className="regConfirmPasswordLabel" for="confirmPassword">Confirm Password</Label>
-                    <Input className="regConfirmPasswordInput" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
-                </FormGroup>
+                <div className="regPasswordGroup">
+                    <FormGroup className="regPassBin">
+                        <Label className="regPasswordLabel" for="password">Password</Label>
+                        <Input className="regPasswordInput" id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                    </FormGroup>
+                    <FormGroup className="regConfirmBin">
+                        <Label className="regConfirmPasswordLabel" for="confirmPassword">Confirm Password</Label>
+                        <Input className="regConfirmPasswordInput" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+                    </FormGroup>
+                </div>
                 <FormGroup className="regButtonBin">
                     <Button className="regButton">Register</Button>
                 </FormGroup>

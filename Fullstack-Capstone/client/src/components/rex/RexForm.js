@@ -55,7 +55,7 @@ const RexForm = () => {
             <p className="rexForDesc">{exercise.description}</p>
             <div className="rexUserDataBin">
                 <FormGroup className="rexFormWeightBin">
-                    <Label className="rexFormWeightLable" for="weight">Weight</Label>
+                    <Label className="rexFormWeightLable" for="weight">Weight Lifted</Label>
                     <Input className="rexFormWeightInput" type="int" name="weight" id="weight"
                         value={rex.name}
                         onChange={handleInputChange} />

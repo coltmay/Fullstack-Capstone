@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+.row {
+    padding-bottom: 10em;
+}
+
 .primary {
     background-color: #fd5401;
     border: none
