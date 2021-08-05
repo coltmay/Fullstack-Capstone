@@ -34,7 +34,7 @@
 .dEditButton {
     margin-left: 1em;
     background-color: #fd5401;
-    border: none
+    border: none;
 }
 
 .dDeleteButton {
@@ -136,14 +136,12 @@
 
 .resdetailAddExerciseButton {
     margin-top: 2em;
-    color: #fd5401;
-    background-color: #f7f7fa;
-    border: solid #fd5401;
+    background-color: #fd5401;
+    border: none
 }
 
 .resdetailAddExerciseButton:hover {
-    background-color: #fd5401;
-    border: solid #fd5401;
+    background-color: #da4900;
 }
 
 .dMealHeader {
@@ -156,9 +154,8 @@
 
 .dMealButton {
     margin-top: 2em;
-    color: #fd5401;
-    background-color: #f7f7fa;
-    border: solid #fd5401;
+    background-color: #fd5401;
+    border: none
 }
 
 .dButtonBox {
@@ -166,8 +163,7 @@
 }
 
 .dMealButton:hover {
-    background-color: #fd5401;
-    border: solid #fd5401;
+    background-color: #da4900;
 }
 
 .secondaryDetails {

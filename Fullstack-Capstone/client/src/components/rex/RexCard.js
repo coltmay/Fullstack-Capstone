@@ -17,9 +17,9 @@ const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
                 </div>
                 <p className="rexWeight">Weight Lifted • {rex.weight}</p>
                 <p className="rexDifficulty">Difficulty • {rex.difficulty}</p>
-                <Link to={`/Rex/detail/${resinstance.id}/${rex.id}`} ><Button className="rexDetails">Details</Button>
-                </Link>
-                <br></br>
+                <div className="rexDetailsBin">
+                    <Link to={`/Rex/detail/${resinstance.id}/${rex.id}`} ><Button className="rexDetails">Details</Button></Link>
+                </div>
             </CardBody>
         </Card >
     );

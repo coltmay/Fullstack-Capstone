@@ -21,12 +21,25 @@
 }
 
 .rexEdit {
-    border: solid black;
-    margin-right: 2em;
+    background-color: #fd5401;
+    border: none;
+    margin-right: 1em;
+}
+
+.rexEdit:hover {
+    background-color: #da4900;
+    border: none;
+    margin-right: 1em;
 }
 
 .rexDelete {
-    border: solid black;
+    background-color: #fd0901;
+    border: none
+}
+
+.rexDelete:hover {
+    background-color: #b80600;
+    border: none
 }
 
 .rexWeight {
@@ -38,6 +51,17 @@
     margin-top: -.5em;
 }
 
+.rexDetailsBin {
+    text-align: center;
+}
+
 .rexDetails {
-    border: solid black;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.rexDetails:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
 }

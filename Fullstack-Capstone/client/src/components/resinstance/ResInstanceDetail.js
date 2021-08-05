@@ -91,7 +91,7 @@ const ResInstanceDetail = () => {
                                     <p className="DweightField">{resinstance.userWeight} lbs</p>
                                 </div>
                                 <div className="DcalorieBin">
-                                    <p className="DcalorieHeader">Calories</p>
+                                    <p className="DcalorieHeader">Total Calories</p>
                                     <p className="DcalorieField">{totalCalories}</p>
                                 </div>
                             </div>
