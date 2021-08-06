@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { addExercise } from "../../modules/exerciseManager";
+import "./ExerciseForm.css";
 
 const ExerciseForm = () => {
     const emptyExercise = {
@@ -34,39 +35,43 @@ const ExerciseForm = () => {
     };
 
     return (
-        <Form>
-            <FormGroup>
-                <Label for="name">name</Label>
+        <Form className="exFormContainer">
+            <FormGroup className="exFormNameBin">
+                <Label className="exFormLabels" for="name">Exercise Name</Label>
                 <Input type="text" name="name" id="name"
                     value={exercise.name}
                     onChange={handleInputChange} />
             </FormGroup>
+            <div className="exFormSetRep">
+                <FormGroup className="exFormSetBin">
+                    <Label className="exFormLabels" for="sets">Recommended Sets</Label>
+                    <Input type="int" name="sets" id="sets"
+                        value={exercise.sets}
+                        onChange={handleInputChange} />
+                </FormGroup>
+                <FormGroup className="exFormRepBin">
+                    <Label className="exFormLabels" for="reps">Recommended Reps</Label>
+                    <Input type="int" name="reps" id="reps"
+                        value={exercise.reps}
+                        onChange={handleInputChange} />
+                </FormGroup>
+            </div>
             <FormGroup>
-                <Label for="sets">Recommended Sets</Label>
-                <Input type="int" name="sets" id="sets"
-                    value={exercise.sets}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="reps">Recommended Reps</Label>
-                <Input type="int" name="reps" id="reps"
-                    value={exercise.reps}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="description">Description</Label>
+                <Label className="exFormLabels" for="description">Description</Label>
                 <Input type="textarea" name="description" id="description"
                     value={exercise.description}
                     onChange={handleInputChange} />
             </FormGroup>
             <FormGroup>
-                <Label for="url">(Optional) URL</Label>
+                <Label className="exFormLabels" for="url">(Optional) URL</Label>
                 <Input type="text" name="url" id="url"
                     value={exercise.url}
                     onChange={handleInputChange} />
             </FormGroup>
-            <Button color="primary" onClick={handleSave}>Save</Button>
-            <Button color="secondary" onClick={() => history.push(`/exercises`)}>Cancel</Button>
+            <div className="exFormButtonBin">
+                <Button className="exFormCancelButton" onClick={() => history.push(`/exercises`)}>Cancel</Button>
+                <Button className="exFormSaveButton" onClick={handleSave}>Save</Button>
+            </div>
         </Form>
     );
 };

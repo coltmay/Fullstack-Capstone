@@ -1,0 +1,57 @@
+.exFormContainer {
+    text-align: center;
+    margin-top: 2em;
+    margin-left: 35em;
+    margin-right: 35em;
+    padding-bottom: 25em;
+}
+
+.exFormLabels {
+    margin-top: 1em;
+    width: 100%;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+    text-align: left;
+}
+
+.exFormNameBin {}
+
+.exFormSetRep {
+    display: flex;
+}
+
+.exFormSetBin {
+    width: 47%;
+}
+
+.exFormRepBin {
+    margin-left: auto;
+    width: 47%;
+}
+
+.exFormSaveButton {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.exFormSaveButton:hover {
+    background-color: #da4900;
+}
+
+.exFormCancelButton {
+    margin-right: 3em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.exFormCancelButton:hover {
+    margin-right: 3em;
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.exFormButtonBin {
+    margin-top: 3em;
+    text-align: end;
+}

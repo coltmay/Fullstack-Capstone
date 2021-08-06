@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { getRexById } from "../../modules/rexManager";
+import "./RexDetail.css";
 
 const RexDetail = () => {
     const [rex, setRex] = useState([]);
@@ -20,14 +21,19 @@ const RexDetail = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
-                    <h1>{rex.name}</h1>
-                    <h2>{rex.exercise?.name}</h2>
-                    <p>{rex.exercise?.description}</p>
-                    <p>Sets: {rex.exercise?.sets}</p>
-                    <p>Reps: {rex.exercise?.reps}</p>
-                    <p>Weight: {rex.weight}</p>
-                    <p>Difficulty: {rex.difficulty}</p>
-                    <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</Button>
+                    <h1 className="rexDetHeader">{rex.exercise?.name}</h1>
+                    <div className="rexDetSetRep">
+                        <p className="rexDetSets">Recommended Sets • {rex.exercise?.sets}</p>
+                        <p className="rexDetReps">Recommended Reps • {rex.exercise?.reps}</p>
+                    </div>
+                    <p className="rexDetDesc">{rex.exercise?.description}</p>
+                    <div className="rexDetWeightDiff">
+                        <p className="rexDetWeight">Weight Lifted (lbs) • {rex.weight}</p>
+                        <p className="rexDetDiff">Difficulty • {rex.difficulty}</p>
+                    </div>
+                    <div className="rexDetButtonBin">
+                        <Button className="rexDetBackButton" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Back</Button>
+                    </div>
                 </div>
             </div>
         </div>
