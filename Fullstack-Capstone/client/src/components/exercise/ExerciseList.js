@@ -3,28 +3,38 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Link, useHistory, useParams } from "react-router-dom"
 import ExerciseCard from './ExerciseCard';
 import { getAllExercises } from "../../modules/exerciseManager";
+import { getCurrentUser } from "../../modules/authManager";
 import "./ExerciseList.css";
 
 
 const ExerciseList = () => {
     const [exercises, setExercises] = useState([]);
+    const [user, setUser] = useState({});
     const history = useHistory();
     const { resinstanceid } = useParams();
+
 
     const getExercises = () => {
         getAllExercises().then(exercises => setExercises(exercises));
     };
 
+    const getUser = () => {
+        getCurrentUser().then(user => setUser(user));
+    }
+
     useEffect(() => {
         getExercises();
+        getUser();
     }, []);
+
+    console.log(user)
 
     return (
         <>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="elButtonHolder">
-                        <Link to="exercise/form"><Button className="elAddButton">Add</Button></Link>
+                        {(user.userTypeId === 1) ? <Link to="exercise/form"><Button className="elAddButton">Add</Button></Link> : null}
                     </div>
                     {exercises.map((exercise) => (
                         <ExerciseCard exercise={exercise} key={exercise.id} resinstanceid={resinstanceid} />
