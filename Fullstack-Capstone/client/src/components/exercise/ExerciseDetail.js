@@ -24,14 +24,20 @@ const ExerciseDetail = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div className="exDetailContainer">
             <div className="row justify-content-center">
                 <div className="col-sm-12 col-lg-6">
-                    <h1 className="exDetailName">{exercise.name}</h1>
-                    <Link to={`/exercise/edit/${exercise.id}`}><Button className="exDetailEdit">Edit</Button></Link>
-                    <Button className="exDetailDelete" onClick={() => deleteCurrentExercise(id)}>Delete</Button>
-                    <h4 className="exDetailSets">Recommended Sets: {exercise.sets}</h4>
-                    <h4 className="exDetailReps">Recommended Reps: {exercise.reps}</h4>
+                    <div className="exHeaderBin">
+                        <h1 className="exDetailName">{exercise.name}</h1>
+                        <div className="exButtonBin">
+                            <Link to={`/exercise/edit/${exercise.id}`}><Button className="exDetailEdit">Edit</Button></Link>
+                            <Button className="exDetailDelete" onClick={() => deleteCurrentExercise(id)}>Delete</Button>
+                        </div>
+                    </div>
+                    <div className="exSetRepHolder">
+                        <h4 className="exDetailSets">Recommended Sets • {exercise.sets}</h4>
+                        <h4 className="exDetailReps">Recommended Reps • {exercise.reps}</h4>
+                    </div>
                     <h4 className="exDetailDesc">{exercise.description}</h4>
                     <Button className="exDetailBack" onClick={() => history.push(`/exercises`)}>Back</Button>
                 </div>
