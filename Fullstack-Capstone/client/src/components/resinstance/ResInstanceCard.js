@@ -38,7 +38,7 @@ const ResInstanceCard = ({ resinstance }) => {
                             <CardText className="weightField">{resinstance.userWeight} lbs</CardText>
                         </div>
                         <div className="calorieHolder">
-                            <CardText className="weightHeader">Calories Eaten</CardText>
+                            <CardText className="weightHeader">Calories Consumed</CardText>
                             <CardText className="weightField">{totalCalories}</CardText>
                         </div>
                         <div className="calorieHolder">
