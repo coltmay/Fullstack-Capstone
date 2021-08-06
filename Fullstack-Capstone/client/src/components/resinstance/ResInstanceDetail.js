@@ -59,8 +59,6 @@ const ResInstanceDetail = () => {
         getMeals();
     }, [resinstance])
 
-    console.log(resinstance)
-
     return (
         <div className="container">
             <div className="row justify-content-center">

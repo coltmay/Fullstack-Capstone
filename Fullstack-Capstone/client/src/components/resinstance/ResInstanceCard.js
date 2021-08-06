@@ -19,8 +19,6 @@ const ResInstanceCard = ({ resinstance }) => {
         totalCalories += meal.calories;
     });
 
-    console.log(resinstance)
-
     return (
         <Card className="CardMain" >
             <CardBody>

@@ -27,8 +27,6 @@ const ExerciseList = () => {
         getUser();
     }, []);
 
-    console.log(user)
-
     return (
         <>
             <div className="container">

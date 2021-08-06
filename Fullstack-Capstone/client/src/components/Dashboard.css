@@ -4,9 +4,14 @@
 }
 
 .callToAction {
-    margin-top: 20em;
+    margin-top: 5em;
     text-align: center;
     color: rgb(153, 153, 153);
+}
+
+.callToActionArrow {
+    margin-top: 5em;
+    width: 100px;
 }
 
 .userPanel {

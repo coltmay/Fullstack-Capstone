@@ -34,8 +34,6 @@ const ResInstanceForm = () => {
         });
     };
 
-    console.log(resInstance)
-
     return (
         <div className="raddfieldform">
             <Form>

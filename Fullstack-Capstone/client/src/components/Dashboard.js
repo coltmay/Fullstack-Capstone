@@ -6,6 +6,7 @@ import { getResInstancesByUser } from "../modules/resinstanceManager";
 import { getCurrentUser } from "../modules/authManager";
 import WeightChart from "./charts/WeightChart";
 import CaloriesChart from "./charts/CalorieChart";
+import calltoActionArrow from "../img/callToActionArrow.png"
 import "./Dashboard.css"
 
 const Dashboard = () => {
@@ -57,7 +58,13 @@ const Dashboard = () => {
                 <div className="resinstanceList container">
                     <div className="row justify-content-center">
                         <Link className="add-button" to="resinstances/form" ><Button className="primary">Add</Button></Link>
-                        {resinstances.length === 0 ? <p className="callToAction">You don't have any ResInstances yet.<br></br><br></br>Let's change that.</p> : null}
+                        {resinstances.length === 0 ?
+                            <>
+                                {/* <img className="callToActionArrow" src={calltoActionArrow} alt="arrow"></img> */}
+                                <p className="callToAction">You don't have any ResInstances yet.<br></br><br></br>Let's change that.</p>
+                            </>
+
+                            : null}
                         {lastThree.map((resinstance) => (
                             <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                         ))}
