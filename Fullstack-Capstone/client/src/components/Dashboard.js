@@ -41,7 +41,7 @@ const Dashboard = () => {
                     </div>
                     <h2 className="userName">{user?.firstName} {user?.lastName}</h2>
                     <div className="detailContainer">
-                        <h6><b>Last ResInstances •</b> {`${resinstances[0]?.date.slice(5, 7)}/${resinstances[0]?.date.slice(8, 10)}/${resinstances[0]?.date.slice(0, 4)}`}</h6>
+                        <h6><b>Last ResInstance •</b> {resinstances[0] ? `${resinstances[0]?.date.slice(5, 7)}/${resinstances[0]?.date.slice(8, 10)}/${resinstances[0]?.date.slice(0, 4)}` : 'None'}</h6>
                         <h6><b>Total ResInstances •</b> {resinstances.length}</h6>
                         <h6><b>Last Weigh-In •</b> {resinstances[0]?.userWeight} lbs</h6>
                         <h6><b>Last Calorie Count •</b> {calorieCount} calories</h6>
@@ -61,7 +61,7 @@ const Dashboard = () => {
                             <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                         ))}
                         <div className="viewButtonHolder">
-                            <Link to="myresinstances" ><Button className="primary">View All</Button></Link>
+                            {resinstances[0] ? <Link to="myresinstances" ><Button className="primary">View All</Button></Link> : null}
                         </div>
                     </div>
                 </div>
