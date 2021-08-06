@@ -57,6 +57,7 @@ const Dashboard = () => {
                 <div className="resinstanceList container">
                     <div className="row justify-content-center">
                         <Link className="add-button" to="resinstances/form" ><Button className="primary">Add</Button></Link>
+                        {resinstances.length === 0 ? <p className="callToAction">You don't have any ResInstances yet.<br></br><br></br>Let's change that.</p> : null}
                         {lastThree.map((resinstance) => (
                             <ResInstanceCard resinstance={resinstance} key={resinstance.id} />
                         ))}

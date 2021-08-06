@@ -3,6 +3,12 @@
     padding-bottom: 18em;
 }
 
+.callToAction {
+    margin-top: 20em;
+    text-align: center;
+    color: rgb(153, 153, 153);
+}
+
 .userPanel {
     width: 30%;
     height: auto;
