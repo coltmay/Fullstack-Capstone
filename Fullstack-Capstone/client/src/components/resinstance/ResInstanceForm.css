@@ -1,7 +1,105 @@
-.fieldform {
+.raddSuperForm {
+    display: flex;
+    width: 100%;
+}
+
+.raddMegaForm {}
+
+.raddFormA {
+    text-align: center;
+    width: 47%;
+}
+
+.raddFormB {
+    width: 47%;
+    margin-left: auto;
+}
+
+.raddFormC {
+    width: 47%;
+}
+
+.raddFormD {}
+
+.raddfieldform {
     text-align: center;
     margin-top: 5em;
     margin-left: 35em;
     margin-right: 35em;
-    border: black solid;
+}
+
+.raddBeforeLabel {
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.raddBeforeMood {
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
+    background-color: #f7f7fa;
+    border: none;
+}
+
+.raddAfterLabel {
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.raddAfterMood {
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
+    background-color: #f7f7fa;
+    border: none;
+}
+
+.raddWeightLabel {
+    margin-top: 4em;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.raddWeight {}
+
+.raddJournalLabel {
+    margin-top: 4em;
+    color: #fd5401;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.raddJournal {
+    height: 17em;
+}
+
+.raddButtonBox {
+    margin-top: 4em;
+    margin-bottom: 3em;
+    text-align: end;
+}
+
+.raddCancelButton {
+    margin-right: 3em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.raddSaveButton {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.raddCancelButton:hover {
+    margin-right: 3em;
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.raddSaveButton:hover {
+    background-color: #da4900;
 }

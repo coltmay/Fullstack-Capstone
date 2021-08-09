@@ -1,0 +1,219 @@
+.dresizer {
+    width: 95%;
+}
+
+.DheaderBin {
+    margin-top: 1em;
+    border-top: #fd5401 2px solid;
+    border-bottom: #fd5401 2px solid;
+    display: flex;
+    align-items: center;
+}
+
+.DprofPic {
+    width: 70px;
+    height: 100%;
+    border-radius: 50%;
+    margin-left: 2em;
+}
+
+.DdetailTitle {
+    color: #fd5401;
+    font-size: 4em;
+    font-style: italic;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: .25em;
+}
+
+.dButtonHolder {
+    margin-top: 1em;
+    display: flex;
+}
+
+.dEditButton {
+    margin-left: 1em;
+    background-color: #fd5401;
+    border: none;
+}
+
+.dDeleteButton {
+    margin-right: 1em;
+    margin-left: auto;
+    background-color: #fd0901;
+    border: none
+}
+
+.dEditButton:hover {
+    margin-left: 1em;
+    background-color: #da4900;
+    border: none
+}
+
+.dDeleteButton:hover {
+    margin-right: 1em;
+    margin-left: auto;
+    background-color: #b80600;
+    border: none
+}
+
+.DemojiHeader {
+    color: #fd5401;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.DemojiHolder {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: space-evenly;
+}
+
+.DweightcalHolder {
+    display: flex;
+    margin-top: 1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    justify-content: space-evenly;
+}
+
+.DbeforeHolder {
+    text-align: center;
+    width: 45%;
+}
+
+.DweightBin {
+    text-align: center;
+    width: 45%;
+}
+
+.DcalorieBin {
+    text-align: center;
+    width: 45%;
+}
+
+.DafterHolder {
+    text-align: center;
+    width: 45%;
+}
+
+.DemojiField {
+    margin-top: -15px;
+    font-size: xx-large;
+}
+
+.DweightHeader {
+    font-size: x-large;
+    color: #fd5401;
+    font-weight: bold;
+}
+
+.DweightField {
+    margin-top: -15px;
+    font-size: xx-large;
+}
+
+.DcalorieHeader {
+    font-size: x-large;
+    color: #fd5401;
+    font-weight: bold;
+}
+
+.DcalorieField {
+    margin-top: -15px;
+    font-size: xx-large;
+}
+
+.dExerciseHeader {
+    margin-top: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #fd5401;
+}
+
+.resdetailAddExerciseButton {
+    margin-top: 2em;
+    background-color: #fd5401;
+    border: none
+}
+
+.resdetailAddExerciseButton:hover {
+    background-color: #da4900;
+}
+
+.dMealHeader {
+    margin-top: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #fd5401;
+}
+
+.dMealButton {
+    margin-top: 2em;
+    background-color: #fd5401;
+    border: none
+}
+
+.dButtonBox {
+    text-align: center;
+}
+
+.dMealButton:hover {
+    background-color: #da4900;
+}
+
+.secondaryDetails {
+    border-top: #fd5401 2px solid;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dExerciseBin {
+    width: 45%;
+}
+
+.dMealBin {
+    width: 45%;
+}
+
+.dJournalHeader {
+    margin-top: 1em;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #fd5401;
+}
+
+.journalBin {
+    border-top: #fd5401 2px solid;
+}
+
+.dJournalEntry {
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-bottom: 5em;
+}
+
+.dBackButtonHolder {
+    text-align: center;
+    border-top: #fd5401 2px solid;
+}
+
+.dBackButton {
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+    margin-top: 5em;
+    margin-bottom: 8em;
+}
+
+.dBackButton:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}

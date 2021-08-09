@@ -1,12 +1,24 @@
 .dashContainer {
     display: flex;
+    padding-bottom: 18em;
+}
+
+.callToAction {
+    margin-top: 5em;
+    text-align: center;
+    color: rgb(153, 153, 153);
+}
+
+.callToActionArrow {
+    margin-top: 5em;
+    width: 100px;
 }
 
 .userPanel {
     width: 30%;
     height: auto;
     margin-top: 2em;
-    margin-bottom: 2em;
+    padding-bottom: 2em;
     margin-left: 5em;
     padding-left: 2.5em;
     padding-right: 2.5em;
@@ -20,6 +32,7 @@
     width: 70%;
     height: auto;
     margin-right: 5em;
+    background-color: #f7f7fa;
 }
 
 .userName {
@@ -34,7 +47,8 @@
 }
 
 .profilePicture {
-    width: 25%;
+    width: 120px;
+    border-radius: 50%;
 }
 
 .detailContainer {
@@ -48,4 +62,25 @@ h6 {
     margin-bottom: 1.5em;
     color: rgb(34, 34, 34);
     text-align: start;
+}
+
+.viewButtonHolder {
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 5em;
+    background-color: #f7f7fa;
+}
+
+.calorieChartHolder {
+    margin-top: 5em;
+    margin-bottom: 6.75em;
+}
+
+.primary {
+    background-color: #fd5401;
+    border: none
+}
+
+.primary:hover {
+    background-color: #da4900;
 }

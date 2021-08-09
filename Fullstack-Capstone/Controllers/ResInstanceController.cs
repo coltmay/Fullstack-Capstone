@@ -47,8 +47,8 @@ namespace Fullstack_Capstone.Controllers
         public IActionResult Post(ResInstance resinstance)
         {
             User CurrentUser = GetCurrentUserProfile();
-            _resinstanceRepository.Add(resinstance, CurrentUser.Id);
-            return Ok(resinstance);
+            int Id = _resinstanceRepository.Add(resinstance, CurrentUser.Id);
+            return Ok(Id);
         }
 
         [HttpPut("{id}")]

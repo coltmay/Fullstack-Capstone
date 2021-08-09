@@ -1,0 +1,19 @@
+.navbarMain {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.navItem {
+    margin-left: 1em;
+    margin-right: 2em;
+}
+
+.logoutNav {
+    margin-left: auto;
+}
+
+.mr-auto {
+    width: 100%;
+}

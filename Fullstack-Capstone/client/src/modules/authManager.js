@@ -3,7 +3,6 @@ import "firebase/auth";
 
 const _apiUrl = "/api/user";
 
-
 const _doesUserExist = (firebaseUserId) => {
   return getToken().then((token) =>
     fetch(`${_apiUrl}/DoesUserExist/${firebaseUserId}`, {
@@ -107,4 +106,14 @@ export const onLoginStatusChange = (onLoginStatusChangedHandler) => {
 
   // Save the callback so we can call it in the `login` and `register` functions.
   _onLoginStatusChangedHandler = onLoginStatusChangedHandler;
+};
+
+export const getCurrentUser = () => {
+  return getToken().then((token) =>
+    fetch(`${_apiUrl}/GetCurrentUser`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(resp => resp.json()));
 };

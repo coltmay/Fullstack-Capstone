@@ -1,0 +1,31 @@
+.container {
+    height: 100vh;
+}
+
+.elButtonHolder {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.elAddButton {
+    margin-top: 2em;
+    background-color: #fd5401;
+    border: none
+}
+
+.elAddButton:hover {
+    background-color: #da4900;
+}
+
+.elBackButton {
+    margin-top: 1em;
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+    margin-bottom: 5em;
+}
+
+.elBackButton:hover {
+    background-color: #da4900;
+    border: solid#da4900;
+}

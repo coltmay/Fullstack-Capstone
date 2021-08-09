@@ -3,3 +3,16 @@
     margin-bottom: 0.5em;
     text-align: center;
 }
+
+.row {
+    padding-bottom: 10em;
+}
+
+.primary {
+    background-color: #fd5401;
+    border: none
+}
+
+.primary:hover {
+    background-color: #da4900;
+}

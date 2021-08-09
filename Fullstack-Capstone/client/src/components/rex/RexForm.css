@@ -1,0 +1,101 @@
+.rexMainForm {
+    text-align: center;
+    margin-top: 2em;
+    margin-left: 35em;
+    margin-right: 35em;
+    padding-bottom: 24em;
+}
+
+.rexFormName {
+    color: #fd5401;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+    border-bottom: 2px solid;
+}
+
+.rexSetRepBin {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.rexFormSets {
+    width: 47%;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+}
+
+.rexFormReps {
+    width: 47%;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+}
+
+.rexForDesc {
+    text-align: left;
+    margin-left: 3em;
+    margin-right: 3em;
+    color: rgb(153, 153, 153);
+}
+
+.rexUserDataBin {
+    margin-top: 3em;
+    display: flex;
+    width: 100%;
+    margin-bottom: 3em;
+}
+
+.rexFormWeightBin {
+    margin-left: 5em;
+}
+
+.rexFormWeightLable {
+    text-align: start;
+    font-weight: bold;
+    color: rgb(153, 153, 153);
+    width: 100%;
+}
+
+.rexFormWeightInput {}
+
+.rexFormDifficultyBin {
+    margin-left: auto;
+    margin-right: 5em;
+}
+
+.rexFormDifficultyLable {
+    text-align: start;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+    width: 100%;
+}
+
+.rexFormDifficultyInput {}
+
+.rexFormButtonBin {
+    margin-right: 4em;
+    text-align: end;
+}
+
+.rexFormSave {
+    margin-left: 3em;
+    background-color: #fd5401;
+    border: solid #fd5401;
+}
+
+.rexFormCancel {
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.rexFormSave:hover {
+    background-color: #da4900;
+}
+
+.rexFormCancel:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Fullstack_Capstone.Models;
 using Fullstack_Capstone.Repositories;
+using System.Security.Claims;
 
 namespace Fullstack_Capstone.Controllers
 {
@@ -14,6 +15,13 @@ namespace Fullstack_Capstone.Controllers
         public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
+        }
+
+        [HttpGet("GetCurrentUser")]
+        public IActionResult GetCurrentUser()
+        {
+            var user = GetCurrentUserProfile();
+            return Ok(user);
         }
 
         [HttpGet("{firebaseUserId}")]
@@ -46,6 +54,12 @@ namespace Fullstack_Capstone.Controllers
             _userRepository.Add(user);
             return CreatedAtAction(
                 nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
+        }
+
+        private User GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }
 }

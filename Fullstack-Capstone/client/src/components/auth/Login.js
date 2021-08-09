@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory, Link } from "react-router-dom";
 import { login } from "../../modules/authManager";
+import "./Login.css";
 
 export default function Login() {
     const history = useHistory();
@@ -12,27 +13,27 @@ export default function Login() {
     const loginSubmit = (e) => {
         e.preventDefault();
         login(email, password)
-            .then(() => history.push("/"))
+            .then(() => history.push("/dashboard"))
             .catch(() => alert("Login Failed"));
     };
 
     return (
-        <Form onSubmit={loginSubmit}>
+        <Form className="logForm" onSubmit={loginSubmit}>
             <fieldset>
                 <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input id="email" type="text" autoFocus onChange={e => setEmail(e.target.value)} />
+                    <Label className="logEmailLabel" for="email">Email</Label>
+                    <Input className="logEmailInput" id="email" type="text" autoFocus onChange={e => setEmail(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                    <Label className="logPasswordLabel" for="password">Password</Label>
+                    <Input className="logPasswordInput" id="password" type="password" onChange={e => setPassword(e.target.value)} />
                 </FormGroup>
-                <FormGroup>
-                    <Button color="primary">Login</Button>
+                <FormGroup className="logButtonBin">
+                    <Button className="logButton">Login</Button>
                 </FormGroup>
-                <em>
+                <div className="logRegisterString">
                     Not registered? <Link to="register">Register</Link>
-                </em>
+                </div>
             </fieldset>
         </Form>
     );

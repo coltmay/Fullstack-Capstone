@@ -6,6 +6,7 @@ import { getRexListByResInstanceId, deleteRex } from "../../modules/rexManager";
 import { getMealListByResInstanceId, deleteMeal } from "../../modules/mealManager";
 import RexCard from "../rex/RexCard";
 import MealCard from "../meal/MealCard";
+import "../resinstance/ResInstanceDetail.css"
 
 const ResInstanceDetail = () => {
     const [resinstance, setResinstance] = useState([]);
@@ -14,9 +15,12 @@ const ResInstanceDetail = () => {
     const { id } = useParams();
     const history = useHistory();
 
-    console.log(rexes)
-
     var date = new Date(Date.parse(resinstance.date));
+    var totalCalories = 0;
+
+    resinstance.mealList?.forEach(meal => {
+        totalCalories += meal.calories;
+    });
 
     const getResinstance = () => {
         getResInstanceById(id).then(resinstance => setResinstance(resinstance));
@@ -58,35 +62,69 @@ const ResInstanceDetail = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
-                <div className="col-sm-12 col-lg-6">
-                    <h1>{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
-                    <h4>Mood Before: {resinstance.beforeMood}</h4>
-                    <h4>Mood After: {resinstance.afterMood}</h4>
-                    <Link to={`/resinstances/edit/${resinstance.id}`}><Button color="primary">Edit</Button>
-                    </Link>
-                    <Button color="danger" onClick={() => deleteCurrentResInstance(id)}>Delete</Button>
-                    <div>
-                        <h3>Exercises</h3>
-                        {rexes.map((rex) => (
-                            <RexCard rex={rex} key={rex.id} resinstance={resinstance} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
-                        ))}
-                        <Link to={`/rexexercise/${id}`}><Button color="primary">Add Exercise</Button>
-                        </Link>
+                <div className="col-sm-12 col-lg-6 dresizer">
+                    <div className="DheaderBin">
+                        <img className="DprofPic" src={resinstance.user?.avatarUrl} alt="profile picture"></img>
+                        <h1 className="DdetailTitle">{date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h1>
+                    </div>
+                    <div className="dButtonHolder">
+                        <Link to={`/resinstances/edit/${resinstance.id}`}><Button className="dEditButton">Edit</Button></Link>
+                        <Button className="dDeleteButton" onClick={() => deleteCurrentResInstance(id)}>Delete</Button>
                     </div>
                     <div>
-                        <h3>Meals</h3>
-                        {meals.map((meal) => (
-                            <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
-                        ))}
-                        <Link to={`/meals/form/${id}`}><Button color="primary">Add Meal</Button>
-                        </Link>
+                        <div className="DdetailHolder">
+                            <div className="DemojiHolder">
+                                <div className="DbeforeHolder">
+                                    <p className="DemojiHeader">Mood Before</p>
+                                    <p className="DemojiField">{resinstance.beforeMood}</p>
+                                </div>
+                                <div className="DafterHolder">
+                                    <p className="DemojiHeader">Mood After</p>
+                                    <p className="DemojiField">{resinstance.afterMood}</p>
+                                </div>
+                            </div>
+                            <div className="DweightcalHolder">
+                                <div className="DweightBin">
+                                    <p className="DweightHeader">My Weight</p>
+                                    <p className="DweightField">{resinstance.userWeight} lbs</p>
+                                </div>
+                                <div className="DcalorieBin">
+                                    <p className="DcalorieHeader">Total Calories</p>
+                                    <p className="DcalorieField">{totalCalories}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2>Journal</h2>
-                    <p>{resinstance.journal}</p>
-                    <Button color="secondary" onClick={() => history.push(`/myresinstances`)}>Back</Button>
+                    <div className="secondaryDetails">
+                        <div className="dExerciseBin">
+                            <p className="dExerciseHeader">Exercises</p>
+                            {rexes.map((rex) => (
+                                <RexCard rex={rex} key={rex.id} resinstance={resinstance} deleteRexAndSetResinstance={deleteRexAndSetResinstance} />
+                            ))}
+                            <div className="dButtonBox">
+                                <Link to={`/rexexercise/${id}`}><Button className="resdetailAddExerciseButton">Add Exercise</Button></Link>
+                            </div>
+                        </div>
+                        <div className="dMealBin">
+                            <p className="dMealHeader">Meals</p>
+                            {meals.map((meal) => (
+                                <MealCard meal={meal} key={meal.id} deleteMealAndSetResinstance={deleteMealAndSetResinstance} />
+                            ))}
+                            <div className="dButtonBox">
+                                <Link to={`/meals/form/${id}`}><Button className="dMealButton">Add Meal</Button></Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="journalBin">
+                        <p className="dJournalHeader">Journal</p>
+                        <p className="dJournalEntry">{resinstance.journal}</p>
+                        <div className="dBackButtonHolder">
+                            <Button className="dBackButton" onClick={() => history.push(`/myresinstances`)}>Back</Button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

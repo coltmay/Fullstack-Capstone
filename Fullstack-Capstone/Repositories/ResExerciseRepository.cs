@@ -80,7 +80,7 @@ namespace Fullstack_Capstone.Repositories
                     cmd.CommandText = @"
                         SELECT  re.Id, re.ResInstanceId, re.ExerciseId, re.Weight, re.Difficulty,
                                 r.Id AS ResDayId, r.Date, r.UserId, r.BeforeMood, r.AfterMood, r.UserWeight, r.Journal,
-                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarId, u.UserTypeId,
+                                u.Id AS UserTableUserId, u.Username, u.Email, u.FirstName, u.LastName, u.RegisterDate, u.AvatarUrl, u.UserTypeId,
                                 e.Id, e.Name AS ExerciseName, e.Sets, e.Reps, e.Description, e.URL
                         FROM ResInstanceExercises re
                         LEFT JOIN ResInstances r ON r.Id= re.ResInstanceId

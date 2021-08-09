@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { getExerciseById } from '../../modules/exerciseManager';
 import { addRex } from "../../modules/rexManager";
+import "./RexForm.css"
 
 const RexForm = () => {
     const [exercise, setExercise] = useState({});
@@ -45,26 +46,31 @@ const RexForm = () => {
     };
 
     return (
-        <Form>
-            <h1>Rex Form</h1>
-            <h2>{exercise.name}</h2>
-            <p>{exercise.description}</p>
-            <p>Sets: {exercise.sets}</p>
-            <p>Reps: {exercise.reps}</p>
-            <FormGroup>
-                <Label for="weight">Weight</Label>
-                <Input type="int" name="weight" id="weight"
-                    value={rex.name}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="difficulty">Difficulty</Label>
-                <Input type="difficulty" name="difficulty" id="difficulty"
-                    value={rex.difficulty}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <Button color="primary" onClick={handleSave}>Save</Button>
-            <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Cancel</Button>
+        <Form className="rexMainForm">
+            <h2 className="rexFormName">{exercise.name}</h2>
+            <div className="rexSetRepBin">
+                <p className="rexFormSets">Recommended Sets • {exercise.sets}</p>
+                <p className="rexFormReps">Recommended Reps • {exercise.reps}</p>
+            </div>
+            <p className="rexForDesc">{exercise.description}</p>
+            <div className="rexUserDataBin">
+                <FormGroup className="rexFormWeightBin">
+                    <Label className="rexFormWeightLable" for="weight">Weight Lifted (lbs)</Label>
+                    <Input className="rexFormWeightInput" type="int" name="weight" id="weight"
+                        value={rex.name}
+                        onChange={handleInputChange} />
+                </FormGroup>
+                <FormGroup className="rexFormDifficultyBin">
+                    <Label className="rexFormDifficultyLable" for="difficulty">Difficulty (1 - 10)</Label>
+                    <Input className="rexFormDifficultyInput" type="difficulty" name="difficulty" id="difficulty"
+                        value={rex.difficulty}
+                        onChange={handleInputChange} />
+                </FormGroup>
+            </div>
+            <div className="rexFormButtonBin">
+                <Button className="rexFormCancel" onClick={() => history.push(`/resinstances/detail/${resinstanceid}`)}>Cancel</Button>
+                <Button className="rexFormSave" onClick={handleSave}>Save</Button>
+            </div>
         </Form>
     );
 };

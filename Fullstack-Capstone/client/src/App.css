@@ -37,6 +37,11 @@
   }
 } */
 
+html {
+  background-color: #f7f7fa !important;
+}
+
 main {
-  background-color: #f7f7fa;
+  padding-top: 4em;
+  background-color: #f7f7fa !important;
 }

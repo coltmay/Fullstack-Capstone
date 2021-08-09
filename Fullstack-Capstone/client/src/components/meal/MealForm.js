@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { addMeal } from "../../modules/mealManager";
+import "./MealForm.css"
 
 const MealForm = () => {
 
@@ -34,21 +35,25 @@ const MealForm = () => {
     };
 
     return (
-        <Form>
-            <FormGroup>
-                <Label for="name">Meal</Label>
-                <Input type="text" name="name" id="name"
-                    value={meal.name}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <FormGroup>
-                <Label for="calories">Calories</Label>
-                <Input type="text" name="calories" id="calories"
-                    value={meal.calories}
-                    onChange={handleInputChange} />
-            </FormGroup>
-            <Button color="primary" onClick={handleSave}>Save</Button>
-            <Button color="secondary" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
+        <Form className="mealFormBin">
+            <div className="mealFormMain">
+                <FormGroup className="mealFormNameBin">
+                    <Label className="mealFormNameLabel" for="name">Meal</Label>
+                    <Input className="mealFormNameInput" type="text" name="name" id="name"
+                        value={meal.name}
+                        onChange={handleInputChange} />
+                </FormGroup>
+                <FormGroup className="mealFormCalorieBin">
+                    <Label className="mealFormCalorieLabel" for="calories">Calories</Label>
+                    <Input className="mealFormCalorieInput" type="text" name="calories" id="calories"
+                        value={meal.calories}
+                        onChange={handleInputChange} />
+                </FormGroup>
+            </div>
+            <div className="mealFormButtonBin">
+                <Button className="mealFormCancel" onClick={() => history.push(`/resinstances/detail/${id}`)}>Cancel</Button>
+                <Button className="mealFormSave" onClick={handleSave}>Save</Button>
+            </div>
         </Form>
     );
 };

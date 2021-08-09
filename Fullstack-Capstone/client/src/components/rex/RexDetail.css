@@ -1,0 +1,66 @@
+.rexDetHeader {
+    text-align: center;
+    color: #fd5401;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-top: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    border-bottom: 2px solid;
+}
+
+.rexDetSetRep {
+    display: flex;
+    margin-top: 2em;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.rexDetSets {
+    font-weight: bold;
+    color: rgb(153, 153, 153);
+}
+
+.rexDetReps {
+    font-weight: bold;
+    color: rgb(153, 153, 153);
+    margin-left: auto;
+}
+
+.rexDetWeightDiff {
+    display: flex;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.rexDetWeight {
+    font-weight: bold;
+    color: rgb(153, 153, 153);
+}
+
+.rexDetDiff {
+    font-weight: bold;
+    margin-left: auto;
+    color: rgb(153, 153, 153);
+}
+
+.rexDetDesc {
+    color: rgb(153, 153, 153);
+}
+
+.rexDetButtonBin {
+    margin-top: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+.rexDetBackButton {
+    color: #fd5401;
+    background-color: #f7f7fa;
+    border: solid #fd5401;
+}
+
+.rexDetBackButton:hover {
+    background-color: #fd5401;
+    border: solid #fd5401;
+}

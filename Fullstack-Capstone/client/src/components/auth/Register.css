@@ -1,0 +1,156 @@
+.regForm {
+    margin-top: 7em;
+    margin-left: 25em;
+    margin-right: 25em;
+    height: 81.80vh;
+}
+
+.regNameBin {
+    display: flex;
+}
+
+.regPasswordGroup {
+    display: flex;
+}
+
+.regPassBin {
+    width: 47%;
+}
+
+.regConfirmBin {
+    width: 47%;
+    margin-left: auto;
+}
+
+.regFirstNameBin {
+    width: 47%;
+}
+
+.regLastNameBin {
+    width: 47%;
+    margin-left: auto;
+}
+
+.regFirstLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regFirstInput {
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.regLastLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regLastInput {
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.regUserLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regUserInput {
+    width: 47%;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.regProPicLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regProPicInput {
+    margin-top: 0.75em;
+    outline: none;
+}
+
+.regEmailLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regEmailInput {
+    width: 47%;
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.regPasswordLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regPasswordInput {
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.regPasswordLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regConfirmPasswordLabel {
+    margin-top: 2em;
+    font-weight: bold;
+    color: #999;
+}
+
+.regConfirmPasswordInput {
+    outline: none;
+    background-color: #f7f7fa;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #999 1px !important;
+}
+
+.regButtonBin {
+    margin-top: 4em;
+    text-align: center;
+}
+
+.regButton {
+    text-align: center;
+}

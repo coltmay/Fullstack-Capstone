@@ -1,21 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "./RexCard.css"
 
 const RexCard = ({ rex, resinstance, deleteRexAndSetResinstance }) => {
 
     return (
-        <Card >
-            <CardBody>
-                <h4>{rex.exercise.name}</h4>
-                <p>Weight: {rex.weight}</p>
-                <p>Difficulty: {rex.difficulty}</p>
-                <Link to={`/Rex/detail/${resinstance.id}/${rex.id}`} ><Button color="secondary">Details</Button>
-                </Link>
-                <br></br>
-                <Link to={`/rex/edit/${resinstance.id}/${rex.id}`}><Button color="primary">Edit</Button>
-                </Link>
-                <Button color="danger" onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</Button>
+        <Card className="rexMainCard">
+            <CardBody className="rexCardBody">
+                <div className="rexHeader">
+                    <h4 className="rexName">{rex.exercise.name}</h4>
+                    <div className="rexHeaderButtons">
+                        {/* <Link to={`/rex/edit/${resinstance.id}/${rex.id}`}><Button className="rexEdit">Edit</Button></Link> */}
+                        <Button className="rexDelete" onClick={() => deleteRexAndSetResinstance(rex.id)}>Delete</Button>
+                    </div>
+                </div>
+                <p className="rexWeight">Weight Lifted • {rex.weight} lbs</p>
+                <p className="rexDifficulty">Difficulty • {rex.difficulty}</p>
+                <div className="rexDetailsBin">
+                    <Link to={`/Rex/detail/${resinstance.id}/${rex.id}`} ><Button className="rexDetails">Details</Button></Link>
+                </div>
             </CardBody>
         </Card >
     );

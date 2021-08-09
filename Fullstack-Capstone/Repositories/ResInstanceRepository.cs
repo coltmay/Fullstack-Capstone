@@ -218,7 +218,7 @@ namespace Fullstack_Capstone.Repositories
             }
         }
 
-        public void Add(ResInstance resInstance, int userId)
+        public int Add(ResInstance resInstance, int userId)
         {
             using (var conn = Connection)
             {
@@ -239,7 +239,9 @@ namespace Fullstack_Capstone.Repositories
                     DbUtils.AddParameter(cmd, "@UserWeight", resInstance.UserWeight);
                     DbUtils.AddParameter(cmd, "@Journal", resInstance.Journal);
 
-                    resInstance.Id = (int)cmd.ExecuteScalar();
+                    int Id = (int)cmd.ExecuteScalar();
+
+                    return Id;
                 }
             }
         }

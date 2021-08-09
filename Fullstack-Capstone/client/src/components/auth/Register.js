@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import { register } from "../../modules/authManager";
+import "./Register.css";
 
 export default function Register() {
     const history = useHistory();
@@ -23,7 +24,7 @@ export default function Register() {
         } else {
             const userProfile = { userName, email, firstName, lastName, AvatarUrl };
             register(userProfile, password)
-                .then(() => history.push("/"));
+                .then(() => history.push("/dashboard"));
         }
     };
 
@@ -52,44 +53,43 @@ export default function Register() {
 
 
     return (
-        <Form onSubmit={registerClick}>
+        <Form className="regForm" onSubmit={registerClick}>
             <fieldset>
+                <div className="regNameBin">
+                    <FormGroup className="regFirstNameBin">
+                        <Label className="regFirstLabel" htmlFor="firstName">First Name</Label>
+                        <Input className="regFirstInput" id="name" type="text" autoFocus onChange={e => setFirstName(e.target.value)} />
+                    </FormGroup>
+                    <FormGroup className="regLastNameBin">
+                        <Label className="regLastLabel" htmlFor="lastName">Last Name</Label>
+                        <Input className="regLastInput" id="name" type="text" autoFocus onChange={e => setLastName(e.target.value)} />
+                    </FormGroup>
+                </div>
                 <FormGroup>
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="name" type="text" autoFocus onChange={e => setFirstName(e.target.value)} />
+                    <Label className="regUserLabel" htmlFor="userName">Username</Label>
+                    <Input className="regUserInput" id="name" type="text" autoFocus onChange={e => setUserName(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="name" type="text" autoFocus onChange={e => setLastName(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label htmlFor="userName">Username</Label>
-                    <Input id="name" type="text" autoFocus onChange={e => setUserName(e.target.value)} />
-                </FormGroup>
-                {/* Temporary Avatar Code */}
-                {/* <FormGroup>
-                    <Label htmlFor="avatarId">Avatar</Label>
-                    <Input id="name" type="int" autoFocus onChange={e => setAvatarId(e.target.value)} />
-                </FormGroup> */}
-                <FormGroup>
-                    <Label for="avatarURL">Profile Picture</Label>
+                    <Label className="regProPicLabel" for="avatarURL">Profile Picture</Label>
                     <br></br>
-                    <Input id="file" type="file" onChange={uploadImage} />
+                    <Input className="regProPicInput" id="file" type="file" onChange={uploadImage} />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
+                    <Label className="regEmailLabel" for="email">Email</Label>
+                    <Input className="regEmailInput" id="email" type="text" onChange={e => setEmail(e.target.value)} />
                 </FormGroup>
-                <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="confirmPassword">Confirm Password</Label>
-                    <Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
-                </FormGroup>
-                <FormGroup>
-                    <Button color="primary">Register</Button>
+                <div className="regPasswordGroup">
+                    <FormGroup className="regPassBin">
+                        <Label className="regPasswordLabel" for="password">Password</Label>
+                        <Input className="regPasswordInput" id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                    </FormGroup>
+                    <FormGroup className="regConfirmBin">
+                        <Label className="regConfirmPasswordLabel" for="confirmPassword">Confirm Password</Label>
+                        <Input className="regConfirmPasswordInput" id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+                    </FormGroup>
+                </div>
+                <FormGroup className="regButtonBin">
+                    <Button className="regButton">Register</Button>
                 </FormGroup>
             </fieldset>
         </Form>

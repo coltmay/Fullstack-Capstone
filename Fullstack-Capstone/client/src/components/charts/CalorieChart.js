@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Line } from 'react-chartjs-2';
 import { getResInstancesByUser } from '../../modules/resinstanceManager';
 
-const WeightChart = () => {
+const CaloriesChart = () => {
 
     const [resinstances, setResinstances] = useState([]);
 
@@ -17,25 +17,31 @@ const WeightChart = () => {
     const last7Res = resinstances.slice(0, 7);
 
     let dateLabels = [];
-    let weightData = [];
+    let calorieData = [];
+
 
     last7Res.forEach(res => {
         dateLabels.push(`${new Date(res.date).getMonth() + 1}/${new Date(res.date).getDate()}`);
     })
 
+
     last7Res.forEach(res => {
-        weightData.push(res.userWeight);
+        let dayCalorie = 0;
+        res.mealList.forEach(meal => {
+            dayCalorie += meal.calories;
+        })
+        calorieData.push(dayCalorie);
     })
 
     const data = {
         labels: dateLabels.reverse(),
         datasets: [
             {
-                label: 'Weight Over Time',
-                data: weightData.reverse(),
+                label: 'Calories Over Time',
+                data: calorieData.reverse(),
                 fill: false,
-                backgroundColor: '#fd5401',
-                borderColor: '#fd5401',
+                backgroundColor: '#FD874D',
+                borderColor: '#FD874D',
             },
         ],
     };
@@ -59,4 +65,4 @@ const WeightChart = () => {
     );
 }
 
-export default WeightChart;
+export default CaloriesChart;
